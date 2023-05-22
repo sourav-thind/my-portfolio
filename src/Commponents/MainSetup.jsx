@@ -16,7 +16,7 @@ const MainSetup=(props) =>{
   const tl = useRef();
   const scroll = useScroll();
   const {  actions, names   } = useAnimations(animations, group);
-  console.log(names)
+  //console.log(names)
   useEffect(()=>{
    
       actions["Cube.001Action"].reset().play().paused = true

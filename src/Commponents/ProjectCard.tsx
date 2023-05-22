@@ -1,42 +1,139 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import Tilt from 'react-parallax-tilt'
+import { motion } from 'framer-motion'
+import { fadeIn, textVariant } from '../utils/motion'
+import { projects } from "@/constants";
+import Image, { StaticImageData } from "next/image";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// Import Swiper styles
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 
-// import required modules
-import { EffectCoverflow, Pagination } from "swiper";
+import { EffectCoverflow, Pagination, Navigation } from 'swiper';
+import { SocialIcon } from 'react-social-icons';
 type Props = {}
 
-const ProjectCard = (props: Props) => {
-  return (
-    <>
-      <Swiper
-        effect={"coverflow"}
-        grabCursor={true}
-        centeredSlides={true}
-        slidesPerView={"auto"}
-        coverflowEffect={{
-          rotate: 50,
-          stretch: 0,
-          depth: 100,
-          modifier: 1,
-          slideShadows: true,
-        }}
-        pagination={true}
-        modules={[EffectCoverflow, Pagination]}
-        className="mySwiper"
-      >
-        <SwiperSlide>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-        </SwiperSlide>
-        
-      </Swiper>
-    </>
-  )
+
+interface ProjectCardsProps {
+  index: number;
+  name: string;
+  description: string;
+  tags: { name: string; image: StaticImageData }[];
+  image: StaticImageData;
+  source_code_link: string;
+  live_app_link: string;
 }
 
-export default ProjectCard
+const ProjectCards: React.FC<ProjectCardsProps> = ({
+  index,
+  name,
+  description,
+  tags,
+  image,
+  source_code_link,
+  live_app_link
+}) => {
+
+
+  return (
+
+
+    <div className=' bg-gradient-to-br from-drgry to-black rounded-lg border-4 h-full w-[410px] md:w-[690px] mx-auto p-3 lg:p-5 border-drfgclr '>
+      <div className="relative w-[360px] md:w-[640px] h-full mx-auto">
+
+        <Image src={image} alt='name' className='md:h-[300px] h-[180px]  Img' />
+
+        <div className='text-drwht items-center justify-center'>
+          <h1 className='text-3xl mx-auto underline mt-6 md:mt-3 font-semibold decoration-drfgclr uppercase'>{name}</h1>
+          <h3 className='text-md text-justify mt-4 md:mt-2 '>{description}</h3>
+          <div className={`flex flex-row gap-2 mt-5  justify-evenly md:mt-3`}>
+            {tags.map((tag) => (
+              <div key={tag.name} >
+                <Image src={tag.image} alt={tag.name} className='h-10 w-10' />
+              </div>
+            )
+
+            )}
+          </div>
+          <div className='justify-evenly flex gap-x-12 mt-4 md:mt-2'>
+            <button className='w-[100px] font-bold text-drbgclr bg-drfgclr rounded-md mt-4' > Github </button>
+            <button className='w-[100px] font-bold text-drbgclr bg-drfgclr rounded-md mt-4' > Live Demo </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  );
+};
+const Project = (props: Props) => {
+  const slides: JSX.Element[] = [];
+  projects.map((project, index) => (
+    slides.push(
+      <SwiperSlide key={project.name} className='py-5'>
+        <Tilt tiltReverse={true} tiltMaxAngleX={2} tiltMaxAngleY={2} transitionSpeed={100}>
+          <ProjectCards
+            key={`project-${index}`}
+            index={index}
+            {...project} />
+        </Tilt>
+      </SwiperSlide>
+    )
+  ));
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 840px)");
+    setIsMobile(mediaQuery.matches);
+    
+    const handleMediaQueryChange = (event: { matches: boolean | ((prevState: boolean) => boolean); }) => {
+      setIsMobile(event.matches);
+      };
+      mediaQuery.addListener(handleMediaQueryChange);
+      return () => mediaQuery.removeListener(handleMediaQueryChange);
+    });  
+
+ 
+  return (
+
+    <div  >
+      <div className='mx-1 mt-8 justify-center items-center'>
+
+
+        <motion.div variants={fadeIn("up", "spring", 0.5, 0.75)}>
+
+          <Swiper
+            effect={"coverflow"}
+            loop={true}
+            centeredSlides={true}
+            slidesPerView={1}
+            coverflowEffect={{
+              rotate: 50,
+              stretch: 0,
+              depth: 0,
+              modifier: 1,
+            }}
+            spaceBetween={isMobile? -100 :-440}
+            navigation={true}
+            modules={[EffectCoverflow, Navigation]}
+            className="mySwiper items-center flex justify-center z-20"
+
+          >
+            {/* <SwiperSlide>
+                  <ProjectCards
+                    key={`project-${index}`}
+                    index={index}
+                    {...project} />
+                    </SwiperSlide> */}
+            {slides}
+          </Swiper>
+
+        </motion.div>
+      </div>
+    </div>
+
+  )
+}
+export default Project

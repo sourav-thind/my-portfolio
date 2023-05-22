@@ -3,8 +3,10 @@ import Hero from '@/Commponents/Hero'
 import CanvasLoader from '@/Commponents/CanvasLoader'
 import Skills from '@/Commponents/Skills'
 import Contact from '@/Commponents/Contact'
-import Project from '@/Commponents/Project'
+import Project from '@/Commponents/Projects'
 import ProjectCard from '@/Commponents/ProjectCard'
+
+
 
 
 export default function Home() {
@@ -12,7 +14,7 @@ export default function Home() {
   return (
 <main>
   <div className="snap-y snap-mandatory overflow-y-scroll">
-    <section className="h-screen bg-amber-900 snap-start">
+    <section className="h-screen bg-drfgclr/50   snap-start">
       <CanvasLoader />
     </section>
     <Header />
@@ -22,8 +24,9 @@ export default function Home() {
     <section className="h-screen snap-center">
       <Skills />
     </section>
-    <section>
+    <section className='h-screen bg-drbgclr'>
       <Project/>
+      <ProjectCard/>
     </section>
     <section className="h-screen snap-center">
       <Contact />
