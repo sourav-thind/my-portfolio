@@ -5,6 +5,7 @@ import Skills from '@/Commponents/Skills'
 import Contact from '@/Commponents/Contact'
 import Project from '@/Commponents/Projects'
 import ProjectCard from '@/Commponents/ProjectCard'
+import About from '@/Commponents/About'
 
 
 
@@ -20,6 +21,9 @@ export default function Home() {
     <Header />
     <section className="h-screen snap-center">
       <Hero />
+    </section>
+    <section>
+      <About/>
     </section>
     <section className="h-screen snap-center">
       <Skills />

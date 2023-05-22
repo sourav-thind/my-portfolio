@@ -33,7 +33,7 @@ function Header({}: Props) {
 </div>
 <div className='group flex flex-row rounded-3xl border border-transparent   hover:border-drfgclr duration-500 ease-in-out'>
 <SocialIcon className='cursor-pointer' network='email' target='_blank' fgColor='#d9ebe3' bgColor='transparent'/>
-<p className='hidden group-hover:block my-auto m-2 '>Let's get in Touch</p>
+<p className='hidden group-hover:block my-auto m-2'>Let&apos;s get in Touch</p>
 </div>
 
 </div>
@@ -58,7 +58,7 @@ function Header({}: Props) {
 </div>
 <div  className='flex flex-row'>
 <SocialIcon className='cursor-pointer' network='email' target='_blank' fgColor='#d9ebe3' bgColor='transparent'/>
-<p className='my-auto'>Let's get in Touch</p>
+<p className='my-auto'>Let&apos;s get in Touch</p>
 </div>
 </div>
 </div>

@@ -73,7 +73,7 @@ button {
   text-decoration: none;
   cursor: pointer;
   outline: none;
-  border: none;
+  border: 1px solid #4d606f;
   background: transparent;
    
 }
@@ -119,4 +119,7 @@ button {
 }
 .swiper-slide.current {
   z-index: 10;
+}
+.bg-trprt{
+  background: transparent;
 }

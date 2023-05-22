@@ -54,7 +54,7 @@ const Contact = (props: Props) => {
     <div className='bg-drbgclr relative  flex mx-auto justify-center h-screen '>
       <div className='flex flex-col items-center space-y-10 mt-6'>
         <h1 className='tracking-[20px] text-2xl md:text-3xl text-drgry uppercase font-semibold '>Contact</h1>
-        <h2 className=' text-drfgclr md:flex justify-center items-center flex flex-col font-semibold md:text-xl md:font-bold uppercase '> <span> Looking for the perfect solution?</span> <span className='decoration-drfgclr underline text-drwht'> I've got you covered.</span> </h2>
+        <h2 className=' text-drfgclr md:flex justify-center items-center flex flex-col font-semibold md:text-xl md:font-bold uppercase'> <span> Looking for the perfect solution?</span> <span className='decoration-drfgclr underline text-drwht'> I&apos;ve got you covered.</span> </h2>
         <div className='space-y-3 mb-5'>
           <div className='flex text-drwht text-md space-x-5 items-center justify-center'>
             <PhoneIcon className='h-6 w-6 text-drfgclr' />
