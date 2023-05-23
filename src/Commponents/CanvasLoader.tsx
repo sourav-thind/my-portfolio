@@ -16,7 +16,7 @@ const CanvasLoader = (props: Props) => {
     <MainCanvas />
     {/* <Html><Header/></Html> */}
    </mesh>
-   <Header/>
+
     </div>
 
   )

@@ -65,9 +65,9 @@ const Contact = (props: Props) => {
             <p>Souravthind07it@gmail.com</p>
           </div>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col space-y-3' action="">
-          <div className='space-x-2'>
-            <input className='inputbox' 
+        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col space-y-3 w-[360px]' action="">
+          <div className='space-x-2 flex '>
+            <input className='inputbox w-[175px]' 
             type="text" required
             placeholder='First Name' 
             {...register("firstName")} 
@@ -77,7 +77,7 @@ const Contact = (props: Props) => {
             } />
             <input 
             placeholder='Last Name' 
-            className='inputbox' 
+            className='inputbox w-[175px]' 
             type="text" 
             {...register("lastName")} 
             value={formData.lastName} 

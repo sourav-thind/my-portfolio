@@ -14,25 +14,26 @@ export default function Home() {
 
   return (
 <main>
-  <div className="snap-y snap-mandatory overflow-y-scroll">
-    <section className="h-screen bg-drfgclr/50   snap-start">
+  <div className="">
+    <section className="h-screen bg-drfgclr/50   snap-start w-screen">
       <CanvasLoader />
     </section>
+
     <Header />
-    <section className="h-screen snap-center">
+    <section className="h-[90vh] snap-center ">
       <Hero />
     </section>
     <section>
       <About/>
     </section>
-    <section className="h-screen snap-center">
+    <section className="h-[90vh] snap-center">
       <Skills />
     </section>
-    <section className='h-screen bg-drbgclr'>
+    <section className='h-[90vh] bg-drbgclr'>
       <Project/>
       <ProjectCard/>
     </section>
-    <section className="h-screen snap-center">
+    <section className="h-[90vh] snap-center">
       <Contact />
     </section>
   </div>

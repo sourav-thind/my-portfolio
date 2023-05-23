@@ -10,11 +10,11 @@ type Props = {}
 function Header({}: Props) {
   const [toggle, setToggle] = useState(false);
   return (
-    <header className='flex h-[10vh] sticky top-0 flex-row bg-drbgclr text-drfgclr z-10'>
+    <header className='flex h-[10vh] sticky top-0 flex-row bg-drbgclr text-drfgclr z-10 shadow-xl'>
     <div className='flex flex-1 items-center flex-row '>
       <Image src={logo} alt={"logo"} className='h-[60px] w-[60px] m-1 ml-2'/>&nbsp;
       
-    <h1 className='text-[24px]'> | Souravpreet Singh </h1>
+    {/* <h1 className='text-[24px]'> | Souravpreet Singh </h1> */}
  
     </div>
 

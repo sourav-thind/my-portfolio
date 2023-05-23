@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .box {
- width:110px;
+ width:5rem;
   height: auto;
   float: left;
   transition: .5s linear;
@@ -12,7 +12,7 @@
   overflow: hidden;
   padding: 10px 0px;
   text-align: center;
-  margin: 0 2px;
+  margin: 0 1px;
   background: transparent;
   text-transform: uppercase;
   font-weight: 600;
