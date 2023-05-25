@@ -29,6 +29,7 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.9",
     "react-parallax-tilt": "^1.7.140",
+    "react-scroll": "^1.8.9",
     "react-social-icons": "^5.15.0",
     "react-tilt": "^1.0.2",
     "sharp": "^0.32.1",
@@ -37,6 +38,7 @@
     "typescript": "5.0.4"
   },
   "devDependencies": {
+    "@types/react-scroll": "^1.8.7",
     "autoprefixer": "^10.4.14",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2"

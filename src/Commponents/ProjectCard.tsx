@@ -41,15 +41,15 @@ const ProjectCards: React.FC<ProjectCardsProps> = ({
   return (
 
 
-    <div className=' bg-gradient-to-br from-drgry to-black rounded-lg border-4 h-full w-[360px] md:w-[690px] mx-auto  p-4 border-drfgclr '>
-      <div className="relative w-[320px] md:w-[600px] h-full flex flex-col justify-center items-center mx-auto gap-y-3">
+    <div className=' bg-gradient-to-br from-drgry to-black rounded-lg border-4  w-[360px] md:w-[640px] mx-auto py-2  border-drfgclr '>
+      <div className="relative w-[320px] md:w-[580px] h-full flex flex-col justify-center items-center mx-auto gap-y-2">
 
-        <Image src={image} alt='name' className='md:h-[300px] h-[180px]  Img' />
+        <Image src={image} alt='name' className='md:h-[250px] h-[180px]  Img' />
 
-        <div className='text-drwht flex flex-col items-center justify-center space-y-4 gap-y-4'>
-          <h1 className='text-3xl mx-auto underline mt-6 md:mt-3 font-semibold decoration-drfgclr uppercase'>{name}</h1>
-          <h3 className='text-md text-justify mt-4 md:mt-2 '>{description}</h3>
-          <div className={`flex flex-row gap-8 mt-4  justify-evenly md:mt-3`}>
+        <div className='text-drwht flex flex-col items-center justify-center space-y-4 gap-y-4 md:gap-y-1 md:space-y-1'>
+          <h1 className='text-3xl mx-auto underline mt-6 md:mt-1 font-semibold decoration-drfgclr uppercase'>{name}</h1>
+          <h3 className='text-md text-justify mt-4 md:mt-1 '>{description}</h3>
+          <div className={`flex flex-row gap-8 mt-4  justify-evenly md:mt-1s`}>
             {tags.map((tag) => (
               <div key={tag.name} >
                 <Image src={tag.image} alt={tag.name} className='h-10 w-10' />
@@ -58,9 +58,9 @@ const ProjectCards: React.FC<ProjectCardsProps> = ({
 
             )}
           </div>
-          <div className='justify-evenly flex gap-x-12 mt-2 md:mt-2'>
-            <button className='w-[100px] font-bold text-drbgclr bg-drfgclr rounded-md mt-4' > Github </button>
-            <button className='w-[100px] font-bold text-drbgclr bg-drfgclr rounded-md mt-4' > Live Demo </button>
+          <div className='justify-evenly flex gap-x-12 mt-2 md:mt-1'>
+            <button className='w-[100px] font-bold text-drbgclr bg-drfgclr rounded-md mt-2' > Github </button>
+            <button className='w-[100px] font-bold text-drbgclr bg-drfgclr rounded-md mt-2' > Live Demo </button>
           </div>
         </div>
       </div>

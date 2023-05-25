@@ -20,20 +20,20 @@ export default function Home() {
     </section>
 
     <Header />
-    <section className="h-[90vh] snap-center ">
+    <section className="h-[90vh] snap-center " id='hero'>
       <Hero />
     </section>
-    <section>
+    <section id='about'>
       <About/>
     </section>
-    <section className="h-[90vh] snap-center">
+    <section className="h-[90vh] snap-center" id='skills'>
       <Skills />
     </section>
-    <section className='h-[90vh] bg-drbgclr'>
+    <section className='h-screen bg-drbgclr' id='projects'>
       <Project/>
       <ProjectCard/>
     </section>
-    <section className="h-[90vh] snap-center">
+    <section className="h-[90vh] snap-center" id='contact'>
       <Contact />
     </section>
   </div>
