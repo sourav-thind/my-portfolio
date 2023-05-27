@@ -6,11 +6,31 @@ import Contact from '@/Commponents/Contact'
 import Project from '@/Commponents/Projects'
 import ProjectCard from '@/Commponents/ProjectCard'
 import About from '@/Commponents/About'
+import { useEffect, useState } from 'react'
 
 
 
 
 export default function Home() {
+  // const [isLoading, setIsLoading] = useState(true);
+
+  // useEffect(() => {
+  //   const loadingTimeout = setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 1000);
+
+  //   return () => {
+  //     clearTimeout(loadingTimeout);
+  //   };
+  // }, []);
+
+  // if (isLoading) {
+  //   return (
+  //     <div>
+  //       <h1>Loading...</h1>
+  //     </div>
+  //   );
+  // }
 
   return (
 <main>

@@ -1,9 +1,7 @@
 import { Suspense } from 'react'
-import { Canvas, useThree} from '@react-three/fiber';
+import { Canvas} from '@react-three/fiber';
 import { OrbitControls, Preload, ScrollControls} from '@react-three/drei'
 import MainSetup from './MainSetup';
-import { AxesHelper } from 'three';
-
 
 type Props = {}
 
@@ -17,7 +15,7 @@ const MainCanvas = () => {
     className='h-screen '
     frameloop='demand'
       shadows
-      camera={{ position: [16,6,16], fov: 10 } }
+      camera={{ position: [0,-16,3], fov: 30 } }
       gl={{ preserveDrawingBuffer: true }}>
       <Suspense fallback={null}>
         <hemisphereLight intensity={1} groundColor="black" />

@@ -7,7 +7,7 @@ import * as THREE from "three"
 
 export const FLOOR_HEIGHT=2.3;
 export const NB_FLOORS=2;
-const MainSetup=(props) =>{
+export function MainSetup(props) {
   const [position, setposition] = useState([1.21, -0.12, 0.3])
   const [rotation, setrotation] = useState([-1.59, -0.02, 1.34])
   const { nodes, materials, animations } = useGLTF('./threeProjects/MainSetup.glb')
@@ -30,14 +30,17 @@ const MainSetup=(props) =>{
   })
   useLayoutEffect(()=>{
     tl.current = gsap.timeline();
+    // tl.current.to(
+    //     group.current.position, {
+    //       duration:2, 
+    //      y: +13.8,
+    //     },)
+
 
     tl.current.to(
       group.current.rotation, {
         duration:2, 
-        // z: +6,
-        // x: +7, 
-        // y : +9,
-        y: -Math.PI * 0.75,
+        z: -Math.PI ,
 
       },
       0
@@ -45,86 +48,86 @@ const MainSetup=(props) =>{
     tl.current.to(
       group.current.position, {
         duration:2, 
-       z: +13.8,
-        x: +13.5, 
-       y : +4.5,
+       z: +3,
+        x: 0, 
+       y : -16,
        
 
       },)
   })
-
-  useEffect
   return (
-    <group ref={group} {...props} dispose={null} scale={0.02}>
+    <group ref={group} {...props} dispose={null} scale={0.1} rotation={[0,0,-0.7]}>
       <group name="Scene">
-        <group name="Sketchfab_model" position={position} rotation={rotation} scale={0.02}>
-          <group name="504d8e714fdb46769572ac35901c72f4fbx" position={[-3.81, -0.19, 0]} rotation={[1.57, 0.04, -0.01]}>
+        <group name="Sketchfab_model" position={[0.95, -0.2, -0.16]} rotation={[-1.62, -1.1, 0]} scale={0.02}>
+          <group name="504d8e714fdb46769572ac35901c72f4fbx" position={[-3.81, 0, -0.19]} rotation={[1.57, 0.01, 0.04]}>
             <group name="RootNode">
-              <group name="Desk" position={[4.18, 43.81, -77.45]} rotation={[-Math.PI / 2, 0, 0]} scale={100} />
+              <group name="Desk" position={[4.18, 77.45, 43.81]} rotation={[-Math.PI / 2, 0, 0]} scale={100} />
+
+
             </group>
           </group>
         </group>
-        <group name="Sketchfab_model001" position={[-1.62, -0.28, 1.17]} rotation={[-1.63, -0.02, 2.65]} scale={0}>
+        <group name="Sketchfab_model001" position={[-1.96, -0.12, -0.32]} rotation={[1.58, -1.05, -3.01]} scale={0}>
           <group name="dffaf49cc09a4c5fa627dc746aa87a01fbx" rotation={[Math.PI / 2, 0, 0]}>
             <group name="RootNode001">
-              <group name="aseito_logo" position={[0.45, 368.44, -8.99]} scale={6.09} />
-              <group name="Camera001" position={[433.5, 214, 1182.6]} rotation={[Math.PI, 1.2, -3.12]} scale={100}>
-                <group name="Object_32" />
-              </group>
-              <group name="Circle" position={[0.45, 148.16, 100.43]} rotation={[-Math.PI / 2, 0, 0]} scale={10.16} />
-              <group name="Circle001" position={[0.45, 151.28, 100.43]} rotation={[-Math.PI / 2, 0, 0]} scale={[8.57, 8.57, 22.59]} />
-              <group name="Circle002" position={[1.23, 47.51, 208.3]} rotation={[-Math.PI / 2, Math.PI / 2, 0]} scale={-8.98} />
-              <group name="Circle003" position={[102.83, 47.51, 136.07]} rotation={[Math.PI, Math.PI / 9, Math.PI / 2]} scale={-8.98} />
-              <group name="Circle004" position={[69.7, 47.51, 15.89]} rotation={[Math.PI, -0.87, Math.PI / 2]} scale={-8.98} />
-              <group name="Circle005" position={[-70, 47.51, 16.89]} rotation={[0, -0.87, -Math.PI / 2]} scale={-8.98} />
-              <group name="Circle006" position={[-101.4, 47.51, 137.53]} rotation={[0, Math.PI / 9, -Math.PI / 2]} scale={-8.98} />
-              <group name="Plane" position={[0.45, 347.72, -16.46]} rotation={[-Math.PI / 2, 0, 0]} scale={100} />
-              <group name="Plane001" position={[0.45, 207.53, 71.02]} rotation={[-Math.PI / 2, 0, 0]} scale={83.56} />
-              <group name="Plane002" position={[0.45, 148.16, 100.43]} rotation={[-Math.PI / 2, 0, 0]} scale={[18.69, 58.11, 10.38]} />
-              <group name="Plane003" position={[0.45, 66, 99.64]} rotation={[-Math.PI / 2, 0, -Math.PI / 2]} scale={[8.18, 5.51, 8.18]} />
-              <group name="Plane004" position={[0.45, 132.15, 100.43]} rotation={[-Math.PI / 2, 0, 0]} scale={36.1} />
-              <group name="Plane005" position={[-107.03, 107.39, 124.38]} rotation={[-Math.PI / 2, -0.2, 0]} scale={12.6} />
-              <group name="Sun" position={[0.45, 447.8, 100.43]} scale={100}>
+              <group name="aseito_logo" position={[0.45, 8.99, 368.44]} scale={6.09} />
+              <group name="Circle" position={[0.45, -100.43, 148.16]} rotation={[-Math.PI / 2, 0, 0]} scale={10.16} />
+              <group name="Circle001" position={[0.45, -100.43, 151.28]} rotation={[-Math.PI / 2, 0, 0]} scale={[8.57, 22.59, 8.57]} />
+              <group name="Circle002" position={[1.23, -208.3, 47.51]} rotation={[-Math.PI / 2, 0, Math.PI / 2]} scale={-8.98} />
+              <group name="Circle003" position={[102.83, -136.07, 47.51]} rotation={[-Math.PI / 2, -1.22, Math.PI / 2]} scale={-8.98} />
+              <group name="Circle004" position={[69.7, -15.89, 47.51]} rotation={[Math.PI / 2, -0.7, -Math.PI / 2]} scale={-8.98} />
+              <group name="Circle005" position={[-70, -16.89, 47.51]} rotation={[Math.PI / 2, 0.7, -Math.PI / 2]} scale={-8.98} />
+              <group name="Circle006" position={[-101.4, -137.53, 47.51]} rotation={[-Math.PI / 2, 1.22, Math.PI / 2]} scale={-8.98} />
+              <group name="Plane" position={[0.45, 16.46, 347.72]} rotation={[-Math.PI / 2, 0, 0]} scale={100} />
+              <group name="Plane001" position={[0.45, -71.02, 207.53]} rotation={[-Math.PI / 2, 0, 0]} scale={83.56} />
+              <group name="Plane002" position={[0.45, -100.43, 148.16]} rotation={[-Math.PI / 2, 0, 0]} scale={[18.69, 10.38, 58.11]} />
+              <group name="Plane003" position={[0.45, -99.64, 66]} rotation={[-Math.PI / 2, 1.57, 0]} scale={[8.18, 8.18, 5.51]} />
+              <group name="Plane004" position={[0.45, -100.43, 132.15]} rotation={[-Math.PI / 2, 0, 0]} scale={36.1} />
+              <group name="Plane005" position={[-107.03, -124.38, 107.39]} rotation={[-Math.PI / 2, 0, -0.2]} scale={12.6} />
+              <group name="Sun" position={[0.45, -100.43, 447.8]} scale={100}>
                 <group name="Object_34" rotation={[Math.PI / 2, 0, 0]}>
                   <group name="Object_35" />
                 </group>
               </group>
+              <group name="Camera001" position={[433.5, -1182.6, 214]} rotation={[0.02, 0.01, 1.94]} scale={100}>
+                <group name="Object_32" />
+              </group>
             </group>
           </group>
         </group>
-        <group name="Empty" position={[0.28, 0.13, 0.14]} rotation={[1.57, 0, -2.94]} scale={[0.19, 0.18, 0.19]} />
-        <group name="Sketchfab_model006" position={[0.04, 1.05, 0.53]} rotation={[-1.59, -0.05, 2.92]} scale={0.26}>
+        <group name="Empty" position={[0.09, 0.17, 0.09]} rotation={[-1.61, 0.44, -3.13]} scale={[0.19, 0.19, 0.18]} />
+        <group name="Sketchfab_model006" position={[-0.23, -0.12, 1.02]} rotation={[1.52, -0.46, -3.11]} scale={0.26}>
           <group name="dd12f1d0399348aab05d4e554860e7c0fbx006" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
             <group name="RootNode006">
-              <group name="Color-PewDiePie-Logo" position={[129.82, 17.82, -28.43]} rotation={[-Math.PI / 2, 0.28, Math.PI / 2]} scale={12.41} />
-              <group name="Cube063" position={[111.69, 3.76, -28.36]} rotation={[-Math.PI / 2, 0, -Math.PI]} scale={[-42.89, -42.89, -22.9]} />
-              <group name="Cube064" position={[111.69, 3.72, -28.36]} rotation={[-Math.PI / 2, 0, -Math.PI]} scale={[-42.89, -42.89, -22.9]} />
-              <group name="Cube065" position={[111.69, 3.76, -28.36]} rotation={[-Math.PI / 2, 0.01, Math.PI]} scale={[-42.89, -42.89, -22.9]} />
-              <group name="Cube066" position={[111.74, 3.56, -28.24]} rotation={[-Math.PI / 2, 0.01, Math.PI]} scale={[-42.89, -42.89, -22.9]} />
-              <group name="Cube067" position={[111.69, 3.72, -28.36]} rotation={[-Math.PI / 2, 0, -Math.PI]} scale={[-42.89, -42.89, -22.9]} />
-              <group name="Cube068" position={[129.4, 15.77, -28.56]} rotation={[-Math.PI / 2, 0.28, 0]} scale={[5.96, 5.96, 2.08]} />
-              <group name="Cube069" position={[111.69, 3.72, -28.36]} rotation={[-Math.PI / 2, 0, -Math.PI]} scale={[-42.89, -44.82, -22.9]} />
-              <group name="Cube072" position={[111.69, 3.72, -28.36]} rotation={[-Math.PI / 2, 0, -Math.PI]} scale={[-42.89, -42.89, -22.9]} />
-              <group name="Cube073" position={[111.69, 3.72, -28.36]} rotation={[-Math.PI / 2, 0, -Math.PI]} scale={[-42.89, -42.89, -22.9]} />
-              <group name="Cube076" position={[66.21, 5.73, -28.3]} rotation={[-Math.PI / 2, 0.23, -Math.PI]} scale={[-42.89, -42.89, -22.9]} />
-              <group name="Cube081" position={[93.5, 18.93, -28.7]} rotation={[-1.54, -0.23, 0]} scale={[2.62, 1.33, 2.24]} />
-              <group name="Cube088" position={[99.24, 9.62, -9.11]} rotation={[-Math.PI / 2, -0.13, 0]} scale={[5.45, 4.95, 1.91]} />
-              <group name="Cylinder009" position={[77.5, 5.79, -29.43]} scale={[11.57, 11.57, 2.5]} />
-              <group name="Cylinder010" position={[77.5, 5.79, -28.81]} scale={[11.89, 11.89, 0.39]} />
-              <group name="Cylinder012" position={[77.5, 5.79, -29.66]} scale={[10.44, 10.44, 2.87]} />
-              <group name="Plane006" position={[117.46, -3.13, -30.12]} rotation={[-Math.PI / 2, 0, 0]} scale={[124.43, 154.11, 119.91]} />
+              <group name="Color-PewDiePie-Logo" position={[129.82, 28.43, 17.82]} rotation={[0, -1.29, Math.PI / 2]} scale={12.41} />
+              <group name="Cube063" position={[111.69, 28.36, 3.76]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={[-42.89, -22.9, -42.89]} />
+              <group name="Cube064" position={[111.69, 28.36, 3.72]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={[-42.89, -22.9, -42.89]} />
+              <group name="Cube065" position={[111.69, 28.36, 3.76]} rotation={[Math.PI / 2, 0, 3.13]} scale={[-42.89, -22.9, -42.89]} />
+              <group name="Cube066" position={[111.74, 28.24, 3.56]} rotation={[Math.PI / 2, 0, 3.13]} scale={[-42.89, -22.9, -42.89]} />
+              <group name="Cube067" position={[111.69, 28.36, 3.72]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={[-42.89, -22.9, -42.89]} />
+              <group name="Cube068" position={[129.4, 28.56, 15.77]} rotation={[-Math.PI / 2, 0, 0.28]} scale={[5.96, 2.08, 5.96]} />
+              <group name="Cube069" position={[111.69, 28.36, 3.72]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={[-42.89, -22.9, -44.82]} />
+              <group name="Cube072" position={[111.69, 28.36, 3.72]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={[-42.89, -22.9, -42.89]} />
+              <group name="Cube073" position={[111.69, 28.36, 3.72]} rotation={[Math.PI / 2, 0, -Math.PI]} scale={[-42.89, -22.9, -42.89]} />
+              <group name="Cube076" position={[66.21, 28.3, 5.73]} rotation={[Math.PI / 2, 0, 2.91]} scale={[-42.89, -22.9, -42.89]} />
+              <group name="Cube081" position={[93.5, 28.7, 18.93]} rotation={[-1.54, 0, -0.23]} scale={[2.62, 2.24, 1.33]} />
+              <group name="Cube088" position={[99.24, 9.11, 9.62]} rotation={[-Math.PI / 2, 0, -0.13]} scale={[5.45, 1.91, 4.95]} />
+              <group name="Cylinder009" position={[77.5, 29.43, 5.79]} scale={[11.57, 2.5, 11.57]} />
+              <group name="Cylinder010" position={[77.5, 28.81, 5.79]} scale={[11.89, 0.39, 11.89]} />
+              <group name="Cylinder012" position={[77.5, 29.66, 5.79]} scale={[10.44, 2.87, 10.44]} />
+              <group name="Plane006" position={[117.46, 30.12, -3.13]} rotation={[-Math.PI / 2, 0, 0]} scale={[124.43, 119.91, 154.11]} />
             </group>
           </group>
         </group>
-        <group name="Sketchfab_model004" position={[-0.06, 1.06, -0.16]} rotation={[-1.66, 0.04, -1.77]} scale={0.26}>
+        <group name="Sketchfab_model004" position={[-0.17, 0.58, 1.01]} rotation={[1.62, 1.13, 2.97]} scale={0.26}>
           <group name="dd12f1d0399348aab05d4e554860e7c0fbx004" rotation={[Math.PI / 2, 0, 0]} scale={0.01}>
             <group name="RootNode004">
-              <group name="Plane007" position={[123.14, 0.37, -17.21]} rotation={[-1.5, 0.08, 0.02]} scale={[124.43, 154.11, 119.91]} />
+              <group name="Plane007" position={[123.14, 17.21, 0.37]} rotation={[-1.5, -0.02, 0.08]} scale={[124.43, 119.91, 154.11]} />
             </group>
           </group>
         </group>
-        <group name="Empty001" position={[0.46, 1.36, 0.01]} rotation={[1.61, -0.24, -1.36]} scale={0.05} />
-        <group name="Cube001" position={[0.35, 1.06, -0.03]} rotation={[-1.53, 0.24, -1.81]} scale={[0.11, 0.05, 0.11]}>
+        <group name="Empty001" position={[0.3, 0.3, 1.31]} rotation={[2.08, 1.06, -0.5]} scale={0.05} />
+        <group name="Cube001" position={[0.2, 0.36, 1.01]} rotation={[2.05, 1.04, 2.67]} scale={[0.11, 0.11, 0.05]}>
           <mesh name="Cube001_1" geometry={nodes.Cube001_1.geometry} material={materials['case']} />
           <mesh name="Cube001_2" geometry={nodes.Cube001_2.geometry} material={materials.display} />
           <mesh name="Cube001_3" geometry={nodes.Cube001_3.geometry} material={materials.bezel} />
@@ -177,5 +180,6 @@ const MainSetup=(props) =>{
     </group>
   )
 }
+
 export default MainSetup
-useGLTF.preload('./threeProjects/MainSetup.glb')
+useGLTF.preload('./threeProjects/MainSetup3.glb')

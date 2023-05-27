@@ -19,7 +19,7 @@ const Hero = (props: Props) => {
           <h1 className=' text-4xl  md:text-7xl  text-drfgclr font-bold'>Souravpreet Singh
           </h1>
           <div className=' flex flex-col md:flex-row mt-6 md:mt-[4rem]  justify-between mx-auto  text-drgry text-lg'> 
-          <div>I am not just a Developer, &nbsp;</div>
+          <div>I am not just a developer, &nbsp;</div>
           <div className='text-drwht text-xl'>I AM <span className='text-drfgclr '> THE </span> DEVELOPER  </div>
             </div>
             <div className='flex flex-rows mx-auto space-x-0 mt-[2rem] md:mt-[8rem]  md:space-x-6'>
