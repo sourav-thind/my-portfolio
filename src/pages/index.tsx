@@ -9,38 +9,43 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import HeroImg from '../../public/HeroImg.png'
 import Image from 'next/image'
+import { MediaQueryProvider, useMediaQuery } from '@/Commponents/MediaQueryContext'
+import Loading from '@/Commponents/Loading'
 
 
 
 export default function Home() {
-  // const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
 
-  // useEffect(() => {
-  //   const loadingTimeout = setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 1000);
+  useEffect(() => {
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
 
-  //   return () => {
-  //     clearTimeout(loadingTimeout);
-  //   };
-  // }, []);
+    return () => {
+      clearTimeout(loadingTimeout);
+    };
+  }, []);
 
   // if (isLoading) {
   //   return (
-  //     <div>
+  //     <div className='bg-slate-500/50 h-screen justify-center items-center'>
   //       <h1>Loading...</h1>
   //     </div>
   //   );
   // }
-
+const isMobile = useMediaQuery();
   return (
+    <MediaQueryProvider>
+
     <main>
       <div className="h-screen scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-drfgclr">
-        <div className="overflow-x-hidden">
-          <section className="h-screen w-screen  bg-drfgclr/50  ">
+       {isLoading && <Loading/> }
+        {!isMobile && <div className="overflow-x-hidden">
+          <section className="h-screen w-screen   bg-slate-600  ">
             <CanvasLoader />
           </section>
-        </div>
+        </div>}
         <section className=' bg-drbgclr'>
 
           <Header />
@@ -76,6 +81,7 @@ export default function Home() {
         </section>
       </div>
     </main>
+    </MediaQueryProvider>
 
   )
 }

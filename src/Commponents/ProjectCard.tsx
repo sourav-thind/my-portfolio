@@ -14,6 +14,7 @@ import 'swiper/css/navigation';
 
 import { EffectCoverflow, Pagination, Navigation } from 'swiper';
 import { SocialIcon } from 'react-social-icons';
+import { useMediaQuery } from './MediaQueryContext';
 type Props = {}
 
 
@@ -83,19 +84,19 @@ const Project = (props: Props) => {
       </SwiperSlide>
     )
   ));
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(max-width: 840px)");
-    setIsMobile(mediaQuery.matches);
+  // const [isMobile, setIsMobile] = useState(false);
+  // useEffect(() => {
+  //   const mediaQuery = window.matchMedia("(max-width: 840px)");
+  //   setIsMobile(mediaQuery.matches);
     
-    const handleMediaQueryChange = (event: { matches: boolean | ((prevState: boolean) => boolean); }) => {
-      setIsMobile(event.matches);
-      };
-      mediaQuery.addListener(handleMediaQueryChange);
-      return () => mediaQuery.removeListener(handleMediaQueryChange);
-    });  
+  //   const handleMediaQueryChange = (event: { matches: boolean | ((prevState: boolean) => boolean); }) => {
+  //     setIsMobile(event.matches);
+  //     };
+  //     mediaQuery.addListener(handleMediaQueryChange);
+  //     return () => mediaQuery.removeListener(handleMediaQueryChange);
+  //   });  
 
- 
+ const isMobile = useMediaQuery();
   return (
 
     <div  >

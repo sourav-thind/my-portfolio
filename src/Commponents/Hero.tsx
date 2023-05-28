@@ -6,7 +6,7 @@ type Props = {}
 
 const Hero = (props: Props) => {
   return (
-    <section className=' w-full h-screen mx-auto bg-drbgclr'>
+    <section className='w-full overflow-hidden h-screen mx-auto bg-drbgclr'>
       <div className='relative top-[4rem] md:top-[6rem] max-w-7xl mx-auto flex flex-col  gap-3 justify-center  ' >
         <div className=' relative flex flex-row items-start'>
           <motion.div
