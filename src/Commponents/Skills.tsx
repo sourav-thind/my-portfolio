@@ -1,14 +1,27 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { technologies } from '../constants'
 import BallCanvas from './BallCanvas'
-import Image from 'next/image'
+import {useScroll, useTransform ,motion} from 'framer-motion'
 type Props = {}
 
 const Skills = (props: Props) => {
     //console.log(technologies[0].icon)
+    const refDiv = useRef<HTMLDivElement>(null);
+
+    const { scrollYProgress } = useScroll({
+        target: refDiv,
+        offset:["start end", "end start"],
+    }
+    )
+    const y  = useTransform(scrollYProgress, [0,0.4,0.8, 1], [300,0, 0, -200]);
+   
     return (
-        <div className='h-screen bg-drbgclr mx-auto '>
-            <div className='flex flex-col items-center justify-center gap-y-8 '>
+        <motion.div ref={refDiv}
+        initial={{ y: 200 }} 
+        style={{ y }}
+        transition={{ duration: 1 }} 
+         className='h-screen bg-drbgclr mx-auto '>
+            <div className='flex flex-col items-center justify-center gap-y-8  z-30'>
                 <div>
                 <h1 className='text-3xl tracking-[20px] uppercase text-drgry mt-[5rem]'>Skills</h1>
             </div>
@@ -24,7 +37,7 @@ const Skills = (props: Props) => {
                 }
             </div>
         </div>
-        </div>
+        </motion.div>
     )
 }
 

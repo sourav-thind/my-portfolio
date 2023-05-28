@@ -123,3 +123,7 @@ button {
 .bg-trprt{
   background: transparent;
 }
+
+.noscrollbar::-webkit-scrollbar{
+  display: none;
+}

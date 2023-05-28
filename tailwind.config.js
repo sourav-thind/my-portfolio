@@ -14,5 +14,8 @@ module.exports = {
       drgry:'#4d606f'
     }},
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/aspect-ratio'),
+    require("tailwind-scrollbar"),
+  ],
 }

@@ -4,10 +4,11 @@ import CanvasLoader from '@/Commponents/CanvasLoader'
 import Skills from '@/Commponents/Skills'
 import Contact from '@/Commponents/Contact'
 import Project from '@/Commponents/Projects'
-import ProjectCard from '@/Commponents/ProjectCard'
 import About from '@/Commponents/About'
 import { useEffect, useState } from 'react'
-
+import Link from 'next/link'
+import HeroImg from '../../public/HeroImg.png'
+import Image from 'next/image'
 
 
 
@@ -33,31 +34,48 @@ export default function Home() {
   // }
 
   return (
-<main>
-  <div className="">
-    <section className="h-screen bg-drfgclr/50   snap-start w-screen">
-      <CanvasLoader />
-    </section>
+    <main>
+      <div className="h-screen scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-drfgclr">
+        <div className="overflow-x-hidden">
+          <section className="h-screen w-screen  bg-drfgclr/50  ">
+            <CanvasLoader />
+          </section>
+        </div>
+        <section className=' bg-drbgclr'>
 
-    <Header />
-    <section className="h-[90vh] snap-center " id='hero'>
-      <Hero />
-    </section>
-    <section id='about'>
-      <About/>
-    </section>
-    <section className="h-[90vh] snap-center" id='skills'>
-      <Skills />
-    </section>
-    <section className='h-screen bg-drbgclr' id='projects'>
-      <Project/>
-      <ProjectCard/>
-    </section>
-    <section className="h-[90vh] snap-center" id='contact'>
-      <Contact />
-    </section>
-  </div>
-</main>
+          <Header />
+
+          <section className="h-screen  " id='hero'>
+            <Hero />
+          </section>
+          <section className='overflow-hidden '>
+            <section id='about' className='h-screen'>
+              <About />
+            </section>
+
+            <section className="h-screen " id='skills'>
+              <Skills />
+            </section>
+          </section>
+          <section className='h-screen bg-drbgclr ' id='projects'>
+            <Project />
+
+          </section>
+          <section className="h-[90vh] " id='contact'>
+            <Contact />
+          </section>
+          <Link href='#hero'>
+            <footer className='sticky bottom-5 w-full cursor-pointer z-50'>
+              <div className='flex items-center justify-center'>
+                <Image
+                  className='h-14 w-14 bg-drfgclr rounded-full filter grayscale hover:grayscale-0 cursor-pointer'
+                  src={HeroImg} alt={"image Button"} />
+              </div>
+            </footer>
+          </Link>
+        </section>
+      </div>
+    </main>
 
   )
 }
