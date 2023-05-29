@@ -71,28 +71,30 @@ const Hero = (props: Props) => {
                 duration: 1,
               }} 
             className='flex flex-rows mx-auto space-x-0 mt-[2rem] md:mt-[8rem]  md:space-x-6'>
-          <button>
-            <span className="box ">
-            ABOUT
-            </span>
-          </button>
-        
-        
-          <button>
-            <span className="box">
-              Skills
-            </span>
-          </button>
-          <button>
-            <span className="box">
-              Projects
-            </span>
-          </button>
-          <button>
-            <span className="box">
-              Contact
-            </span>
-          </button>
+         <button>
+  <a href="#about">
+    <span className="box">ABOUT</span>
+  </a>
+</button>
+
+<button>
+  <a href="#skills">
+    <span className="box">Skills</span>
+  </a>
+</button>
+
+<button>
+  <a href="#projects">
+    <span className="box">Projects</span>
+  </a>
+</button>
+
+<button>
+  <a href="#contact">
+    <span className="box">Contact</span>
+  </a>
+</button>
+
         </motion.div>
         </div>
         <motion.div 

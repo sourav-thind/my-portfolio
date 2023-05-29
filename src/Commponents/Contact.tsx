@@ -53,20 +53,20 @@ const Contact = (props: Props) => {
 
   return (
     <div className='bg-drbgclr  flex mx-auto justify-center h-screen '>
-      <div className='flex flex-col items-center space-y-10 mt-[10vh] '>
+      <div className='flex flex-col items-center space-y-20 lg:space-y-10 mt-[10vh] '>
         <h1 className='tracking-[20px] text-2xl md:text-3xl text-drgry uppercase font-semibold mt-6'>Contact</h1>
-        <h2 className=' text-drfgclr md:flex justify-center items-center flex flex-col font-semibold md:text-xl md:font-bold uppercase'> <span> Looking for the perfect solution?</span> <span className='decoration-drfgclr underline text-drwht'> I&apos;ve got you covered.</span> </h2>
+        <h2 className=' text-drfgclr md:flex justify-center items-center flex flex-col font-semibold text-xl md:font-bold uppercase'> <span> Looking for the perfect solution?</span> <span className='decoration-drfgclr underline underline-offset-4 text-drwht'> I&apos;ve got you covered.</span> </h2>
         <div className='space-y-3 mb-5'>
-          <div className='flex text-drwht text-md space-x-5 items-center justify-center'>
+          <div className='flex text-drwht text-lg space-x-5 items-center justify-center'>
             <PhoneIcon className='h-6 w-6 text-drfgclr' />
             <p>+1 647-866-3474</p>
           </div>
-          <div className='flex text-drwht text-md  space-x-5 items-center justify-center '>
+          <div className='flex text-drwht text-lg  space-x-5 items-center justify-center '>
             <EnvelopeIcon className='h-6 w-6 text-drfgclr' />
             <p>Souravthind07it@gmail.com</p>
           </div>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col space-y-3 w-[360px]' action="">
+        <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col space-y-4 lg:space-y-3 w-[360px]' action="">
           <div className='space-x-2 flex '>
             <input className='inputbox w-[175px]' 
             type="text" required

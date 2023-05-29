@@ -182,4 +182,4 @@ export function MainSetup(props) {
 }
 
 export default MainSetup
-useGLTF.preload('./threeProjects/MainSetup3.glb')
+useGLTF.preload('./threeProjects/MainSetup.glb')

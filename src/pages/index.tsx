@@ -11,6 +11,7 @@ import HeroImg from '../../public/HeroImg.png'
 import Image from 'next/image'
 import { MediaQueryProvider, useMediaQuery } from '@/Commponents/MediaQueryContext'
 import Loading from '@/Commponents/Loading'
+import Head from 'next/head'
 
 
 
@@ -39,6 +40,10 @@ const isMobile = useMediaQuery();
     <MediaQueryProvider>
 
     <main>
+    <Head>
+        <title>{" Sourav's Portfolio "}</title>
+        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+      </Head>     
       <div className="h-screen scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-drfgclr">
        {isLoading && <Loading/> }
         {!isMobile && <div className="overflow-x-hidden">
@@ -49,7 +54,7 @@ const isMobile = useMediaQuery();
         <section className=' bg-drbgclr'>
 
           <Header />
-
+    
           <section className="h-screen  " id='hero'>
             <Hero />
           </section>
@@ -66,7 +71,7 @@ const isMobile = useMediaQuery();
             <Project />
 
           </section>
-          <section className="h-[90vh] " id='contact'>
+          <section className="h-screen " id='contact'>
             <Contact />
           </section>
           <Link href='#hero'>

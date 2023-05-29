@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .box {
- width:5rem;
+ width:5.4rem;
   height: auto;
   float: left;
   transition: .5s linear;

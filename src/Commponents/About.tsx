@@ -16,11 +16,11 @@ const About = (props: Props) => {
     )
     const x  = useTransform(scrollYProgress, [0,0.2,0.6, 0.9, 1], [800 , 0, 0, 700, 1000]);
     const x2 = useTransform(scrollYProgress, [0,0.2,0.6,0.9, 1], [-300, 0, 0, -300, -500]);
-    const y  = useTransform(scrollYProgress, [0,0,0.5, 1], [0, 0, 0,300]);
+    const y  = useTransform(scrollYProgress, [0,0,0.4, 1], [0, 0, 0,300]);
     return (
-        <div className='bg-drbgclr relative  flex mx-auto justify-center  z-40'>
+        <div className='bg-drbgclr relative top-24 lg:top-12 flex mx-auto justify-center  z-40'>
             <div className='flex flex-col items-center space-y-4 lg:space-y-10 mt-6'>
-                <h1 className='tracking-[20px] text-2xl md:text-3xl text-drgry uppercase font-semibold '>About</h1>
+                <h1 className='tracking-[20px] text-2xl md:text-3xl text-drgry uppercase font-semibold'>About</h1>
             
                 <div className='flex flex-row md:gap-x-8 lg:gap-x-20'>
                     <Element name='aboutPic'>
