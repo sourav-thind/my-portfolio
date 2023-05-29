@@ -39,7 +39,7 @@ function Header({ }: Props) {
         </a>
 
 
-        <a href='https://www.instagram.com/thind_sourav/' target='_blank' className='group flex flex-row rounded-3xl border border-transparent   hover:border-drfgclr duration-500 ease-in-out p-2'>
+        <a href='https://medium.com/@souravthind07it' target='_blank' className='group flex flex-row rounded-3xl border border-transparent   hover:border-drfgclr duration-500 ease-in-out p-2'>
           <Image src={medium} alt={"medium"} className='h-6 w-6 ' />
           <p className='hidden group-hover:block my-auto m-2 '>Medium Blog</p>
         </a>
@@ -68,7 +68,7 @@ function Header({ }: Props) {
               <p className='my-auto'>LinkedIn</p>
             </div>
             <div className='flex flex-row'>
-              <SocialIcon className='' url='https://www.instagram.com/thind_sourav/' target='_blank' fgColor='#d9ebe3' bgColor='transparent' />
+              <SocialIcon className='' url='https://medium.com/@souravthind07it' target='_blank' fgColor='#d9ebe3' bgColor='transparent' />
               <p className='my-auto'>Instagram</p>
             </div>
             <div className='flex flex-row'>

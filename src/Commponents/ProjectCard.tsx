@@ -42,9 +42,8 @@ const ProjectCards: React.FC<ProjectCardsProps> = ({
   return (
 
 
-    <div className=' bg-gradient-to-br from-drgry to-black rounded-lg border-4  w-[330px] md:w-[580px] mx-auto py-2  border-drfgclr '>
-      <div className="relative w-[300px] md:w-[540px] h-full flex flex-col justify-center items-center mx-auto gap-y-2">
-
+    <div className=' bg-gradient-to-br from-drgry to-black rounded-lg border-4  w-[330px] md:w-[560px] mx-auto py-2  border-drfgclr '>
+      <div className="relative w-[300px] md:w-[520px] h-full flex flex-col justify-center items-center mx-auto gap-y-2">
         <Image src={image} alt='name' className='md:h-[220px] h-[160px]  Img' />
 
         <div className='text-drwht flex flex-col items-center justify-center space-y-4 gap-y-4 md:gap-y-1 md:space-y-1'>

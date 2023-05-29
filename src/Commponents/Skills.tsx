@@ -13,7 +13,7 @@ const Skills = (props: Props) => {
         offset:["start end", "end start"],
     }
     )
-    const y  = useTransform(scrollYProgress, [0,0.4,0.8, 1], [300,0, 0, -200]);
+    const y  = useTransform(scrollYProgress, [0,0.3,0.8, 1], [300,0, 0, -200]);
    
     return (
         <motion.div ref={refDiv}
@@ -23,7 +23,7 @@ const Skills = (props: Props) => {
          className='h-screen bg-drbgclr mx-auto '>
             <div className='flex flex-col items-center justify-center gap-y-8 lg:gap-y-0  z-30'>
                 <div>
-                <h1 className='text-3xl tracking-[20px] uppercase text-drgry mt-0 lg:mt-[4rem]'>Skills</h1>
+                <h1 className='text-3xl tracking-[20px] uppercase text-drwht font semibold mt-0 lg:mt-[4rem]'>Skills</h1>
             </div>
 
             <div className='flex flex-row flex-wrap justify-center p-8 gap-8 md:gap-16 mx-0 md:mx-12 lg:mx-32 md:gap-x-16 lg:gap-x-20 floating mt-8 lg:mt-4'>

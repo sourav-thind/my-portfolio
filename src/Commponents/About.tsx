@@ -20,7 +20,7 @@ const About = (props: Props) => {
     return (
         <div className='bg-drbgclr relative top-24 lg:top-12 flex mx-auto justify-center  z-40'>
             <div className='flex flex-col items-center space-y-4 lg:space-y-10 mt-6'>
-                <h1 className='tracking-[20px] text-2xl md:text-3xl text-drgry uppercase font-semibold'>About</h1>
+                <h1 className='tracking-[20px] text-2xl md:text-3xl text-drwht uppercase font-semibold'>About</h1>
             
                 <div className='flex flex-row md:gap-x-8 lg:gap-x-20'>
                     <Element name='aboutPic'>
@@ -28,7 +28,7 @@ const About = (props: Props) => {
                     initial={{ x: -300 , y: 0 }}  
                     style={{ x: x2, y:y }}
                     transition={{ duration: 1 }} 
-                    className='hidden md:block border-drfgclr border-4 rounded-md p-3 lg:p-6 w-[17rem] lg:w-[20rem]'>
+                    className='hidden md:block border-drfgclr border-4 rounded-md p-3 lg:p-6 w-[16rem] lg:w-[18rem]'>
                         <Image className='rounded-md h-[26rem] ' src={aboutImg} alt='mainImage'/>
                     </motion.div>
                     </Element>

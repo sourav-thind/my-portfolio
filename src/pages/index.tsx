@@ -71,7 +71,7 @@ const isMobile = useMediaQuery();
             <Project />
 
           </section>
-          <section className="h-screen " id='contact'>
+          <section className="" id='contact'>
             <Contact />
           </section>
           <Link href='#hero'>
