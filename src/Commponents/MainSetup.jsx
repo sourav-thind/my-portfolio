@@ -16,7 +16,7 @@ export function MainSetup(props) {
   const tl = useRef();
   const scroll = useScroll();
   const {  actions, names   } = useAnimations(animations, group);
-  //console.log(names)
+  
   useEffect(()=>{
    
       actions["Cube.001Action"].reset().play().paused = true
@@ -30,12 +30,7 @@ export function MainSetup(props) {
   })
   useLayoutEffect(()=>{
     tl.current = gsap.timeline();
-    // tl.current.to(
-    //     group.current.position, {
-    //       duration:2, 
-    //      y: +13.8,
-    //     },)
-
+   
 
     tl.current.to(
       group.current.rotation, {

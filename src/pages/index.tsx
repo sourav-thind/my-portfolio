@@ -37,20 +37,20 @@ export default function Home() {
   // }
 const isMobile = useMediaQuery();
   return (
-    <MediaQueryProvider>
+  
 
     <main>
     <Head>
         <title>{" Sourav's Portfolio "}</title>
-        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        
       </Head>     
       <div className="h-screen scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-drfgclr">
+       <div className="overflow-x-hidden">
        {isLoading && <Loading/> }
-        {!isMobile && <div className="overflow-x-hidden">
           <section className="h-screen w-screen   bg-slate-600  ">
             <CanvasLoader />
           </section>
-        </div>}
+        </div>
         <section className=' bg-drbgclr'>
 
           <Header />
@@ -71,7 +71,7 @@ const isMobile = useMediaQuery();
             <Project />
 
           </section>
-          <section className="" id='contact'>
+          <section className="h-screen " id='contact'>
             <Contact />
           </section>
           <Link href='#hero'>
@@ -86,7 +86,7 @@ const isMobile = useMediaQuery();
         </section>
       </div>
     </main>
-    </MediaQueryProvider>
+
 
   )
 }

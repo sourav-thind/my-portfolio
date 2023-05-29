@@ -12,7 +12,7 @@ const MainCanvas = () => {
   return (
 <>
     <Canvas 
-    className='h-screen noscrollbar scrollbar-none'
+    className='h-screen'
     frameloop='demand'
       shadows
       camera={{ position: [0,-16,3], fov: 30 } }
