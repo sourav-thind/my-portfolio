@@ -5,7 +5,6 @@ import {useScroll, useTransform ,motion} from 'framer-motion'
 type Props = {}
 
 const Skills = (props: Props) => {
-    //console.log(technologies[0].icon)
     const refDiv = useRef<HTMLDivElement>(null);
 
     const { scrollYProgress } = useScroll({

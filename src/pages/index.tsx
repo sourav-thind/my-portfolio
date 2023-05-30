@@ -31,7 +31,7 @@ export default function Home() {
       </div>
     );
   }
-const isMobile = useMediaQuery();
+
   return (
   
 

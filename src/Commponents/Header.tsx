@@ -8,7 +8,6 @@ import medium from '../assets/Socials/medium.png'
 import email from '../assets/Socials/email.png'
 import close from '../assets/close.svg'
 import Image from 'next/image'
-import { motion } from 'framer-motion'
 
 type Props = {}
 
