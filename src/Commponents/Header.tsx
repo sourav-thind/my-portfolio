@@ -69,7 +69,7 @@ function Header({ }: Props) {
             </div>
             <div className='flex flex-row'>
               <SocialIcon className='' url='https://medium.com/@souravthind07it' target='_blank' fgColor='#d9ebe3' bgColor='transparent' />
-              <p className='my-auto'>Instagram</p>
+              <p className='my-auto'>Medium Blog</p>
             </div>
             <div className='flex flex-row'>
               <SocialIcon className='cursor-pointer' url='#contact' network='email'   fgColor='#d9ebe3' bgColor='transparent' />

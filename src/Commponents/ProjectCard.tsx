@@ -43,10 +43,10 @@ const ProjectCards: React.FC<ProjectCardsProps> = ({
 
 
     <div className=' bg-gradient-to-br from-drgry to-black rounded-lg border-4  w-[330px] md:w-[560px] mx-auto py-2  border-drfgclr '>
-      <div className="relative w-[300px] md:w-[520px] h-full flex flex-col justify-center items-center mx-auto gap-y-2">
+      <div className="relative w-[300px] md:w-[520px] h-full flex flex-col justify-center items-center mx-auto sm:gap-y-2 gap-y-0">
         <Image src={image} alt='name' className='md:h-[220px] h-[160px]  Img' />
 
-        <div className='text-drwht flex flex-col items-center justify-center space-y-4 gap-y-4 md:gap-y-1 md:space-y-1'>
+        <div className='text-drwht flex flex-col items-center justify-center md:gap-y-1 md:space-y-1'>
           <h1 className='text-3xl mx-auto underline mt-6 md:mt-1 font-semibold decoration-drfgclr uppercase'>{name}</h1>
           <h3 className='text-md text-justify mt-4 md:mt-1 '>{description}</h3>
           <div className={`flex flex-row gap-8 mt-4  justify-evenly md:mt-1s`}>
@@ -87,19 +87,19 @@ const Project = (props: Props) => {
       </SwiperSlide>
     )
   ));
-  // const [isMobile, setIsMobile] = useState(false);
-  // useEffect(() => {
-  //   const mediaQuery = window.matchMedia("(max-width: 840px)");
-  //   setIsMobile(mediaQuery.matches);
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 840px)");
+    setIsMobile(mediaQuery.matches);
     
-  //   const handleMediaQueryChange = (event: { matches: boolean | ((prevState: boolean) => boolean); }) => {
-  //     setIsMobile(event.matches);
-  //     };
-  //     mediaQuery.addListener(handleMediaQueryChange);
-  //     return () => mediaQuery.removeListener(handleMediaQueryChange);
-  //   });  
+    const handleMediaQueryChange = (event: { matches: boolean | ((prevState: boolean) => boolean); }) => {
+      setIsMobile(event.matches);
+      };
+      mediaQuery.addListener(handleMediaQueryChange);
+      return () => mediaQuery.removeListener(handleMediaQueryChange);
+    });  
 
- const isMobile = useMediaQuery();
+// const isMobile = useMediaQuery();
   return (
 
     <div  >

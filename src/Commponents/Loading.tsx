@@ -3,6 +3,7 @@ import HashLoader from "react-spinners/HashLoader";
 type Props = {}
 
 const Loading = (props: Props) => {
+    
   return (
     <div className='h-screen bg-slate-800 flex flex-col items-center justify-center gap-y-5'>
     <HashLoader

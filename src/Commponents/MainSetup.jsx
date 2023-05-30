@@ -5,8 +5,6 @@ import {useFrame} from '@react-three/fiber'
 import gsap from 'gsap'
 import * as THREE from "three"
 
-export const FLOOR_HEIGHT=2.3;
-export const NB_FLOORS=2;
 export function MainSetup(props) {
   const [position, setposition] = useState([1.21, -0.12, 0.3])
   const [rotation, setrotation] = useState([-1.59, -0.02, 1.34])

@@ -19,22 +19,18 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const loadingTimeout = setTimeout(() => {
+  setTimeout(() => {
       setIsLoading(false);
     }, 3000);
-
-    return () => {
-      clearTimeout(loadingTimeout);
-    };
   }, []);
 
-  // if (isLoading) {
-  //   return (
-  //     <div className='bg-slate-500/50 h-screen justify-center items-center'>
-  //       <h1>Loading...</h1>
-  //     </div>
-  //   );
-  // }
+  if (isLoading) {
+    return (
+      <div className='bg-slate-500/50 h-screen justify-center items-center'>
+        <Loading/>
+      </div>
+    );
+  }
 const isMobile = useMediaQuery();
   return (
   
@@ -43,10 +39,11 @@ const isMobile = useMediaQuery();
     <Head>
         <title>{" Sourav's Portfolio "}</title>
         
-      </Head>     
+      </Head> 
+      
       <div className="h-screen scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-drfgclr">
+  
        <div className="overflow-x-hidden">
-       {isLoading && <Loading/> }
           <section className="h-screen w-screen   bg-slate-600  ">
             <CanvasLoader />
           </section>
@@ -71,7 +68,7 @@ const isMobile = useMediaQuery();
             <Project />
 
           </section>
-          <section className="h-screen " id='contact'>
+          <section className="" id='contact'>
             <Contact />
           </section>
           <Link href='#hero'>
