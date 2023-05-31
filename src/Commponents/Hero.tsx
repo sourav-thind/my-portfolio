@@ -2,6 +2,7 @@ import React from 'react'
 import HeroImg from '../../public/HeroImg.png'
 import Image from "next/image";
 import { motion } from 'framer-motion'
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
 type Props = {}
 
 const Hero = (props: Props) => {
@@ -11,13 +12,13 @@ const Hero = (props: Props) => {
         <div className=' relative flex flex-row items-start'>
           <motion.div
           initial= {{
-          x: 800,
+          x: 200,
      
          }}
          whileInView={{
            x: 0,
 
-         }}
+       }}
          transition={{
            duration: 1.4,
          }}
@@ -54,10 +55,11 @@ const Hero = (props: Props) => {
             transition={{
               duration: 1,
             }} 
-          className=' flex flex-col md:flex-row mt-6 md:mt-[4rem]  justify-between mx-auto  text-drgry text-lg'> 
+          className=' flex flex-col md:flex-row mt-6 md:mt-[4rem]  justify-between mx-auto  text-drgry text-2xl'> 
           <div>I am not just a developer, &nbsp;</div>
-          <div className='text-drwht text-xl'>I AM <span className='text-drfgclr '> THE </span> DEVELOPER  </div>
+          <div className='text-drwht text-3xl'>I AM <span className='text-drfgclr '> THE </span> DEVELOPER  </div>
             </motion.div>
+            
             <motion.div
              initial= {{
                y: 60,
@@ -71,31 +73,33 @@ const Hero = (props: Props) => {
                 duration: 1,
               }} 
             className='flex flex-rows mx-auto space-x-0 mt-[2rem] md:mt-[8rem]  md:space-x-6'>
-         <button>
-  <a href="#about">
-    <span className="box">ABOUT</span>
-  </a>
-</button>
+              <button>
+                <a href="#about">
+                  <span className="box">ABOUT</span>
+                </a>
+              </button>
 
-<button>
-  <a href="#skills">
-    <span className="box">Skills</span>
-  </a>
-</button>
+              <button>
+                <a href="#skills">
+                  <span className="box">Skills</span>
+                </a>
+              </button>
 
-<button>
-  <a href="#projects">
-    <span className="box">Projects</span>
-  </a>
-</button>
+              <button>
+                <a href="#projects">
+                  <span className="box">Projects</span>
+                </a>
+              </button>
 
-<button>
-  <a href="#contact">
-    <span className="box">Contact</span>
-  </a>
-</button>
+              <button>
+                <a href="#contact">
+                  <span className="box">Contact</span>
+                </a>
+              </button>
 
         </motion.div>
+       
+
         </div>
         <motion.div 
          initial= {{
@@ -112,10 +116,13 @@ const Hero = (props: Props) => {
         className='flex justfy-center mx-auto items-centerv mt-8'>
         <Image src={HeroImg} alt='mainImage'/>
         </motion.div>
+        <div>
       
+      </div>
 
-       
         </div>
+        
+       
        
       </div>
     </section>

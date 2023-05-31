@@ -12,7 +12,7 @@ const Skills = (props: Props) => {
         offset:["start end", "end start"],
     }
     )
-    const y  = useTransform(scrollYProgress, [0,0.3,0.8, 1], [300,0, 0, -200]);
+    const y  = useTransform(scrollYProgress, [0,0.3,0.8, 1], [300,0, 0, -250]);
    
     return (
         <motion.div ref={refDiv}

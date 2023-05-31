@@ -14,8 +14,8 @@ const About = (props: Props) => {
         offset:["start end", "end start"],
     }
     )
-    const x  = useTransform(scrollYProgress, [0,0.2,0.6, 0.9, 1], [800 , 0, 0, 700, 1000]);
-    const x2 = useTransform(scrollYProgress, [0,0.2,0.6,0.9, 1], [-300, 0, 0, -300, -500]);
+    const x  = useTransform(scrollYProgress, [0,0.2,0.6, 0.9, 1], [800 , 0, 0, 700, 1200]);
+    const x2 = useTransform(scrollYProgress, [0,0.2,0.6,0.9, 1], [-300, 0, 0, -300, -600]);
     const y  = useTransform(scrollYProgress, [0,0,0.4, 1], [0, 0, 0,300]);
     return (
         <div className='bg-drbgclr relative top-24 lg:top-12 flex mx-auto justify-center  z-40'>

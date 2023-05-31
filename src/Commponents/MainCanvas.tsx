@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 import { Canvas} from '@react-three/fiber';
 import { Preload, ScrollControls} from '@react-three/drei'
 import MainSetup from './MainSetup';
+import Loading from './Loading';
 
 type Props = {}
 
@@ -17,7 +18,7 @@ const MainCanvas = () => {
       shadows
       camera={{ position: [0,-16,3], fov: 30 } }
       gl={{ preserveDrawingBuffer: true }}>
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loading/>}>
         <hemisphereLight intensity={1} groundColor="black" />
         <pointLight intensity={1} />
         <spotLight position={[-20, 50, 10]} angle={0.12} penumbra={15} intensity={1} castShadow shadow-mapsize={1024} />

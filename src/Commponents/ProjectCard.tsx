@@ -62,7 +62,7 @@ const ProjectCards: React.FC<ProjectCardsProps> = ({
             <a href={source_code_link} target='_blank'>
              <button className='w-[100px] hover:scale-110 border-drwht border-4 font-bold text-drbgclr bg-drfgclr rounded-md mt-2' > Github </button>
             </a>
-            <a href={source_code_link} target='_blank'>
+            <a href={live_app_link} target='_blank'>
               <button className='w-[100px]  hover:scale-110 border-drwht border-4 font-bold text-drbgclr bg-drfgclr rounded-md mt-2' > Live Demo </button>
             </a>
           </div>

@@ -1,3 +1,4 @@
+import { Html } from '@react-three/drei';
 import React from 'react'
 import HashLoader from "react-spinners/HashLoader";
 type Props = {}
@@ -5,12 +6,14 @@ type Props = {}
 const Loading = (props: Props) => {
     
   return (
-    <div className='h-screen bg-slate-800 flex flex-col items-center justify-center gap-y-5'>
+    <Html>
+    <div className=' bg-transparent w-screen ml-[-60px] lg:ml-[-80px] gap-y-10'>
     <HashLoader
-      size={100}
+      size={120}
       color='#43ffaf'/>
-      <h1 className='text-3xl font-bold text-drfgclr'> Loading ...</h1>
+      <h1 className='text-3xl font-bold text-drfgclr'> Loading...</h1>
       </div>
+      </Html>
   )
 }
 

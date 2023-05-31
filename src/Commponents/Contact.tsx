@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/solid'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import emailjs from '@emailjs/browser'
+import Toast from './Toast'
 type Props = {}
 type FormValues = {
   firstName: string;
@@ -11,6 +12,7 @@ type FormValues = {
   message: string;
 }
 const Contact = (props: Props) => {
+  const [showToast, setShowToast] = useState(false);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -19,7 +21,14 @@ const Contact = (props: Props) => {
     message: ''
   });
   const { register, handleSubmit } = useForm<FormValues>();
+
   const onSubmit: SubmitHandler<FormValues> = formData => {
+    setShowToast(true);
+
+    
+    setTimeout(() => {
+      setShowToast(false);
+    }, 5000);
     emailjs.send(
       'service_v97y3bs',
       'template_m9ixk8j',
@@ -41,8 +50,10 @@ const Contact = (props: Props) => {
         subject: '',
         message: ''
       });
-      console.log(formData.email)
-      alert('Thankyou. I will get back to you shortly');
+    //  console.log(formData)
+      
+  
+ 
     }, (error) => {
       console.log(error);
       alert('Something went wrong')
@@ -52,7 +63,12 @@ const Contact = (props: Props) => {
   };
 
   return (
-    <div className='bg-drbgclr  flex mx-auto justify-center  mt-[10vh] h-[80vh]  '>
+    <div >
+       <div className="fixed top-[6rem] right-4 z-50 bg-gray-800 text-white px-4 py-2 rounded">
+      {showToast && <Toast  />}
+    </div>
+      <div className='bg-drbgclr  flex mx-auto justify-center  mt-[10vh] h-[80vh]  '>
+     
       <div className='flex flex-col items-center  space-y-10 '>
         <h1 className='tracking-[20px] text-2xl md:text-3xl text-drwht uppercase font-semibold mt-6'>Contact</h1>
         <h2 className=' text-drfgclr md:flex justify-center items-center flex flex-col font-semibold text-xl md:font-bold uppercase'> <span> Looking for the perfect solution?</span> <span className='decoration-drfgclr underline underline-offset-4 text-drwht'> I&apos;ve got you covered.</span> </h2>
@@ -112,10 +128,12 @@ const Contact = (props: Props) => {
           onChange={(e) =>
             setFormData({ ...formData, message: e.target.value })
           } />
-          <button className='bg-drfgclr px-4 py-2.5 rounded-md text-slate-700 font-semibold text-lg'>Submit</button>
+          <button className='bg-drfgclr px-4 py-2.5 rounded-md text-slate-700 font-semibold text-lg' >Submit</button>
+       
         </form>
       </div>
       <div></div>
+    </div>
     </div>
   )
 }

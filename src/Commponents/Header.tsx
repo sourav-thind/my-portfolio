@@ -8,6 +8,7 @@ import medium from '../assets/Socials/medium.png'
 import email from '../assets/Socials/email.png'
 import close from '../assets/close.svg'
 import Image from 'next/image'
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
 
 type Props = {}
 
@@ -21,7 +22,7 @@ function Header({ }: Props) {
         {/* <h1 className='text-[24px]'> | Souravpreet Singh </h1> */}
 
       </div>
-
+      
       <div
 
         className='hidden sm:flex flex-row items-center justify-between space-x-5'>
@@ -50,7 +51,7 @@ function Header({ }: Props) {
 
 
       </div>
-
+      
 
       <div className='sm:hidden flex flex-1  justify-end items-center  z-50'>
         <Image src={!toggle ? menu : close} alt={"menu"} className='h-[28px] w-[28px] object-contain cursor-pointer mr-3' onClick={() => { setToggle(!toggle) }} />

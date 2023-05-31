@@ -9,41 +9,25 @@ import { useEffect, useState } from 'react'
 import Link from 'next/link'
 import HeroImg from '../../public/HeroImg.png'
 import Image from 'next/image'
-import { MediaQueryProvider, useMediaQuery } from '@/Commponents/MediaQueryContext'
-import Loading from '@/Commponents/Loading'
 import Head from 'next/head'
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
 
 
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-  setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
-  }, []);
-
-  if (isLoading) {
-    return (
-      <div className='bg-slate-500/50 h-screen justify-center items-center'>
-        <Loading/>
-      </div>
-    );
-  }
 
   return (
-  
+
 
     <main>
-    <Head>
+      <Head>
         <title>{" Sourav's Portfolio "}</title>
-        
-      </Head> 
-      
+
+      </Head>
+
       <div className="h-screen scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-drfgclr">
-  
-       <div className="overflow-x-hidden">
+
+        <div className="overflow-x-hidden">
           <section className="h-screen w-screen   bg-slate-600  ">
             <CanvasLoader />
           </section>
@@ -51,7 +35,7 @@ export default function Home() {
         <section className=' bg-drbgclr'>
 
           <Header />
-    
+
           <section className="h-screen  " id='hero'>
             <Hero />
           </section>
@@ -71,15 +55,24 @@ export default function Home() {
           <section className="" id='contact'>
             <Contact />
           </section>
+         
+            <footer className='sticky bottom-5 w-full cursor-pointer z-50 flex flex-row justify-evenly '>
           <Link href='#hero'>
-            <footer className='sticky bottom-5 w-full cursor-pointer z-50'>
               <div className='flex items-center justify-center'>
                 <Image
                   className='h-14 w-14 bg-drfgclr rounded-full filter grayscale hover:grayscale-0 cursor-pointer'
                   src={HeroImg} alt={"image Button"} />
               </div>
-            </footer>
           </Link>
+          <button className=" w-auto rounded-xl animate-pulse bg-drfgclr text-drbgclr ">
+              <a href="../assets/Souravpreet_Singh_Resume.pdf" download className='flex flex-row'>
+                <span className='font-semibold flex flex-row text-md px-3'>
+                    Resume &nbsp; <ArrowTopRightOnSquareIcon className="h-4 w-4" />
+                </span>
+              </a>
+          </button>
+            </footer>
+         
         </section>
       </div>
     </main>
