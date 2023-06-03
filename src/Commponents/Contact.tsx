@@ -64,15 +64,15 @@ const Contact = (props: Props) => {
 
   return (
     <div >
-       <div className="fixed top-[6rem] right-4 z-50 bg-gray-800 text-white px-4 py-2 rounded">
+       <div className="fixed top-[6rem] right-4 z-50  text-drbgclr px-4 py-2 rounded">
       {showToast && <Toast  />}
     </div>
       <div className='bg-drbgclr  flex mx-auto justify-center  mt-[10vh] h-[80vh]  '>
      
-      <div className='flex flex-col items-center  space-y-10 '>
+      <div className='flex flex-col items-center  space-y-8 '>
         <h1 className='tracking-[20px] text-2xl md:text-3xl text-drwht uppercase font-semibold mt-6'>Contact</h1>
         <h2 className=' text-drfgclr md:flex justify-center items-center flex flex-col font-semibold text-xl md:font-bold uppercase'> <span> Looking for the perfect solution?</span> <span className='decoration-drfgclr underline underline-offset-4 text-drwht'> I&apos;ve got you covered.</span> </h2>
-        <div className='space-y-3 mb-5'>
+        <div className='space-y-1 mb-4'>
           <div className='flex text-drwht text-lg space-x-5 items-center justify-center'>
             <PhoneIcon className='h-6 w-6 text-drfgclr' />
             <p>+1 647-866-3474</p>
@@ -128,7 +128,7 @@ const Contact = (props: Props) => {
           onChange={(e) =>
             setFormData({ ...formData, message: e.target.value })
           } />
-          <button className='bg-drfgclr px-4 py-2.5 rounded-md text-slate-700 font-semibold text-lg' >Submit</button>
+          <button className='bg-drfgclr px-4 py-2.5 rounded-md text-slate-700 hover:text-xl font-semibold text-lg' >Submit</button>
        
         </form>
       </div>

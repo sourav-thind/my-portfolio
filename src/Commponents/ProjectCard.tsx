@@ -78,7 +78,7 @@ const Project = (props: Props) => {
   projects.map((project, index) => (
     slides.push(
       <SwiperSlide key={project.name} className='py-5'>
-        <Tilt tiltReverse={true} tiltMaxAngleX={2} tiltMaxAngleY={2} transitionSpeed={100}>
+        <Tilt tiltReverse={true} tiltMaxAngleX={4} tiltMaxAngleY={4} transitionSpeed={100}>
           <ProjectCards
             key={`project-${index}`}
             index={index}
@@ -106,7 +106,7 @@ const Project = (props: Props) => {
       <div className='mx-1 mt-8 justify-center items-center'>
 
 
-        <motion.div variants={fadeIn("up", "spring", 0.5, 0.75)}>
+        <div >
 
           <Swiper
             effect={"coverflow"}
@@ -134,7 +134,7 @@ const Project = (props: Props) => {
             {slides}
           </Swiper>
 
-        </motion.div>
+        </div>
       </div>
     </div>
 

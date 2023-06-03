@@ -65,7 +65,7 @@ export default function Home() {
               </div>
           </Link>
           <button className=" w-auto rounded-xl animate-pulse bg-drfgclr text-drbgclr ">
-              <a href="../assets/Souravpreet_Singh_Resume.pdf" download className='flex flex-row'>
+              <a href="https://drive.google.com/file/d/1knQNOE9QVauFPLxZYifSS2lgtQSuNWp3/view?usp=sharing" target="_blank" className='flex flex-row'>
                 <span className='font-semibold flex flex-row text-md px-3'>
                     Resume &nbsp; <ArrowTopRightOnSquareIcon className="h-4 w-4" />
                 </span>
