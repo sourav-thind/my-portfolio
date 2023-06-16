@@ -6,8 +6,7 @@ import gsap from 'gsap'
 import * as THREE from "three"
 
 export function MainSetup(props) {
-  const [position, setposition] = useState([1.21, -0.12, 0.3])
-  const [rotation, setrotation] = useState([-1.59, -0.02, 1.34])
+  
   const { nodes, materials, animations } = useGLTF('./threeProjects/MainSetup.glb')
 
   const group = useRef();
@@ -40,10 +39,10 @@ export function MainSetup(props) {
     ), 
     tl.current.to(
       group.current.position, {
-        duration:2, 
-       z: +3,
-        x: 0, 
-       y : -16,
+        duration:1.8, 
+       z: +2.9,
+        x: -0.15, 
+       y : -16.5,
        
 
       },)

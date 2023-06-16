@@ -6,8 +6,6 @@ import Loading from './Loading';
 
 type Props = {}
 
-
-
 const MainCanvas = () => {
 
   return (
@@ -15,14 +13,15 @@ const MainCanvas = () => {
     <Canvas 
     className='h-screen scrollbar-none'
     frameloop='demand'
-      shadows
+      
       camera={{ position: [0,-16,3], fov: 30 } }
       gl={{ preserveDrawingBuffer: true }}>
       <Suspense fallback={<Loading/>}>
-        <hemisphereLight intensity={1} groundColor="black" />
-        <pointLight intensity={1} />
-        <spotLight position={[-20, 50, 10]} angle={0.12} penumbra={15} intensity={1} castShadow shadow-mapsize={1024} />
-        <spotLight position={[0, 0, 0]} angle={0.12} penumbra={15} intensity={1} castShadow shadow-mapsize={1024} />
+        
+        <ambientLight intensity={0.5}  />
+        <pointLight intensity={1} color={0xffffff} decay={2}/>
+        
+        
         <ScrollControls  pages={3}>
         
         <MainSetup/>
