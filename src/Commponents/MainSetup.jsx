@@ -1,4 +1,4 @@
-
+'Use Client'
 import React, {useState, useEffect, useLayoutEffect, useRef } from 'react'
 import { useGLTF, useAnimations, useScroll, Html } from '@react-three/drei'
 import {useFrame} from '@react-three/fiber'
@@ -51,22 +51,24 @@ export function MainSetup(props) {
   const iframeRef = useRef();
   const cubeRef = useRef();
 
- useFrame(() => {
-   if (cubeRef.current && iframeRef.current) {
-     const { x, y, z } = cubeRef.current.position;
-     const { x: rx, y: ry, z: rz } = cubeRef.current.rotation;
-     iframeRef.current.style.position = 'absolute';
-     iframeRef.current.style.transform = `translate(${x}px, ${y}px) )`;  
-     iframeRef.current.style.top -= `${scroll.offset * tl.current.duration()}px`;
+//  useFrame(() => {
+//    if (cubeRef.current && iframeRef.current) {
+//      const { x, y, z } = cubeRef.current.position;
+//      const { x: rx, y: ry, z: rz } = cubeRef.current.rotation;
+//      iframeRef.current.style.position = 'absolute';
+//      iframeRef.current.style.transform = `translate(${x}px, ${y}px) )`;  
+//      iframeRef.current.style.top -= `${scroll.offset * tl.current.duration()}px`;
 
-    //console.log(cubeRef.current)
+//     //console.log(cubeRef.current)
     
-   }
- });
+//    }
+//  });
 
   return (
+    < >
+  
     <group ref={group} {...props} dispose={null} scale={0.1} rotation={[0,0,-0.7]}>
-      <group name="Scene">
+      <group name="Scene" >
         <group name="Sketchfab_model" position={[0.95, -0.2, -0.16]} rotation={[-1.62, -1.1, 0]} scale={0.02}>
           <group name="504d8e714fdb46769572ac35901c72f4fbx" position={[-3.81, 0, -0.19]} rotation={[1.57, 0.01, 0.04]}>
             <group name="RootNode">
@@ -136,12 +138,13 @@ export function MainSetup(props) {
           </group>
         </group>
         <group name="Empty001" position={[0.3, 0.3, 1.31]} rotation={[2.08, 1.06, -0.5]} scale={0.05} />
-        <group name="Cube001" position={[0.2, 0.36, 1.01]} rotation={[2.05, 1.04, 2.67]} scale={[0.11, 0.11, 0.05]}>
+        <group name="Cube001" position={[0.2, 0.36, 1.01]} rotation={[2.05, 1.04, 2.67]} scale={[0.11, 0.11, 0.05]} >
           <mesh name="Cube001_1" geometry={nodes.Cube001_1.geometry} material={materials['case']} />
           <mesh name="Cube001_2" ref={cubeRef} geometry={nodes.Cube001_2.geometry} material={materials.display} />
-          <Html  transform  wrapperclass="htmlScreen"   style={{ border: 'none', pointerEvents: 'none', }} distanceFactor="10">
-          <iframe ref={iframeRef} position={nodes.Cube001_2.position}  rotation={nodes.Cube001_2.rotation} src="https://protfolio-html.vercel.app/" style={{ position: 'sticky', border: 'none', pointerEvents: 'none', }}/>
-          </Html>
+           <Html  transform  wrapperclass="htmlScreen"   style={{ position:'fixed', border: 'none', pointerEvents: 'none', }} distanceFactor="10">
+          {/* <iframe ref={iframeRef} position={nodes.Cube001_2.position}  rotation={nodes.Cube001_2.rotation} src="https://protfolio-html.vercel.app/" style={{ position: 'sticky', border: 'none', pointerEvents: 'none', }}/>
+           */}
+           </Html>
           <mesh name="Cube001_3" geometry={nodes.Cube001_3.geometry} material={materials.bezel} />
           <mesh name="Cube001_4" geometry={nodes.Cube001_4.geometry} material={materials.touchpad} />
           <mesh name="Cube001_5" geometry={nodes.Cube001_5.geometry} material={materials.ports} />
@@ -190,8 +193,8 @@ export function MainSetup(props) {
         </group>
       </group>
     </group>
-  )
-}
+    </>
+  )}
 
 export default MainSetup
 useGLTF.preload('./threeProjects/MainSetup.glb')

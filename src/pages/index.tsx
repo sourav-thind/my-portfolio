@@ -28,7 +28,7 @@ export default function Home() {
       <div className="h-screen scrollbar scrollbar-track-gray-400/20 scrollbar-thumb-drfgclr">
 
         <div className="overflow-x-hidden">
-          <section className="h-screen w-screen   bg-slate-600  ">
+          <section className="h-screen w-screen bg-slate-600  ">
             <CanvasLoader />
           </section>
         </div>
@@ -44,9 +44,9 @@ export default function Home() {
               <About />
             </section>
 
-            <section className="h-screen " id='skills'>
+            {/* <section className="h-screen " id='skills'>
               <Skills />
-            </section>
+            </section> */}
           </section>
           <section className='h-screen bg-drbgclr ' id='projects'>
             <Project />
