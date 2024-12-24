@@ -17,12 +17,12 @@ const MainSetup = () => {
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
     // const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
-    //     rotationX: { value: -2.2, min: -30, max: 30, step: 0.01 },
-    //     rotationY: { value: 0.39, min: -30, max: 30, step: 0.01 },
-    //     rotationZ: { value: 4.10, min: -30, max: 30, step: 0.01 },
-    //     positionX: { value: -2.4, min: -30, max: 30, step: 0.001 },
-    //     positionY: { value: 1.46, min: -30, max: 30, step: 0.001 },
-    //     positionZ: { value: 3.18, min: -30, max: 30, step: 0.001 },
+    //     rotationX: { value: 2, min: -4, max: 4, step: 0.01 },
+    //     rotationY: { value: 4.75, min: 4, max: 5, step: 0.01 },
+    //     rotationZ: { value: 2, min: 1.90, max: 2.10, step: 0.01 },
+    //     positionX: { value: 0.35, min: -4, max: 4, step: 0.01 },
+    //     positionY: { value: 1.367, min: -4, max: 4, step: 0.01 },
+    //     positionZ: { value: -0.03, min: -4, max: 4, step: 0.01 },
     //     distanceFactor: { value: 5, min: 0, max: 10, step: 1 },
     //     distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
     //     color1: { value: '#ff0000' },
@@ -54,8 +54,8 @@ const MainSetup = () => {
     };
     const handleButton1 = () => {
         setShowButtons(false);
-        gsap.to(camera.position, { x: 0, y: 1.40, z: -0.04, duration: 2 });
-        gsap.to(camera.rotation, { x: -0.05, y: -0.33, z: -0.02, duration: 2 });
+        gsap.to(camera.position, { x: -0.05, y: 1.38, z: -0.04, duration: 2 });
+        gsap.to(camera.rotation, { x: 0, y: -0.33, z: 0, duration: 2 });
         setTimeout(() => {
         setShowBack2Menu(true);
           }, 3000);
@@ -91,10 +91,11 @@ const MainSetup = () => {
         // scene.position.set(...initialModelRotation)
     }, [camera]);
     // useEffect(() => {
-    //     camera.position.set(positionX,positionY,positionZ);
-    //     camera.rotation.set(rotationX,rotationY,rotationZ)
+    //     iframeRef.current.rotation.set(rotationX,rotationY,rotationZ)
+    //     // camera.position.set(positionX,positionY,positionZ);
+    //     // camera.rotation.set(rotationX,rotationY,rotationZ)
     //     // scene.position.set(...initialModelRotation)
-    // }, [positionY, positionX, positionZ, rotationX,rotationY,rotationZ]);
+    // }, [rotationX,rotationY,rotationZ]);
 
 
 
@@ -114,25 +115,22 @@ const MainSetup = () => {
             <color args={['#475569']} attach="background" />
 
             <primitive ref={modelRef} object={scene} rotation={[0, 2.63, 0]} >
-                {/* <axesHelper args={[5]}/> */}
+                {/* <axesHelper args={[1]}/> */}
                 <Html
+                    ref={iframeRef} 
                     transform
                     occlude
-                    rotation={[0, 4.69, 0]}
-                    position={[0.36, 1.37, -0.03]}
-                    style={{
-                        width: '1024px',
-                        height: '536px',
-
-                    }}
+                    rotation={[2,4.75,2]}
+                    position={[0.35,1.367, -0.03]}
+                    
                     distanceFactor={0.34}
                 >
-                    <iframe src="https://protfolio-html.vercel.app/" ref={iframeRef}
-                        style={{ width: '1024px', height: '536px', border: 'none', overflow: 'hidden' }}
+                    <iframe src="https://protfolio-html.vercel.app/" 
+                        style={{ width: '954px', height: '522px', border: 'none', overflow: 'hidden' }}
 
                     />
                 </Html>
-                {/* <OrbitControls /> */}
+                {/* <OrbitControls />/ */}
             </primitive>
             {!clicked && (
                 <Html position={[0, 2, 0]} transform className="h-screen w-screen">
