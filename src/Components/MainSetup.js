@@ -17,12 +17,12 @@ const MainSetup = () => {
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
     const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
-        rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
-        rotationY: { value: 2.62, min: -4, max: 4, step: 0.01 },
-        rotationZ: { value: 0, min: -2, max: 2, step: 0.01 },
-        positionX: { value: 0.35, min: -4, max: 4, step: 0.01 },
-        positionY: { value: 2, min: -4, max: 4, step: 0.01 },
-        positionZ: { value: 2.43, min: -4, max: 4, step: 0.001 },
+        rotationX: { value: 0, min: -100, max: 100, step: 1 },
+        rotationY: { value: 2.62, min: -100, max: 100, step: 1 },
+        rotationZ: { value: 0, min: -100, max: 100, step: 1 },
+        positionX: { value: 0.35, min: -100, max: 100, step: 1 },
+        positionY: { value: 2, min: -100, max: 100, step: 1 },
+        positionZ: { value: 2.43, min: -100, max: 100, step: 1 },
         distanceFactor: { value: 5, min: 0, max: 10, step: 1 },
         distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
         color1: { value: '#ff0000' },
@@ -65,8 +65,8 @@ const MainSetup = () => {
 
     const handleButton2 = () => {
         setShowButtons(false);
-        gsap.to(camera.position, { x: 0.35, y: 2, z: 2.43, duration: 2 });
-        gsap.to(camera.rotation, { x: 0, y: 2.62, z: 0, duration: 2 });
+        gsap.to(camera.position, { x: -2.2, y: 2.3, z: 1.6, duration: 2 });
+        gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.06, duration: 2 });
     };
 
     const handleButton3 = () => {
@@ -93,7 +93,7 @@ const MainSetup = () => {
         // camera.position.set(...initialCameraPosition);
         // camera.rotation.set(rotationX,rotationY,rotationZ)
         // scene.position.set(...initialModelRotation)
-    }, [positionX,positionY,positionZ]);
+    }, [camera]);
     // useEffect(() => {
     //     camera.position.set(0.35,2,2.43);
     //     camera.rotation.set(rotationX,rotationY,rotationZ)
