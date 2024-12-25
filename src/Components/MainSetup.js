@@ -16,19 +16,19 @@ const MainSetup = () => {
 
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
-    // const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
-    //     rotationX: { value: 2, min: -4, max: 4, step: 0.01 },
-    //     rotationY: { value: 4.75, min: 4, max: 5, step: 0.01 },
-    //     rotationZ: { value: 2, min: 1.90, max: 2.10, step: 0.01 },
-    //     positionX: { value: 0.35, min: -4, max: 4, step: 0.01 },
-    //     positionY: { value: 1.367, min: -4, max: 4, step: 0.01 },
-    //     positionZ: { value: -0.03, min: -4, max: 4, step: 0.01 },
-    //     distanceFactor: { value: 5, min: 0, max: 10, step: 1 },
-    //     distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
-    //     color1: { value: '#ff0000' },
-    //     color2: { value: '#00FFA3' }
+    const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
+        rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
+        rotationY: { value: 2.62, min: -4, max: 4, step: 0.01 },
+        rotationZ: { value: 0, min: -2, max: 2, step: 0.01 },
+        positionX: { value: 0.35, min: -4, max: 4, step: 0.01 },
+        positionY: { value: 2, min: -4, max: 4, step: 0.01 },
+        positionZ: { value: 2.43, min: -4, max: 4, step: 0.001 },
+        distanceFactor: { value: 5, min: 0, max: 10, step: 1 },
+        distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
+        color1: { value: '#ff0000' },
+        color2: { value: '#00FFA3' }
 
-    // });
+    });
     const { camera } = useThree();
     const [clicked, setClicked] = useState(false);
     const [showButtons, setShowButtons] = useState(false);
@@ -47,9 +47,11 @@ const MainSetup = () => {
     const handleClick = () => {
         setClicked(true);
         gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 2 });
+        gsap.to(camera.rotation, { x: 0, y: 0, z: 0, duration: 2 });
         gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 2 });
         setTimeout(() => {
             setShowButtons(true);
+            setShowBack2Menu(false)
         }, 2000);
     };
     const handleButton1 = () => {
@@ -57,22 +59,21 @@ const MainSetup = () => {
         gsap.to(camera.position, { x: -0.05, y: 1.38, z: -0.04, duration: 2 });
         gsap.to(camera.rotation, { x: 0, y: -0.33, z: 0, duration: 2 });
         setTimeout(() => {
-        setShowBack2Menu(true);
-          }, 3000);
+            setShowBack2Menu(true);
+        }, 2000);
     };
 
     const handleButton2 = () => {
         setShowButtons(false);
-        // Additional action for Button 2
-        gsap.to(camera.position, { x: -5, y: 0.8, z: 8, duration: 2 });
-        gsap.to(camera.rotation, { x: 0.2, y: -0.5, z: 0, duration: 2 });
+        gsap.to(camera.position, { x: 0.35, y: 2, z: 2.43, duration: 2 });
+        gsap.to(camera.rotation, { x: 0, y: 2.62, z: 0, duration: 2 });
     };
 
     const handleButton3 = () => {
         setShowButtons(false);
 
-        gsap.to(camera.position, { x: -0.63, y: 2.86, z: 11.25, duration: 2 });
-        gsap.to(modelRef.current.rotation, { x: 0, y: 2.63, z: 0, duration: 2 });
+        gsap.to(camera.position, { x: -0.63, y: 2.86, z: 11.25, duration: 1 });
+        gsap.to(modelRef.current.rotation, { x: 0, y: 2.63, z: 0, duration: 1 });
         setTimeout(() => {
             setClicked(false);
         }, 2000);
@@ -86,12 +87,16 @@ const MainSetup = () => {
 
 
     useEffect(() => {
+
         camera.position.set(...initialCameraPosition);
+        // camera.rotation.set(0,2.50,0)
+        // camera.position.set(...initialCameraPosition);
         // camera.rotation.set(rotationX,rotationY,rotationZ)
         // scene.position.set(...initialModelRotation)
-    }, [camera]);
+    }, [positionX,positionY,positionZ]);
     // useEffect(() => {
-    //     iframeRef.current.rotation.set(rotationX,rotationY,rotationZ)
+    //     camera.position.set(0.35,2,2.43);
+    //     camera.rotation.set(rotationX,rotationY,rotationZ)
     //     // camera.position.set(positionX,positionY,positionZ);
     //     // camera.rotation.set(rotationX,rotationY,rotationZ)
     //     // scene.position.set(...initialModelRotation)
@@ -117,15 +122,15 @@ const MainSetup = () => {
             <primitive ref={modelRef} object={scene} rotation={[0, 2.63, 0]} >
                 {/* <axesHelper args={[1]}/> */}
                 <Html
-                    ref={iframeRef} 
+                    ref={iframeRef}
                     transform
                     occlude
-                    rotation={[2,4.75,2]}
-                    position={[0.35,1.367, -0.03]}
-                    
+                    rotation={[2, 4.75, 2]}
+                    position={[0.35, 1.367, -0.03]}
+
                     distanceFactor={0.34}
                 >
-                    <iframe src="https://protfolio-html.vercel.app/" 
+                    <iframe src="https://protfolio-html.vercel.app/"
                         style={{ width: '954px', height: '522px', border: 'none', overflow: 'hidden' }}
 
                     />
@@ -186,17 +191,22 @@ const MainSetup = () => {
 
             )}
 
-            < Html>
-            {showBack2Menu && (
-        <div className="absolute bottom-[80px] left-4">
-          <button
-            className=" text-white rounded-full  w-2 h-2"
-            aria-label="Go Back"
-          >
-            <IoArrowBackCircleSharp size={20} />
-          </button>
-        </div>
-      )}
+            < Html
+                transform
+                occlude
+                rotation={[0,-0.36,0]}
+                scale={0.35}
+                position={[0.22,1.39,-0.19]} >
+                {showBack2Menu && (
+                    <button
+                        className=" text-white rounded-full  w-[2px] h-[2px]"
+                        aria-label="Go Back"
+                        onClick={handleClick}
+                    >
+                        <IoArrowBackCircleSharp size={20} />
+                    </button>
+
+                )}
             </Html>
         </>
     )
