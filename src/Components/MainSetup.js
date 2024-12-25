@@ -12,6 +12,7 @@ import { AxesHelper } from "three";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { RectAreaLightHelper } from "three/examples/jsm/helpers/RectAreaLightHelper";
 import HoverEffect from './HoverEffect';
+import TypedMessage from './TypedMessage';
 
 
 
@@ -36,8 +37,10 @@ const MainSetup = () => {
     const { camera } = useThree();
     const [clicked, setClicked] = useState(false);
     const [showButtons, setShowButtons] = useState(false);
-    const [ShowBack1Menu, setShowBack1Menu] = useState(false);
-    const [ShowBack2Menu, setShowBack2Menu] = useState(false);
+    const [ShowMenu1, setShowMenu1] = useState(false);
+    const [ShowMenu2, setShowMenu2] = useState(false);
+    const [guitarMessage, setGuitarMessage] = useState(false);
+
 
     const initialCameraPosition = [-11.23, 2.72, 2.13];
     const initialCameraRotation = [0, -1.46, 0];
@@ -57,8 +60,9 @@ const MainSetup = () => {
         gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 2 });
         gsap.to(camera.rotation, { x: 0, y: 0, z: 0, duration: 2 });
         gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 2 });
-        setShowBack1Menu(false)
-        setShowBack2Menu(false)
+        setShowMenu1(false)
+        setShowMenu2(false)
+        setGuitarMessage(false)
         setTimeout(() => {
             setShowButtons(true);
         }, 2000);
@@ -68,7 +72,7 @@ const MainSetup = () => {
         gsap.to(camera.position, { x: -0.05, y: 1.38, z: -0.04, duration: 2 });
         gsap.to(camera.rotation, { x: 0, y: -0.33, z: 0, duration: 2 });
         setTimeout(() => {
-            setShowBack1Menu(true);
+            setShowMenu1(true);
         }, 2000);
     };
 
@@ -77,7 +81,7 @@ const MainSetup = () => {
         gsap.to(camera.position, { x: -2.2, y: 2.3, z: 1.6, duration: 2 });
         gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 2 });
         setTimeout(() => {
-            setShowBack2Menu(true);
+            setShowMenu2(true);
         }, 2000);
     };
 
@@ -86,7 +90,7 @@ const MainSetup = () => {
 
         gsap.to(camera.position, { x: -11.23, y: 2.72, z: 2.13, duration: 2 });
         gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 2 });
-        
+
         gsap.to(camera.rotation, { x: 0, y: -1.46, z: 0, duration: 2 });
         setTimeout(() => {
             setClicked(false);
@@ -137,31 +141,31 @@ const MainSetup = () => {
             />
 
             <rectAreaLight
-                width={11} // Width of the light rectangle
-                height={0.2} // Height of the light rectangle
-                color="#00ffA3" // Light color (can be customized)
-                intensity={100} // Light intensity
+                width={11}
+                height={0.2}
+                color="#00ffA3"
+                intensity={100}
                 position={[-0.7, 4.38, -1.2]}
                 rotation={[-1.5, -0.02, -0.29]}
                 castShadow
             />
             <rectAreaLight
                 ref={rectLightRef}
-                width={4} // Width of the light rectangle
-                height={0.6} // Height of the light rectangle
-                color="#FF0001" // Light color (can be customized)
-                intensity={100} // Light intensity
+                width={4}
+                height={0.6}
+                color="#FF0001"
+                intensity={100}
                 position={[0.5, 2.3, -0.9]}
                 rotation={[rotationX, -0.28, rotationZ]}
 
                 castShadow
             />
             <rectAreaLight
-                
-                width={0.3} // Width of the light rectangle
-                height={6.1} // Height of the light rectangle
-                color="#00ffA3" // Light color (can be customized)
-                intensity={100} // Light intensity
+
+                width={0.3}
+                height={6.1}
+                color="#00ffA3"
+                intensity={100}
                 position={[-6.7, 4.53, -0.03]}
                 rotation={[-1.58, -0.05, -0.3]}
 
@@ -169,7 +173,22 @@ const MainSetup = () => {
             />
             <color args={['#475569']} attach="background" />
 
-            <primitive ref={modelRef} object={scene} rotation={[0, 1.28, 0]} >
+            <primitive ref={modelRef} object={scene} rotation={[0, 1.28, 0]} onClick={(event) => {
+                const validNames = [
+                    "Material1-material",
+                    "Material2-material",
+                    "Material3-material",
+                    "Material4-material",
+                    "Material5-material",
+                ];
+
+                if (validNames.includes(event.object.name)&& ShowMenu2) {
+                    setGuitarMessage(true); 
+                    console.log("clicked");
+                    event.stopPropagation();
+                }
+
+            }} >
                 {/* <axesHelper args={[5]}/> */}
                 <Html
                     ref={iframeRef}
@@ -185,14 +204,14 @@ const MainSetup = () => {
 
                     />
                 </Html>
-                {/* <OrbitControls />/ */}
+                {/* <OrbitControls /> */}
             </primitive>
             {!clicked && (
-                <Html position={[0, 3, 0]} rotation={[0,-1.46,0]} transform className="h-screen w-screen bg-drbgclr bg-opacity-50">
+                <Html position={[0, 3, 0]} rotation={[0, -1.46, 0]} transform className="h-screen w-screen bg-drbgclr bg-opacity-50">
                     <div
                         className="flex flex-col items-center justify-center h-[30vh] w-[30vw] bg-drbgclr fixed top-1/2 right-0 mr-20 rounded-xl -translate-y-1/2
-              transform transition-all duration-500 ease-in-out scale-90 hover:scale-100 
-              translate-x-10 hover:translate-x-0"
+                          transform transition-all duration-500 ease-in-out scale-90 hover:scale-100 
+                          translate-x-10 hover:translate-x-0"
                     >
                         <div className="text-white mb-4 opacity-100 animate-fade-in text-center">
                             <p>Do you really want to risk it all?</p>
@@ -207,7 +226,8 @@ const MainSetup = () => {
                 </Html>
             )}
             {/* //This will show three buttons  */}
-            {showButtons && (
+            {showButtons && (<>
+                <TypedMessage text="--Okay you can have a tour. I won't tell him. You are not here to steal something right?? " speed={100} />
                 <Html position={[0, 2, 0]} transform>
                     <div className="relative w-[200px] top-[15vh] h-[90px] left-0 flex items-center justify-center">
 
@@ -232,12 +252,12 @@ const MainSetup = () => {
                         </button>
                     </div>
                 </Html>
-
+                </>
             )}
             {scene && <HoverEffect scene={scene} />}
 
 
-            {ShowBack1Menu && (< Html
+            {ShowMenu1 && (< Html
                 transform
                 occlude
                 rotation={[0, -0.36, 0]}
@@ -254,13 +274,13 @@ const MainSetup = () => {
 
             </Html>
             )}
-            {ShowBack2Menu && (< Html
+            {ShowMenu2 && (< Html
                 transform
                 occlude
                 scale={0.35}
-                position={[positionX,positionY,positionZ]}
-                rotation={[rotationX,rotationY,rotationZ]}
-                 >
+                position={[-5.5, 0.9, -1.1]}
+                rotation={[0, 1.25, 0]}
+            >
 
                 <button
                     className=" text-white rounded-full  w-[2px] h-[2px]"
@@ -272,6 +292,9 @@ const MainSetup = () => {
 
             </Html>
             )}
+            {/* //Use --Infron of every sentence as there is an iteration error  */}
+            {ShowMenu2 && guitarMessage && (<TypedMessage text="--He likes music, He plays guitar sometimes " speed={30} />)}
+            
         </>
     )
 }

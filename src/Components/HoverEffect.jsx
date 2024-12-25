@@ -44,9 +44,9 @@ const HoverEffect = ({ scene }) => {
     scene.traverse((object) => {
       if (object.name === "Sketchfab_model") {
           object.userData = {
-              onPointerOver: () => {
+              onClick: () => {
               console.log("found it");
-            // setHovered(true);
+              setHovered(true);
             // const position = new THREE.Vector3();
             // object.getWorldPosition(position);
             // setHoverPosition([position.x, position.y + 1.5, position.z]); // Message appears slightly above the model
@@ -63,8 +63,8 @@ const HoverEffect = ({ scene }) => {
   return (
     <>
       {hovered && (
-        <Html position={hoverPosition} center>
-          <TypedMessage text="He likes music, He plays guitar sometimes" />
+        <Html position={hoverPosition} center >
+          <TypedMessage text="tHe likes music, He plays guitar sometimes" />
         </Html>
       )}
     </>
