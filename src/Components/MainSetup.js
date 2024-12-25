@@ -76,7 +76,7 @@ const MainSetup = () => {
         gsap.to(modelRef.current.rotation, { x: 0, y: 2.63, z: 0, duration: 1 });
         setTimeout(() => {
             setClicked(false);
-        }, 2000);
+        }, 1000);
     };
 
 
@@ -109,7 +109,7 @@ const MainSetup = () => {
             <ambientLight intensity={10} />
             <directionalLight
                 color={'#00ffA3'}
-                intensity={5}
+                intensity={0.75}
                 position={[30, 30, 0]}
                 castShadow
 
@@ -120,7 +120,7 @@ const MainSetup = () => {
             <color args={['#475569']} attach="background" />
 
             <primitive ref={modelRef} object={scene} rotation={[0, 2.63, 0]} >
-                {/* <axesHelper args={[1]}/> */}
+                {/* <axesHelper args={[5]}/> */}
                 <Html
                     ref={iframeRef}
                     transform
@@ -138,7 +138,7 @@ const MainSetup = () => {
                 {/* <OrbitControls />/ */}
             </primitive>
             {!clicked && (
-                <Html position={[0, 2, 0]} transform className="h-screen w-screen">
+                <Html position={[0, 2, 0]} transform className="h-screen w-screen bg-drbgclr bg-opacity-50">
                     <div
                         className="flex flex-col items-center justify-center h-[30vh] w-[30vw] bg-drbgclr fixed top-1/2 right-0 mr-20 rounded-xl -translate-y-1/2
               transform transition-all duration-500 ease-in-out scale-90 hover:scale-100 
@@ -191,23 +191,23 @@ const MainSetup = () => {
 
             )}
 
-            < Html
+            {showBack2Menu && (< Html
                 transform
                 occlude
-                rotation={[0,-0.36,0]}
+                rotation={[0, -0.36, 0]}
                 scale={0.35}
-                position={[0.22,1.39,-0.19]} >
-                {showBack2Menu && (
-                    <button
-                        className=" text-white rounded-full  w-[2px] h-[2px]"
-                        aria-label="Go Back"
-                        onClick={handleClick}
-                    >
-                        <IoArrowBackCircleSharp size={20} />
-                    </button>
+                position={[0.22, 1.39, -0.19]} >
 
-                )}
+                <button
+                    className=" text-white rounded-full  w-[2px] h-[2px]"
+                    aria-label="Go Back"
+                    onClick={handleClick}
+                >
+                    <IoArrowBackCircleSharp size={20} />
+                </button>
+
             </Html>
+            )}
         </>
     )
 }
