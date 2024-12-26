@@ -5,7 +5,7 @@ import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/solid";
 
 const Hero = () => {
   return (
-    <section className="w-full overflow-hidden h-screen md:ml-6 bg-drbgclr">
+    <section className="w-full overflow-hidden h-screen md:h-[80vh] md:ml-6 bg-drbgclr">
       <div className="relative top-[4rem] md:top-[3rem] max-w-7xl md:max-w-6xl flex flex-col gap-3 md:gap-0 justify-center">
         <div className="relative flex flex-row items-start">
           <motion.div

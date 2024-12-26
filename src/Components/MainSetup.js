@@ -22,19 +22,19 @@ const MainSetup = () => {
 
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
-    const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
-        rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
-        rotationY: { value: 1.25, min: -4, max: 4, step: 0.01 },
-        rotationZ: { value: 0, min: -4, max: 4, step: 0.01 },
-        positionX: { value: -5.5, min: -8, max: 8, step: 0.1 },
-        positionY: { value: 0.9, min: -8, max: 8, step: 0.1 },
-        positionZ: { value: -1.1, min: -8, max: 8, step: 0.1 },
-        distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
-        distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
-        color1: { value: '#ff0000' },
-        color2: { value: '#00FFA3' }
+    // const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
+    //     rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
+    //     rotationY: { value: 1.25, min: -4, max: 4, step: 0.01 },
+    //     rotationZ: { value: 0, min: -4, max: 4, step: 0.01 },
+    //     positionX: { value: -5.5, min: -8, max: 8, step: 0.1 },
+    //     positionY: { value: 0.9, min: -8, max: 8, step: 0.1 },
+    //     positionZ: { value: -1.1, min: -8, max: 8, step: 0.1 },
+    //     distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
+    //     distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
+    //     color1: { value: '#ff0000' },
+    //     color2: { value: '#00FFA3' }
 
-    });
+    // });
     const { camera } = useThree();
     const [clicked, setClicked] = useState(false);
     const [showButtons, setShowButtons] = useState(false);
@@ -44,7 +44,7 @@ const MainSetup = () => {
     const [menuMessage, setMenuMessage] = useState(false);
 
 
-    const initialCameraPosition = [-11.23, 2.72, 2.13];
+    const initialCameraPosition = [-11.23, 2, 2.13];
     const initialCameraRotation = [0, -1.46, 0];
     const initialModelRotation = [0, 0, 0];
 

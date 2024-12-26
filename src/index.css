@@ -82,7 +82,7 @@ code {
    
 }
 
-button {
+/* button {
   color: #43ffaf;
   text-decoration: none;
   cursor: pointer;
@@ -90,7 +90,7 @@ button {
   border: 1px solid #4d606f;
   background: transparent;
    
-}
+} */
 
 .inputbox{
   @apply px-3 py-2 outline-none hover:border-b-2 bg-drgry/50 rounded-sm placeholder-slate-400 hover:placeholder-slate-300  transition-all focus:border-drfgclr focus:text-drfgclr
