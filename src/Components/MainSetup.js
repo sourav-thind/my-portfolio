@@ -40,6 +40,7 @@ const MainSetup = () => {
     const [ShowMenu1, setShowMenu1] = useState(false);
     const [ShowMenu2, setShowMenu2] = useState(false);
     const [guitarMessage, setGuitarMessage] = useState(false);
+    const [menuMessage, setMenuMessage] = useState(false);
 
 
     const initialCameraPosition = [-11.23, 2.72, 2.13];
@@ -48,14 +49,23 @@ const MainSetup = () => {
 
     const newCameraPosition = [0, 1, 4];
     const newModelRotation = [0, 1.28, 0];
-
+    const rectLightRef = useRef(null);
+    const helperRef = useRef(null);
     const cameraRef = useRef(initialCameraPosition);
     const modelRef = useRef(initialModelRotation);
 
-    const rectLightRef = useRef(null);
-    const helperRef = useRef(null);
 
     const handleClick = () => {
+        setClicked(true);
+        gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 2 });
+        gsap.to(camera.rotation, { x: 0, y: 0, z: 0, duration: 2 });
+        gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 2 });
+        setMenuMessage(true);
+        setTimeout(() => {
+            setShowButtons(true);
+        }, 2000);
+    };
+    const handleBackClick = () => {
         setClicked(true);
         gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 2 });
         gsap.to(camera.rotation, { x: 0, y: 0, z: 0, duration: 2 });
@@ -63,6 +73,7 @@ const MainSetup = () => {
         setShowMenu1(false)
         setShowMenu2(false)
         setGuitarMessage(false)
+        setMenuMessage(false)
         setTimeout(() => {
             setShowButtons(true);
         }, 2000);
@@ -71,30 +82,33 @@ const MainSetup = () => {
         setShowButtons(false);
         gsap.to(camera.position, { x: -0.05, y: 1.38, z: -0.04, duration: 2 });
         gsap.to(camera.rotation, { x: 0, y: -0.33, z: 0, duration: 2 });
+        setMenuMessage(false);
         setTimeout(() => {
             setShowMenu1(true);
-        }, 2000);
+        }, 1000);
     };
 
     const handleButton2 = () => {
         setShowButtons(false);
         gsap.to(camera.position, { x: -2.2, y: 2.3, z: 1.6, duration: 2 });
         gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 2 });
+        setMenuMessage(false);
         setTimeout(() => {
             setShowMenu2(true);
-        }, 2000);
+        }, 1000);
     };
 
     const handleButton3 = () => {
         setShowButtons(false);
-
+        
         gsap.to(camera.position, { x: -11.23, y: 2.72, z: 2.13, duration: 2 });
         gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 2 });
-
+        
+        setMenuMessage(false);
         gsap.to(camera.rotation, { x: 0, y: -1.46, z: 0, duration: 2 });
         setTimeout(() => {
             setClicked(false);
-        }, 2000);
+        }, 1000);
     };
 
 
@@ -108,21 +122,21 @@ const MainSetup = () => {
 
         camera.position.set(...initialCameraPosition);
         camera.rotation.set(...initialCameraRotation)
-        if (rectLightRef.current) {
-            helperRef.current = new RectAreaLightHelper(rectLightRef.current);
-            rectLightRef.current.add(helperRef.current);
-        }
+        // if (rectLightRef.current) {
+        //     helperRef.current = new RectAreaLightHelper(rectLightRef.current);
+        //     rectLightRef.current.add(helperRef.current);
+        // }
         // camera.rotation.set(0,2.50,0)
         // camera.position.set(...initialCameraPosition);
         // camera.rotation.set(rotationX,rotationY,rotationZ)
         // scene.position.set(...initialModelRotation)
     }, [camera]);
-    useEffect(() => {
-        // camera.position.set(0.35,2,2.43);
-        // camera.position.set(positionX,positionY,positionZ);
-        // camera.rotation.set(rotationX,rotationY,rotationZ)
-        // scene.position.set(...initialModelRotation)
-    }, [rotationX, rotationY, rotationZ]);
+    // useEffect(() => {
+    //     // camera.position.set(0.35,2,2.43);
+    //     // camera.position.set(positionX,positionY,positionZ);
+    //     // camera.rotation.set(rotationX,rotationY,rotationZ)
+    //     // scene.position.set(...initialModelRotation)
+    // }, [rotationX, rotationY, rotationZ]);
 
 
 
@@ -150,13 +164,12 @@ const MainSetup = () => {
                 castShadow
             />
             <rectAreaLight
-                ref={rectLightRef}
                 width={4}
                 height={0.6}
                 color="#FF0001"
                 intensity={100}
                 position={[0.5, 2.3, -0.9]}
-                rotation={[rotationX, -0.28, rotationZ]}
+                rotation={[0, -0.28, 0]}
 
                 castShadow
             />
@@ -199,7 +212,7 @@ const MainSetup = () => {
 
                     distanceFactor={0.34}
                 >
-                    <iframe src="https://protfolio-html.vercel.app/"
+                    <iframe src="https://protfolio-html.vercel.app/" title='screen'
                         style={{ width: '954px', height: '522px', border: 'none', overflow: 'hidden' }}
 
                     />
@@ -225,26 +238,26 @@ const MainSetup = () => {
                     </div>
                 </Html>
             )}
+            {menuMessage && (<TypedMessage text="--Okay you can have a tour. I won't tell him. You are not here to steal something right?? " />)}
             {/* //This will show three buttons  */}
-            {showButtons && (<>
-                <TypedMessage text="--Okay you can have a tour. I won't tell him. You are not here to steal something right?? " speed={100} />
+            {showButtons && (
+                <>
                 <Html position={[0, 2, 0]} transform>
                     <div className="relative w-[200px] top-[15vh] h-[90px] left-0 flex items-center justify-center">
 
-                        <span class="absolute top-0 mt-1 ml-1 h-12 w-16 rounded-lg bg-drbgclr"></span>
+                        <span className="absolute top-0 mt-1 ml-1 h-12 w-16 rounded-lg bg-drbgclr"></span>
                         <button onClick={handleButton1}
                             className="absolute top-0 p-1 h-12 w-16 bg-drfgclr  text-xs text-drbgclr rounded-lg ">
                             Portfolio
                         </button>
 
-
-                        <span class="absolute top-16 left-0 mt-1 ml-1 p-1 h-12 w-16 rounded-lg bg-drbgclr"></span>
+                        <span className="absolute top-16 left-0 mt-1 ml-1 p-1 h-12 w-16 rounded-lg bg-drbgclr"></span>
                         <button onClick={handleButton2}
                             className="absolute top-16 left-0 p-1 h-12 w-16  bg-drfgclr text-xs text-drbgclr rounded-lg shadow-lg">
                             Look Around
                         </button>
 
-                        <span class="absolute top-16 right-0 mt-1 ml-1 p-1 h-12 w-16 rounded-lg bg-drbgclr"></span>
+                        <span className="absolute top-16 right-0 mt-1 ml-1 p-1 h-12 w-16 rounded-lg bg-drbgclr"></span>
                         <button
                             onClick={handleButton3}
                             className="absolute top-16 right-1 p-1 h-12 w-16  bg-drfgclr text-xs text-drbgclr rounded-lg shadow-lg">
@@ -267,7 +280,7 @@ const MainSetup = () => {
                 <button
                     className=" text-white rounded-full  w-[2px] h-[2px]"
                     aria-label="Go Back"
-                    onClick={handleClick}
+                    onClick={handleBackClick}
                 >
                     <IoArrowBackCircleSharp size={20} />
                 </button>
@@ -285,7 +298,7 @@ const MainSetup = () => {
                 <button
                     className=" text-white rounded-full  w-[2px] h-[2px]"
                     aria-label="Go Back"
-                    onClick={handleClick}
+                    onClick={handleBackClick}
                 >
                     <IoArrowBackCircleSharp size={80} />
                 </button>
@@ -293,7 +306,7 @@ const MainSetup = () => {
             </Html>
             )}
             {/* //Use --Infron of every sentence as there is an iteration error  */}
-            {ShowMenu2 && guitarMessage && (<TypedMessage text="--He likes music, He plays guitar sometimes " speed={30} />)}
+            {ShowMenu2 && guitarMessage && (<TypedMessage text="--He likes music, He plays guitar sometimes "  />)}
             
         </>
     )
