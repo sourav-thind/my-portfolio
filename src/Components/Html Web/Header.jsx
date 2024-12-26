@@ -16,7 +16,7 @@ function Header() {
           href="https://github.com/sourav-thind"
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex flex-row rounded-3xl border border-transparent hover:border-drfgclr duration-500 ease-in-out p-2"
+          className="group flex flex-row rounded-3xl border border-transparent hover:border-drfgclr  hover:px-4 duration-500 ease-in-out p-2  px-8"
         >
           <img src='/assets/Socials/github.png' alt="github" className="h-6 w-6 bg-transparent" />
           <p className="hidden group-hover:block my-auto m-2 hover:delay-1000 hover:duration-1000 hover:ease-in-out">
@@ -28,14 +28,14 @@ function Header() {
           href="https://www.linkedin.com/in/sourav-thind/"
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex flex-row rounded-3xl border border-transparent hover:border-drfgclr duration-500 ease-in-out p-2"
+          className="group flex flex-row rounded-3xl border border-transparent hover:border-drfgclr hover:px-4 duration-500 ease-in-out p-2 px-8"
         >
           <img
             src='/assets/Socials/linkedin.png'
             alt="linkedin"
             className="h-6 w-6 bg-transparent"
           />
-          <p className="hidden group-hover:block my-auto m-2">LinkedIn</p>
+          <p className="hidden group-hover:block my-auto m-2 ">LinkedIn</p>
         </a>
 
         {/* Uncomment if needed
@@ -52,7 +52,7 @@ function Header() {
 
         <a
           href="#contact"
-          className="group flex flex-row rounded-3xl border border-transparent hover:border-drfgclr duration-500 ease-in-out p-2"
+          className="group flex flex-row rounded-3xl border border-transparent hover:border-drfgclr hover:px-4 duration-500 ease-in-out p-2 px-8"
         >
           <img src='/assets/Socials/email.png' alt="email" className="h-6 w-7" />
           <p className="hidden group-hover:block my-auto m-2">
