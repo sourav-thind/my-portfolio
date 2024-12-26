@@ -2,9 +2,9 @@ import React from 'react'
 import ProjectCard from './ProjectCard'
 import { motion } from 'framer-motion'
 
-type Props = {}
 
-const Projects = (props: Props) => {
+
+const Projects = () => {
   return (
     <div> <div
   

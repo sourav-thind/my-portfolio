@@ -1,12 +1,11 @@
 import React from 'react'
 import Header from './Header'
 import Hero from './Hero'
-
-// import Contact from './Commponents/Contact'
-// import Project from './Commponents/Projects'
  import About from './/About'
 import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
 import Skills from './Skills'
+import Projects from './Projects'
+import Contact from './Contact'
 const HtmlMain = () => {
   return (
     <main>
@@ -37,13 +36,13 @@ const HtmlMain = () => {
           <section className="h-screen " id='skills'>
             <Skills />
           </section>
-        {/* <section className='h-screen bg-drbgclr ' id='projects'>
-          <Project />
+      <section className='h-screen bg-drbgclr ' id='projects'>
+          <Projects />
 
         </section>
-        <section className="" id='contact'>
-          <Contact /> */}
-        {/* </section>  */}
+           <section className="" id='contact'>
+          <Contact /> 
+         </section> 
           <footer className='sticky bottom-5 w-full cursor-pointer z-50 flex flex-row justify-evenly '>
         <a href='#hero'>
             <div className='flex items-center justify-center'>
