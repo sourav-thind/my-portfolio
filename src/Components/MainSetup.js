@@ -181,7 +181,7 @@ const MainSetup = () => {
             />
             <color args={['#475569']} attach="background" />
 
-            <primitive ref={modelRef} object={scene} rotation={[0, 1.28, 0]} onClick={(event) => {
+            <primitive ref={modelRef} object={scene} castShadow rotation={[0, 1.28, 0]} onClick={(event) => {
                 const validNames = [
                     "Material1-material",
                     "Material2-material",
@@ -233,7 +233,7 @@ const MainSetup = () => {
                     </div>
                 </Html>
             )}
-            {menuMessage && (<TypedMessage text="--Okay you can have a tour. I won't tell him. You are not here to steal something right?? " />)}
+            {/* {menuMessage && (<TypedMessage text="--Okay you can have a tour. I won't tell him. You are not here to steal something right?? " />)} */}
             {/* //This will show three buttons  */}
             {showButtons && (
                 <>
@@ -301,7 +301,7 @@ const MainSetup = () => {
             </Html>
             )}
             {/* //Use --Infron of every sentence as there is an iteration error  */}
-            {ShowMenu2 && guitarMessage && (<TypedMessage text="--He likes music, He plays guitar sometimes. He is not very good though! "  />)}
+            {/* {ShowMenu2 && guitarMessage && (<TypedMessage text="--He likes music, He plays guitar sometimes. He is not very good though! "  />)} */}
             
         </>
     )
