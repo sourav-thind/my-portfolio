@@ -306,7 +306,7 @@ const MainSetup = () => {
             </Html>
             )}
             {/* //Use --Infron of every sentence as there is an iteration error  */}
-            {ShowMenu2 && guitarMessage && (<TypedMessage text="--He likes music, He plays guitar sometimes "  />)}
+            {ShowMenu2 && guitarMessage && (<TypedMessage text="--He likes music, He plays guitar sometimes. He is not very good though! "  />)}
             
         </>
     )
