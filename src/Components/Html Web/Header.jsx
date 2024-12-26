@@ -56,7 +56,7 @@ function Header() {
         >
           <img src='/assets/Socials/email.png' alt="email" className="h-6 w-7" />
           <p className="hidden group-hover:block my-auto m-2">
-            Let&apos;s get in Touch
+             Get in Touch
           </p>
         </a>
       </div>
