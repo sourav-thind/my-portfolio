@@ -13,6 +13,7 @@ import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { RectAreaLightHelper } from "three/examples/jsm/helpers/RectAreaLightHelper";
 import HoverEffect from './HoverEffect';
 import TypedMessage from './TypedMessage';
+import HtmlMain from './Html Web/HtmlMain';
 
 
 
@@ -143,20 +144,14 @@ const MainSetup = () => {
     return (
         <>
             <ambientLight intensity={10} />
-            {/* <directionalLight
-                color={'#00ffA3'}
-                intensity={0.75}
-                position={[30, 30, 0]}
-                castShadow
-
-            /> */}
+         
             <directionalLight color="white" intensity={1.5}
                 position={[-2.2, 0.39, 4.10]}
             />
 
             <rectAreaLight
                 width={11}
-                height={0.2}
+                height={0.6}
                 color="#00ffA3"
                 intensity={100}
                 position={[-0.7, 4.38, -1.2]}
@@ -197,7 +192,6 @@ const MainSetup = () => {
 
                 if (validNames.includes(event.object.name)&& ShowMenu2) {
                     setGuitarMessage(true); 
-                    console.log("clicked");
                     event.stopPropagation();
                 }
 
@@ -209,13 +203,14 @@ const MainSetup = () => {
                     occlude
                     rotation={[2, 4.75, 2]}
                     position={[0.35, 1.367, -0.03]}
-
+                    style={{ width: '954px', height: '522px', border: 'none', overflow: 'hidden' }} 
                     distanceFactor={0.34}
                 >
-                    <iframe src="https://protfolio-html.vercel.app/" title='screen'
-                        style={{ width: '954px', height: '522px', border: 'none', overflow: 'hidden' }}
+                    {/* <iframe src="https://protfolio-html.vercel.app/" title='screen'
+                        style={{ width: '954px', height: '522px', border: 'none', overflow: 'hidden' }} */}
+                        <HtmlMain />
 
-                    />
+            
                 </Html>
                 {/* <OrbitControls /> */}
             </primitive>

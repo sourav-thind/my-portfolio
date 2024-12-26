@@ -1,0 +1,70 @@
+import React from 'react'
+import Header from './Header'
+import Hero from './Hero'
+
+// import Contact from './Commponents/Contact'
+// import Project from './Commponents/Projects'
+ import About from './/About'
+import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/solid'
+import Skills from './Skills'
+const HtmlMain = () => {
+  return (
+    <main>
+    
+      <title>{" Sourav's Portfolio "}</title>
+
+
+    <div className="h-screen overflow-x-hidden scrollbar-none">
+
+      {/* <div className="overflow-x-hidden">
+        <section className="h-screen w-screen   bg-slate-600  ">
+          <CanvasLoader />
+        </section>
+      </div> */}
+      <section className=' bg-drbgclr'>
+
+        <Header />
+      
+        <section className="h-screen  " id='hero'>
+          <Hero/>
+        </section>
+        <section className='overflow-hidden '>
+        </section>
+          <section id='about' className='h-screen'>
+            <About />
+          </section>
+
+          <section className="h-screen " id='skills'>
+            <Skills />
+          </section>
+        {/* <section className='h-screen bg-drbgclr ' id='projects'>
+          <Project />
+
+        </section>
+        <section className="" id='contact'>
+          <Contact /> */}
+        {/* </section>  */}
+          <footer className='sticky bottom-5 w-full cursor-pointer z-50 flex flex-row justify-evenly '>
+        <a href='#hero'>
+            <div className='flex items-center justify-center'>
+              <img
+                className='h-14 w-14 bg-drfgclr rounded-full filter grayscale hover:grayscale-0 cursor-pointer'
+                src="/assets/HeroImg.png" alt={"image Button"} />
+            </div>
+        </a>
+        <button className=" w-auto rounded-xl animate-pulse bg-drfgclr text-drbgclr ">
+            <a href="https://drive.google.com/file/d/1knQNOE9QVauFPLxZYifSS2lgtQSuNWp3/view?usp=sharing" target="_blank" className='flex flex-row'>
+              <span className='font-semibold flex flex-row text-md px-3'>
+                  Resume &nbsp; <ArrowTopRightOnSquareIcon className="h-4 w-4" />
+              </span>
+            </a>
+        </button>
+          </footer>
+       
+      </section>
+    </div>
+  </main>
+  )
+}
+
+export default HtmlMain
