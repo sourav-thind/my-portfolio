@@ -26,9 +26,9 @@ const MainSetup = () => {
         rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
         rotationY: { value: 1.25, min: -4, max: 4, step: 0.01 },
         rotationZ: { value: 0, min: -4, max: 4, step: 0.01 },
-        positionX: { value: -0.7, min: -8, max: 8, step: 0.1 },
-        positionY: { value: 4.38, min: -8, max: 8, step: 0.1 },
-        positionZ: { value: -1.2, min: -8, max: 8, step: 0.1 },
+        positionX: { value: -8, min: -10, max: 10, step: 0.1 },
+        positionY: { value: 4.7, min: -10, max: 10, step: 0.1 },
+        positionZ: { value: 2.10, min: -10, max: 10, step: 0.1 },
         distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
         distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
         color1: { value: '#ff0000' },
@@ -61,8 +61,8 @@ const MainSetup = () => {
         gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 2 });
         gsap.to(camera.rotation, { x: 0, y: 0, z: 0, duration: 2 });
         gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 2 });
-        setMenuMessage(true);
         setTimeout(() => {
+            setMenuMessage(true);
             setShowButtons(true);
         }, 2000);
     };
@@ -248,29 +248,29 @@ const MainSetup = () => {
                     </div>
                 </Html>
             )}
-            {menuMessage && (<Html position={[positionX,positionY,positionZ]} className="bg-gray-900  text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60"><Typewriter words={["Okay you can have a tour. I won't tell him. You are not here to steal something right?? "]} typeSpeed={50}/></Html>)}
+            {menuMessage && (<Html position={[-1.2,3.4,2.8]} className="bg-gray-900  text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60"><Typewriter words={["Okay you can have a tour. I won't tell him.           You are not here to steal something right??             You can watch is portfolio, or look around. Let me know if you find his car keys!!!!!!"]} typeSpeed={40}/></Html>)}
             {/* //This will show three buttons  */}
             {showButtons && (
                 <>
                     <Html position={[0, 2, 0]} transform>
                         <div className="relative w-[200px] top-[15vh] h-[90px] left-0 flex items-center justify-center">
 
-                            <span className="absolute top-0 mt-1 ml-1 h-12 w-16 rounded-lg bg-drbgclr"></span>
+                            <span className="absolute top-0 mt-1 ml-1 h-10 w-16 rounded-lg bg-drbgclr"></span>
                             <button onClick={handleButton1}
-                                className="absolute top-0 p-1 h-12 w-16 bg-drfgclr  text-xs text-drbgclr rounded-lg ">
+                                className="absolute top-0 p-1 h-10 w-16 bg-drfgclr  text-xs text-drbgclr rounded-lg ">
                                 Portfolio
                             </button>
 
-                            <span className="absolute top-16 left-0 mt-1 ml-1 p-1 h-12 w-16 rounded-lg bg-drbgclr"></span>
+                            <span className="absolute top-12 left-0 mt-1 ml-1 p-1 h-10 w-16 rounded-lg bg-drbgclr"></span>
                             <button onClick={handleButton2}
-                                className="absolute top-16 left-0 p-1 h-12 w-16  bg-drfgclr text-xs text-drbgclr rounded-lg shadow-lg">
+                                className="absolute top-12 left-0 p-1 h-10 w-16  bg-drfgclr text-xs text-drbgclr rounded-lg shadow-lg">
                                 Look Around
                             </button>
 
-                            <span className="absolute top-16 right-0 mt-1 ml-1 p-1 h-12 w-16 rounded-lg bg-drbgclr"></span>
+                            <span className="absolute top-12 right-0 mt-1 ml-1 p-1 h-10 w-16 rounded-lg bg-drbgclr"></span>
                             <button
                                 onClick={handleButton3}
-                                className="absolute top-16 right-1 p-1 h-12 w-16  bg-drfgclr text-xs text-drbgclr rounded-lg shadow-lg">
+                                className="absolute top-12 right-1 p-1 h-10 w-16  bg-drfgclr text-xs text-drbgclr rounded-lg shadow-lg">
                                 Go Back
                             </button>
                         </div>
@@ -316,7 +316,8 @@ const MainSetup = () => {
             </Html>
             )}
             {/* //Use --Infron of every sentence as there is an iteration error  */}
-            {/* {ShowMenu2 && guitarMessage && (<TypedMessage text="--He likes music, He plays guitar sometimes. He is not very good though! "  />)} */}
+            {ShowMenu2 && guitarMessage && ( <Html position={[positionX,positionY,positionZ]} rotation={[rotationX,rotationY,rotationZ]}     className="bg-gray-900  text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60"><Typewriter words={["--He likes music, He plays guitar sometimes. He is not very good though! "]} typeSpeed={40}/></Html>)}
+  
 
         </>
     )
