@@ -68,9 +68,9 @@ const MainSetup = () => {
     };
     const handleBackClick = () => {
         setClicked(true);
-        gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 2 });
-        gsap.to(camera.rotation, { x: 0, y: 0, z: 0, duration: 2 });
-        gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 2 });
+        gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 3 });
+        gsap.to(camera.rotation, { x: 0, y: 0, z: 0, duration: 3 });
+        gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 3 });
         setShowMenu1(false)
         setShowMenu2(false)
         setGuitarMessage(false)
