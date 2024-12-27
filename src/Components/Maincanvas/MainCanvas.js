@@ -8,7 +8,7 @@ import MainSetup from "../MainSetup";
 function MainCanvas() {
   return (
  
-    <Canvas style={{ height: '100vh' }} color="#475569">
+    <Canvas shadows style={{ height: '100vh' }} color="#475569">
       <Environment files="/env.hdr" background />
       <MainSetup/>
     </Canvas>

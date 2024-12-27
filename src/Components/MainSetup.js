@@ -13,7 +13,6 @@ import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { RectAreaLightHelper } from "three/examples/jsm/helpers/RectAreaLightHelper";
 import HoverEffect from './HoverEffect';
 import TypedMessage from './TypedMessage';
-import HtmlMain from './Html Web/HtmlMain';
 
 
 
@@ -22,19 +21,19 @@ const MainSetup = () => {
 
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
-    // const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
-    //     rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
-    //     rotationY: { value: 1.25, min: -4, max: 4, step: 0.01 },
-    //     rotationZ: { value: 0, min: -4, max: 4, step: 0.01 },
-    //     positionX: { value: -5.5, min: -8, max: 8, step: 0.1 },
-    //     positionY: { value: 0.9, min: -8, max: 8, step: 0.1 },
-    //     positionZ: { value: -1.1, min: -8, max: 8, step: 0.1 },
-    //     distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
-    //     distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
-    //     color1: { value: '#ff0000' },
-    //     color2: { value: '#00FFA3' }
+    const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
+        rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
+        rotationY: { value: 1.25, min: -4, max: 4, step: 0.01 },
+        rotationZ: { value: 0, min: -4, max: 4, step: 0.01 },
+        positionX: { value: -0.7, min: -8, max: 8, step: 0.1 },
+        positionY: { value: 4.38, min: -8, max: 8, step: 0.1 },
+        positionZ: { value: -1.2, min: -8, max: 8, step: 0.1 },
+        distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
+        distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
+        color1: { value: '#ff0000' },
+        color2: { value: '#00FFA3' }
 
-    // });
+    });
     const { camera } = useThree();
     const [clicked, setClicked] = useState(false);
     const [showButtons, setShowButtons] = useState(false);
@@ -101,10 +100,10 @@ const MainSetup = () => {
 
     const handleButton3 = () => {
         setShowButtons(false);
-        
+
         gsap.to(camera.position, { x: -11.23, y: 2.72, z: 2.13, duration: 2 });
         gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 2 });
-        
+
         setMenuMessage(false);
         gsap.to(camera.rotation, { x: 0, y: -1.46, z: 0, duration: 2 });
         setTimeout(() => {
@@ -122,7 +121,13 @@ const MainSetup = () => {
     useEffect(() => {
 
         camera.position.set(...initialCameraPosition);
-        camera.rotation.set(...initialCameraRotation)
+        camera.rotation.set(...initialCameraRotation);
+        scene.traverse((child) => {
+            if (child.isMesh) {
+              child.castShadow = true;
+              child.receiveShadow = true;
+            }
+          });
         // if (rectLightRef.current) {
         //     helperRef.current = new RectAreaLightHelper(rectLightRef.current);
         //     rectLightRef.current.add(helperRef.current);
@@ -143,8 +148,8 @@ const MainSetup = () => {
 
     return (
         <>
-            <ambientLight intensity={10} />
-         
+            {/* <ambientLight intensity={10} /> */}
+
             <directionalLight color="white" intensity={1.5}
                 position={[-2.2, 0.39, 4.10]}
             />
@@ -165,23 +170,33 @@ const MainSetup = () => {
                 intensity={100}
                 position={[0.5, 2.3, -0.9]}
                 rotation={[0, -0.28, 0]}
-
                 castShadow
             />
+            <directionalLight
+                color="white"
+                intensity={1.5}
+                position={[-3.2,3.2,0.5]}
+                castShadow
+                shadow-mapSize={[1024, 1024]} 
+                shadow-camera-near={1.2}
+                shadow-camera-far={10}
+                shadow-camera-left={-5}
+                shadow-camera-right={5}
+                shadow-camera-top={5}
+                shadow-camera-bottom={-5}
+            />
             <rectAreaLight
-
                 width={0.3}
                 height={6.1}
                 color="#00ffA3"
                 intensity={100}
                 position={[-6.7, 4.53, -0.03]}
                 rotation={[-1.58, -0.05, -0.3]}
-
                 castShadow
             />
             <color args={['#475569']} attach="background" />
 
-            <primitive ref={modelRef} object={scene} castShadow rotation={[0, 1.28, 0]} onClick={(event) => {
+            <primitive ref={modelRef} object={scene} castShadow  rotation={[0, 1.28, 0]} onClick={(event) => {
                 const validNames = [
                     "Material1-material",
                     "Material2-material",
@@ -190,8 +205,8 @@ const MainSetup = () => {
                     "Material5-material",
                 ];
 
-                if (validNames.includes(event.object.name)&& ShowMenu2) {
-                    setGuitarMessage(true); 
+                if (validNames.includes(event.object.name) && ShowMenu2) {
+                    setGuitarMessage(true);
                     event.stopPropagation();
                 }
 
@@ -203,14 +218,14 @@ const MainSetup = () => {
                     occlude
                     rotation={[2, 4.75, 2]}
                     position={[0.35, 1.367, -0.03]}
-                    style={{ width: '954px', height: '522px', border: 'none', overflow: 'hidden' }} 
+                    style={{ width: '954px', height: '522px', border: 'none', overflow: 'hidden' }}
                     distanceFactor={0.34}
                 >
                     <iframe src="https://protfolio-html.vercel.app/" title='screen'
-                        style={{ width: '954px', height: '522px', border: 'none', overflow: 'hidden' }}/>
-                        {/* <HtmlMain /> */}
+                        style={{ width: '954px', height: '522px', border: 'none', overflow: 'hidden' }} />
+                    {/* <HtmlMain /> */}
 
-            
+
                 </Html>
                 {/* <OrbitControls /> */}
             </primitive>
@@ -237,29 +252,29 @@ const MainSetup = () => {
             {/* //This will show three buttons  */}
             {showButtons && (
                 <>
-                <Html position={[0, 2, 0]} transform>
-                    <div className="relative w-[200px] top-[15vh] h-[90px] left-0 flex items-center justify-center">
+                    <Html position={[0, 2, 0]} transform>
+                        <div className="relative w-[200px] top-[15vh] h-[90px] left-0 flex items-center justify-center">
 
-                        <span className="absolute top-0 mt-1 ml-1 h-12 w-16 rounded-lg bg-drbgclr"></span>
-                        <button onClick={handleButton1}
-                            className="absolute top-0 p-1 h-12 w-16 bg-drfgclr  text-xs text-drbgclr rounded-lg ">
-                            Portfolio
-                        </button>
+                            <span className="absolute top-0 mt-1 ml-1 h-12 w-16 rounded-lg bg-drbgclr"></span>
+                            <button onClick={handleButton1}
+                                className="absolute top-0 p-1 h-12 w-16 bg-drfgclr  text-xs text-drbgclr rounded-lg ">
+                                Portfolio
+                            </button>
 
-                        <span className="absolute top-16 left-0 mt-1 ml-1 p-1 h-12 w-16 rounded-lg bg-drbgclr"></span>
-                        <button onClick={handleButton2}
-                            className="absolute top-16 left-0 p-1 h-12 w-16  bg-drfgclr text-xs text-drbgclr rounded-lg shadow-lg">
-                            Look Around
-                        </button>
+                            <span className="absolute top-16 left-0 mt-1 ml-1 p-1 h-12 w-16 rounded-lg bg-drbgclr"></span>
+                            <button onClick={handleButton2}
+                                className="absolute top-16 left-0 p-1 h-12 w-16  bg-drfgclr text-xs text-drbgclr rounded-lg shadow-lg">
+                                Look Around
+                            </button>
 
-                        <span className="absolute top-16 right-0 mt-1 ml-1 p-1 h-12 w-16 rounded-lg bg-drbgclr"></span>
-                        <button
-                            onClick={handleButton3}
-                            className="absolute top-16 right-1 p-1 h-12 w-16  bg-drfgclr text-xs text-drbgclr rounded-lg shadow-lg">
-                            Go Back
-                        </button>
-                    </div>
-                </Html>
+                            <span className="absolute top-16 right-0 mt-1 ml-1 p-1 h-12 w-16 rounded-lg bg-drbgclr"></span>
+                            <button
+                                onClick={handleButton3}
+                                className="absolute top-16 right-1 p-1 h-12 w-16  bg-drfgclr text-xs text-drbgclr rounded-lg shadow-lg">
+                                Go Back
+                            </button>
+                        </div>
+                    </Html>
                 </>
             )}
             {scene && <HoverEffect scene={scene} />}
@@ -302,7 +317,7 @@ const MainSetup = () => {
             )}
             {/* //Use --Infron of every sentence as there is an iteration error  */}
             {/* {ShowMenu2 && guitarMessage && (<TypedMessage text="--He likes music, He plays guitar sometimes. He is not very good though! "  />)} */}
-            
+
         </>
     )
 }
