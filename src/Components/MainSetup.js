@@ -13,6 +13,7 @@ import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { RectAreaLightHelper } from "three/examples/jsm/helpers/RectAreaLightHelper";
 import HoverEffect from './HoverEffect';
 import TypedMessage from './TypedMessage';
+import { Typewriter } from 'react-simple-typewriter'
 
 
 
@@ -85,7 +86,7 @@ const MainSetup = () => {
         setMenuMessage(false);
         setTimeout(() => {
             setShowMenu1(true);
-        }, 1000);
+        }, 2000);
     };
 
     const handleButton2 = () => {
@@ -95,17 +96,16 @@ const MainSetup = () => {
         setMenuMessage(false);
         setTimeout(() => {
             setShowMenu2(true);
-        }, 1000);
+        }, 2000);
     };
 
     const handleButton3 = () => {
         setShowButtons(false);
 
-        gsap.to(camera.position, { x: -11.23, y: 2.72, z: 2.13, duration: 2 });
+        gsap.to(camera.position, { x: -11.23, y: 2, z: 2.13, duration: 2 });
         gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 2 });
-
-        setMenuMessage(false);
         gsap.to(camera.rotation, { x: 0, y: -1.46, z: 0, duration: 2 });
+        setMenuMessage(false);
         setTimeout(() => {
             setClicked(false);
         }, 1000);
@@ -161,17 +161,17 @@ const MainSetup = () => {
                 intensity={100}
                 position={[-0.7, 4.38, -1.2]}
                 rotation={[-1.5, -0.02, -0.29]}
-                castShadow
+               
             />
-            <rectAreaLight
+            {/* <rectAreaLight
                 width={4}
                 height={0.6}
                 color="#FF0001"
                 intensity={100}
                 position={[0.5, 2.3, -0.9]}
                 rotation={[0, -0.28, 0]}
-                castShadow
-            />
+              
+            /> */}
             <directionalLight
                 color="white"
                 intensity={1.5}
@@ -186,13 +186,13 @@ const MainSetup = () => {
                 shadow-camera-bottom={-5}
             />
             <rectAreaLight
-                width={0.3}
+                width={0.6}
                 height={6.1}
                 color="#00ffA3"
                 intensity={100}
                 position={[-6.7, 4.53, -0.03]}
                 rotation={[-1.58, -0.05, -0.3]}
-                castShadow
+               
             />
             <color args={['#475569']} attach="background" />
 
@@ -230,25 +230,25 @@ const MainSetup = () => {
                 {/* <OrbitControls /> */}
             </primitive>
             {!clicked && (
-                <Html position={[0, 3, 0]} rotation={[0, -1.46, 0]} transform className="h-screen w-screen bg-drbgclr bg-opacity-50">
+                <Html occlude position={[-7.1, 3, -0.6]} scale={0.3} rotation={[0, -1.86, 0]} transform className="h-screen w-screen  ">
                     <div
-                        className="flex flex-col items-center justify-center h-[30vh] w-[30vw] bg-drbgclr fixed top-1/2 right-0 mr-20 rounded-xl -translate-y-1/2
-                          transform transition-all duration-500 ease-in-out scale-90 hover:scale-100 
-                          translate-x-10 hover:translate-x-0"
+                        className="flex flex-col items-center justify-center h-[20vh] w-[30vw] bg-drbgclr fixed bottom-0 rounded-xl 
+    transform transition-all duration-500 ease-in-out scale-90 hover:scale-100 mx-auto 
+    left-1/2  -translate-x-1/2"
                     >
-                        <div className="text-white mb-4 opacity-100 animate-fade-in text-center">
+                        <div className="text-white text-xl mb-4 opacity-100 animate-fade-in text-center">
                             <p>Do you really want to risk it all?</p>
                         </div>
                         <button
                             onClick={handleClick}
-                            className="p-4 bg-drfgclr text-drbgclr rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600"
+                            className="p-4 bg-drfgclr text-drbgclr text-xl font-bold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600"
                         >
                             Yes
                         </button>
                     </div>
                 </Html>
             )}
-            {/* {menuMessage && (<TypedMessage text="--Okay you can have a tour. I won't tell him. You are not here to steal something right?? " />)} */}
+            {menuMessage && (<Html position={[positionX,positionY,positionZ]} className="bg-gray-900  text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60"><Typewriter words={["Okay you can have a tour. I won't tell him. You are not here to steal something right?? "]} typeSpeed={50}/></Html>)}
             {/* //This will show three buttons  */}
             {showButtons && (
                 <>
@@ -284,8 +284,8 @@ const MainSetup = () => {
                 transform
                 occlude
                 rotation={[0, -0.36, 0]}
-                scale={0.35}
-                position={[0.22, 1.39, -0.19]} >
+                scale={0.25}
+                position={[0.22, 1.35, -0.19]} >
 
                 <button
                     className=" text-white rounded-full  w-[2px] h-[2px]"
