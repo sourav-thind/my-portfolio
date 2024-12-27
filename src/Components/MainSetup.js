@@ -206,9 +206,9 @@ const MainSetup = () => {
                     style={{ width: '954px', height: '522px', border: 'none', overflow: 'hidden' }} 
                     distanceFactor={0.34}
                 >
-                    {/* <iframe src="https://protfolio-html.vercel.app/" title='screen'
-                        style={{ width: '954px', height: '522px', border: 'none', overflow: 'hidden' }} */}
-                        <HtmlMain />
+                    <iframe src="https://protfolio-html.vercel.app/" title='screen'
+                        style={{ width: '954px', height: '522px', border: 'none', overflow: 'hidden' }}/>
+                        {/* <HtmlMain /> */}
 
             
                 </Html>
