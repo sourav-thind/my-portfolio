@@ -5,10 +5,6 @@ import { Leva, useControls } from 'leva';
 import * as THREE from 'three';
 import { useLoader, useThree } from '@react-three/fiber';
 import gsap from "gsap";
-import { AwesomeButton, AwesomeButtonProgress, AwesomeButtonSocial, } from 'react-awesome-button';
-import { RGB_PVRTC_2BPPV1_Format } from 'three';
-import { directPointLight } from 'three/tsl';
-import { AxesHelper } from "three";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { RectAreaLightHelper } from "three/examples/jsm/helpers/RectAreaLightHelper";
 import HoverEffect from './HoverEffect';
@@ -36,7 +32,7 @@ const MainSetup = () => {
 
     });
     const { camera } = useThree();
-    const [clicked, setClicked] = useState(false);
+    const [clicked, setClicked] = useState(true);
     const [showButtons, setShowButtons] = useState(false);
     const [ShowMenu1, setShowMenu1] = useState(false);
     const [ShowMenu2, setShowMenu2] = useState(false);
@@ -44,12 +40,12 @@ const MainSetup = () => {
     const [menuMessage, setMenuMessage] = useState(false);
 
 
-    const initialCameraPosition = [-11.23, 2, 2.13];
-    const initialCameraRotation = [0, -1.46, 0];
+    const initialCameraPosition = [-10.4, 2, 2];
+    const initialCameraRotation = [0, -1.5, 0];
     const initialModelRotation = [0, 0, 0];
 
     const newCameraPosition = [0, 1, 4];
-    const newModelRotation = [0, 1.28, 0];
+    const newModelRotation = [0, 1, 0];
     const rectLightRef = useRef(null);
     const helperRef = useRef(null);
     const cameraRef = useRef(initialCameraPosition);
@@ -128,6 +124,9 @@ const MainSetup = () => {
               child.receiveShadow = true;
             }
           });
+          setTimeout(() => {
+            setClicked(false)
+          }, 2000);
         // if (rectLightRef.current) {
         //     helperRef.current = new RectAreaLightHelper(rectLightRef.current);
         //     rectLightRef.current.add(helperRef.current);
@@ -158,7 +157,7 @@ const MainSetup = () => {
                 width={11}
                 height={0.6}
                 color="#00ffA3"
-                intensity={100}
+                intensity={50}
                 position={[-0.7, 4.38, -1.2]}
                 rotation={[-1.5, -0.02, -0.29]}
                
@@ -230,25 +229,28 @@ const MainSetup = () => {
                 {/* <OrbitControls /> */}
             </primitive>
             {!clicked && (
-                <Html occlude position={[-7.1, 3, -0.6]} scale={0.3} rotation={[0, -1.86, 0]} transform className="h-screen w-screen  ">
+                <Html occlude position={[-7.3, 3, -0.35]} scale={0.3} rotation={[0, -1.86, 0]} transform className="h-screen w-screen  ">
                     <div
-                        className="flex flex-col items-center justify-center h-[20vh] w-[30vw] bg-drbgclr fixed bottom-0 rounded-xl 
-    transform transition-all duration-500 ease-in-out scale-90 hover:scale-100 mx-auto 
+                        className="flex flex-col items-center justify-center h-[30vh] w-[45vw] bg-drbgclr fixed bottom-0 rounded-xl 
+    transform transition-all duration-500 ease-in-out scale-90 hover:scale-95 mx-auto 
     left-1/2  -translate-x-1/2"
                     >
-                        <div className="text-white text-xl mb-4 opacity-100 animate-fade-in text-center">
-                            <p>Do you really want to risk it all?</p>
+                        <div className='flex flex-row'>
+                            <img src="/nava.png" alt="nava the assistat" className='h-14 w-14 pr-0 pb-0'/>
+                        <div className="text-white text-2xl font- opacity-100 animate-fade-in text-center p-4">
+                        <Typewriter  words={["Thats What he told me to tell everyone,             You can skip everthing and visit porfolio with that corner button,            or you can go with the flow with this button below. I DON'T CARE EITHER WAY."]} typeSpeed={30}/>
+                        </div>
                         </div>
                         <button
                             onClick={handleClick}
-                            className="p-4 bg-drfgclr text-drbgclr text-xl font-bold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600"
+                            className="px-6 py-2 bg-drfgclr text-drbgclr text-2xl font-bold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600"
                         >
-                            Yes
+                            Go with the flow
                         </button>
                     </div>
                 </Html>
             )}
-            {menuMessage && (<Html position={[-1.2,3.4,2.8]} className="bg-gray-900  text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60"><Typewriter words={["Okay you can have a tour. I won't tell him.           You are not here to steal something right??             You can watch is portfolio, or look around. Let me know if you find his car keys!!!!!!"]} typeSpeed={40}/></Html>)}
+            {menuMessage && (<Html position={[-1.2,3.4,2.8]} className="bg-gray-900  flex flex-row text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60"> <img src="/nava.png" alt="nava the assistat" className='h-14 w-14'/><Typewriter  words={["I am Naeva, his virtual assistant. You can have a tour. I won't tell him.     You are not here to steal something right??        You can watch is portfolio, or look around. Let me know if you find his car keys!!!!!!"]} typeSpeed={30}/></Html>)}
             {/* //This will show three buttons  */}
             {showButtons && (
                 <>
