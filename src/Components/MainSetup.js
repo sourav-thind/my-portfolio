@@ -18,19 +18,19 @@ const MainSetup = () => {
 
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
-    const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
-        rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
-        rotationY: { value: 1.25, min: -4, max: 4, step: 0.01 },
-        rotationZ: { value: 0, min: -4, max: 4, step: 0.01 },
-        positionX: { value: -8, min: -10, max: 10, step: 0.1 },
-        positionY: { value: 4.7, min: -10, max: 10, step: 0.1 },
-        positionZ: { value: 2.10, min: -10, max: 10, step: 0.1 },
-        distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
-        distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
-        color1: { value: '#ff0000' },
-        color2: { value: '#00FFA3' }
+    // const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
+    //     rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
+    //     rotationY: { value: 1.25, min: -4, max: 4, step: 0.01 },
+    //     rotationZ: { value: 0, min: -4, max: 4, step: 0.01 },
+    //     positionX: { value: -8, min: -10, max: 10, step: 0.1 },
+    //     positionY: { value: 4.7, min: -10, max: 10, step: 0.1 },
+    //     positionZ: { value: 2.10, min: -10, max: 10, step: 0.1 },
+    //     distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
+    //     distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
+    //     color1: { value: '#ff0000' },
+    //     color2: { value: '#00FFA3' }
 
-    });
+    // });
     const { camera } = useThree();
     const [clicked, setClicked] = useState(true);
     const [showButtons, setShowButtons] = useState(false);
@@ -40,9 +40,12 @@ const MainSetup = () => {
     const [menuMessage, setMenuMessage] = useState(false);
 
 
-    const initialCameraPosition = [-10.4, 2, 2];
-    const initialCameraRotation = [0, -1.5, 0];
+    const initialCameraPosition = [-8.9, 3.2, -1];
+    const animatedCameraPosition = [-10.50, 2.2, 2.13];
+    const initialCameraRotation = [0, -1.85, 0];
+    const animatedCameraRotation = [0, -1.46, 0];
     const initialModelRotation = [0, 0, 0];
+    const animatedModelRotation = [0, 1.28  , 0];
 
     const newCameraPosition = [0, 1, 4];
     const newModelRotation = [0, 1, 0];
@@ -125,23 +128,28 @@ const MainSetup = () => {
             }
           });
           setTimeout(() => {
-            setClicked(false)
-          }, 2000);
-        // if (rectLightRef.current) {
-        //     helperRef.current = new RectAreaLightHelper(rectLightRef.current);
-        //     rectLightRef.current.add(helperRef.current);
-        // }
-        // camera.rotation.set(0,2.50,0)
-        // camera.position.set(...initialCameraPosition);
-        // camera.rotation.set(rotationX,rotationY,rotationZ)
-        // scene.position.set(...initialModelRotation)
+            setClicked(false);
+            gsap.to(camera.position, {
+                x: animatedCameraPosition[0], 
+                y: animatedCameraPosition[1], 
+                z: animatedCameraPosition[2],
+                duration: 3
+            });
+            gsap.to(camera.rotation, {
+                x: animatedCameraRotation[0], 
+                y: animatedCameraRotation[1], 
+                z: animatedCameraRotation[2],
+                duration: 3
+            });
+            gsap.to(modelRef.current.rotation, {
+                x: animatedModelRotation[0], 
+                y: animatedModelRotation[1], 
+                z: animatedModelRotation[2],
+                duration: 3
+          })}, 5000);
+    
     }, [camera]);
-    // useEffect(() => {
-    //     // camera.position.set(0.35,2,2.43);
-    //     // camera.position.set(positionX,positionY,positionZ);
-    //     // camera.rotation.set(rotationX,rotationY,rotationZ)
-    //     // scene.position.set(...initialModelRotation)
-    // }, [rotationX, rotationY, rotationZ]);
+
 
 
 
@@ -162,15 +170,7 @@ const MainSetup = () => {
                 rotation={[-1.5, -0.02, -0.29]}
                
             />
-            {/* <rectAreaLight
-                width={4}
-                height={0.6}
-                color="#FF0001"
-                intensity={100}
-                position={[0.5, 2.3, -0.9]}
-                rotation={[0, -0.28, 0]}
-              
-            /> */}
+          
             <directionalLight
                 color="white"
                 intensity={1.5}
@@ -228,7 +228,7 @@ const MainSetup = () => {
                 </Html>
                 {/* <OrbitControls /> */}
             </primitive>
-            {!clicked && (
+            {!clicked && (<>
                 <Html occlude position={[-7.3, 3, -0.35]} scale={0.3} rotation={[0, -1.86, 0]} transform className="h-screen w-screen  ">
                     <div
                         className="flex flex-col items-center justify-center h-[30vh] w-[45vw] bg-drbgclr fixed bottom-0 rounded-xl 
@@ -249,8 +249,21 @@ const MainSetup = () => {
                         </button>
                     </div>
                 </Html>
+                <Html position={[-2, -3, 8]} className='h-screen w-screen z-10'>
+                <div className="flex flex-col items-center justify-center h-[15vh] w-[20vw] bg-drbgclr fixed bottom-0 rounded-xl  mx-auto hover:scale-110 ">
+                    <p className='text-white text-xl font-semibold'>Skip Everything and </p>
+                <button onClick={handleButton1}
+                            className="px-3 py-1 bg-drfgclr text-drbgclr text-xl font-semibold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600">
+                            Visit Portfolio
+                        </button>
+                </div>
+                </Html>
+                </>
             )}
-            {menuMessage && (<Html position={[-1.2,3.4,2.8]} className="bg-gray-900  flex flex-row text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60"> <img src="/nava.png" alt="nava the assistat" className='h-14 w-14'/><Typewriter  words={["I am Naeva, his virtual assistant. You can have a tour. I won't tell him.     You are not here to steal something right??        You can watch is portfolio, or look around. Let me know if you find his car keys!!!!!!"]} typeSpeed={30}/></Html>)}
+            {menuMessage && (<Html position={[-1.2,3.4,2.8]} className="bg-gray-900  flex flex-row text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60">
+                 <img src="/nava.png" alt="nava the assistat" className='h-14 w-14'/>
+                 <Typewriter  words={["I am Naeva, his virtual assistant. You can have a tour. I won't tell him.     You are not here to steal something right??                        You can watch is portfolio, or look around. Let me know if you find his car keys!!!!!!"]} typeSpeed={30}/>
+                 </Html>)}
             {/* //This will show three buttons  */}
             {showButtons && (
                 <>
@@ -279,7 +292,7 @@ const MainSetup = () => {
                     </Html>
                 </>
             )}
-            {scene && <HoverEffect scene={scene} />}
+            {/* {scene && <HoverEffect scene={scene} />} */}
 
 
             {ShowMenu1 && (< Html
@@ -318,7 +331,11 @@ const MainSetup = () => {
             </Html>
             )}
             {/* //Use --Infron of every sentence as there is an iteration error  */}
-            {ShowMenu2 && guitarMessage && ( <Html position={[positionX,positionY,positionZ]} rotation={[rotationX,rotationY,rotationZ]}     className="bg-gray-900  text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60"><Typewriter words={["--He likes music, He plays guitar sometimes. He is not very good though! "]} typeSpeed={40}/></Html>)}
+            {ShowMenu2 && guitarMessage && ( 
+                <Html position={[-8,4.7,2.10]} rotation={[0,1.25,0]}     className=" flex flex-row bg-gray-900  text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60">
+                    <img src="/nava.png" alt="nava the assistat" className='h-14 w-14'/>
+                    <Typewriter words={["He likes music, He plays guitar sometimes. He is not very good though!                     Imagine I have to tell him everytime he should be a full time guitarist."]} typeSpeed={40}/>
+                    </Html>)}
   
 
         </>

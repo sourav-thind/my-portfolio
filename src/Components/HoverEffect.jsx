@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { Html } from "@react-three/drei";
 import * as THREE from "three";
 
-// Component to handle the typing message animation
 const TypedMessage = ({ text }) => {
   const [typedText, setTypedText] = useState("");
 
@@ -34,7 +33,6 @@ const TypedMessage = ({ text }) => {
   );
 };
 
-// Main Hover Effect Component
 const HoverEffect = ({ scene }) => {
   const [hovered, setHovered] = useState(false);
   const [hoverPosition, setHoverPosition] = useState([0, 0, 0]);
@@ -47,9 +45,7 @@ const HoverEffect = ({ scene }) => {
               onClick: () => {
               console.log("found it");
               setHovered(true);
-            // const position = new THREE.Vector3();
-            // object.getWorldPosition(position);
-            // setHoverPosition([position.x, position.y + 1.5, position.z]); // Message appears slightly above the model
+          
           },
           onPointerOut: () => {
             setHovered(false);
