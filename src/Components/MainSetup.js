@@ -18,19 +18,19 @@ const MainSetup = () => {
 
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
-    // const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
-    //     rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
-    //     rotationY: { value: 1.25, min: -4, max: 4, step: 0.01 },
-    //     rotationZ: { value: 0, min: -4, max: 4, step: 0.01 },
-    //     positionX: { value: -8, min: -10, max: 10, step: 0.1 },
-    //     positionY: { value: 4.7, min: -10, max: 10, step: 0.1 },
-    //     positionZ: { value: 2.10, min: -10, max: 10, step: 0.1 },
-    //     distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
-    //     distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
-    //     color1: { value: '#ff0000' },
-    //     color2: { value: '#00FFA3' }
+    const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
+        rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
+        rotationY: { value: 1.37, min: -4, max: 4, step: 0.01 },
+        rotationZ: { value: -0.05, min: -4, max: 4, step: 0.01 },
+        positionX: { value: 0, min: -10, max: 10, step: 0.1 },
+        positionY: { value: 1.37, min: -10, max: 10, step: 0.1 },
+        positionZ: { value: -0.05, min: -10, max: 10, step: 0.1 },
+        distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
+        distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
+        color1: { value: '#ff0000' },
+        color2: { value: '#00FFA3' }
 
-    // });
+    });
     const { camera } = useThree();
     const [clicked, setClicked] = useState(true);
     const [showButtons, setShowButtons] = useState(false);
@@ -80,8 +80,8 @@ const MainSetup = () => {
     };
     const handleButton1 = () => {
         setShowButtons(false);
-        gsap.to(camera.position, { x: -0.05, y: 1.38, z: -0.04, duration: 2 });
-        gsap.to(camera.rotation, { x: 0, y: -0.33, z: 0, duration: 2 });
+        gsap.to(camera.position, { x: 0, y: 1.36, z: -0.067, duration: 2 });
+        gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 2 });
         setMenuMessage(false);
         setTimeout(() => {
             setShowMenu1(true);
@@ -117,6 +117,15 @@ const MainSetup = () => {
 
 
 
+    // useEffect(() => {
+
+    //     camera.position.set([rotationX, rotationY,rotationZ]);
+    //     camera.rotation.set([0,-0.31,0]);
+      
+      
+    
+    // }, [camera]);
+
     useEffect(() => {
 
         camera.position.set(...initialCameraPosition);
@@ -146,7 +155,7 @@ const MainSetup = () => {
                 y: animatedModelRotation[1], 
                 z: animatedModelRotation[2],
                 duration: 3
-          })}, 5000);
+          })}, 50);
     
     }, [camera]);
 
@@ -157,7 +166,7 @@ const MainSetup = () => {
         <>
             {/* <ambientLight intensity={10} /> */}
 
-            <directionalLight color="white" intensity={1.5}
+            {/* <directionalLight color="white" intensity={1.5}
                 position={[-2.2, 0.39, 4.10]}
             />
 
@@ -169,22 +178,22 @@ const MainSetup = () => {
                 position={[-0.7, 4.38, -1.2]}
                 rotation={[-1.5, -0.02, -0.29]}
                
-            />
+            /> */}
           
             <directionalLight
                 color="white"
-                intensity={1.5}
-                position={[-3.2,3.2,0.5]}
+                intensity={3}
+                position={[-2,3.2,0.5]}
                 castShadow
                 shadow-mapSize={[1024, 1024]} 
-                shadow-camera-near={1.2}
+                shadow-camera-near={1}
                 shadow-camera-far={10}
                 shadow-camera-left={-5}
                 shadow-camera-right={5}
                 shadow-camera-top={5}
                 shadow-camera-bottom={-5}
             />
-            <rectAreaLight
+            {/* <rectAreaLight
                 width={0.6}
                 height={6.1}
                 color="#00ffA3"
@@ -192,7 +201,7 @@ const MainSetup = () => {
                 position={[-6.7, 4.53, -0.03]}
                 rotation={[-1.58, -0.05, -0.3]}
                
-            />
+            /> */}
             <color args={['#475569']} attach="background" />
 
             <primitive ref={modelRef} object={scene} castShadow  rotation={[0, 1.28, 0]} onClick={(event) => {
@@ -215,13 +224,13 @@ const MainSetup = () => {
                     ref={iframeRef}
                     transform
                     occlude
-                    rotation={[2, 4.75, 2]}
-                    position={[0.35, 1.367, -0.03]}
-                    style={{ width: '954px', height: '522px', border: 'none', overflow: 'hidden' }}
-                    distanceFactor={0.34}
+                    rotation={[1.95, 4.75, 1.95]}
+                    position={[0.34, 1.367, -0.018  ]}
+                    style={{ width: '1048PX', height: '522px', border: 'none', overflow: 'hidden' }}
+                    distanceFactor={0.342}
                 >
                     <iframe src="https://protfolio-html.vercel.app/" title='screen'
-                        style={{ width: '954px', height: '522px', border: 'none', overflow: 'hidden' }} />
+                        style={{ width: '1048px', height: '522px', border: 'none', overflow: 'hidden' }} />
                     {/* <HtmlMain /> */}
 
 
@@ -299,8 +308,8 @@ const MainSetup = () => {
                 transform
                 occlude
                 rotation={[0, -0.36, 0]}
-                scale={0.25}
-                position={[0.22, 1.35, -0.19]} >
+                scale={0.15}
+                position={[0.23, 1.32, -0.17]} >
 
                 <button
                     className=" text-white rounded-full  w-[2px] h-[2px]"
