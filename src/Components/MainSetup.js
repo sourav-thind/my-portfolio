@@ -229,7 +229,7 @@ const MainSetup = () => {
                 {/* <OrbitControls /> */}
             </primitive>
             {!clicked && (<>
-                <Html occlude position={[-7.3, 3, -0.35]} scale={0.3} rotation={[0, -1.86, 0]} transform className="h-screen w-screen  ">
+                <Html occlude position={[-7.3, 3, -0.35]} scale={0.3} rotation={[0, -1.86, 0]} transform className="h-screen w-screen  " zIndexRange={[0, 10]}>
                     <div
                         className="flex flex-col items-center justify-center h-[30vh] w-[45vw] bg-drbgclr fixed bottom-0 rounded-xl 
     transform transition-all duration-500 ease-in-out scale-90 hover:scale-95 mx-auto 
@@ -249,7 +249,7 @@ const MainSetup = () => {
                         </button>
                     </div>
                 </Html>
-                <Html position={[-2, -3, 8]} className='h-screen w-screen z-10'>
+                <Html position={[-2, -3, 8]} className='h-screen w-screen' zIndexRange={[0, 10]}>
                 <div className="flex flex-col items-center justify-center h-[15vh] w-[20vw] bg-drbgclr fixed bottom-0 rounded-xl  mx-auto hover:scale-110 ">
                     <p className='text-white text-xl font-semibold'>Skip Everything and </p>
                 <button onClick={handleButton1}
