@@ -40,7 +40,7 @@ const MainSetup = () => {
     const [ShowMenu2, setShowMenu2] = useState(false);
     const [guitarMessage, setGuitarMessage] = useState(false);
     const [menuMessage, setMenuMessage] = useState(false);
-
+    const [widthVar, setWidthVar] = useState(1);
 
     const initialCameraPosition = [-8.9, 3.2, -1];
     const animatedCameraPosition = [-10.50, 2.2, 2.13];
@@ -58,7 +58,7 @@ const MainSetup = () => {
 
     const aspectRatio = window.innerWidth / window.innerHeight;
     var scaleVar = 3.1/aspectRatio;
-
+    var WidthVar =1;
     const getScreenCategory = () => {
         const width = window.innerWidth;
 
@@ -69,8 +69,60 @@ const MainSetup = () => {
         if (width >= 1560) return 'xl';
     
     };
+
+    useEffect(() => {
+        const updateWidthVar = () => {
+          if (window.innerWidth <= 500) {
+            setWidthVar(3.4);
+
+          } 
+          else if (window.innerWidth <= 768) {
+            setWidthVar(2);
+
+          } 
+          else if (window.innerWidth <= 900) {
+            setWidthVar(1.61);
+
+          } 
+          else if (window.innerWidth <= 1024) {
+            setWidthVar(1.465);
+
+          } 
+          else if (window.innerWidth <= 1200) {
+            setWidthVar(1.35);
+            
+          } 
+          else if (window.innerWidth <= 1320) {
+            setWidthVar(1.24);
+
+          } 
+          else if (window.innerWidth <= 1440) {
+            setWidthVar(1.07);
+
+          } 
+          else if (window.innerWidth <= 1600) {
+            setWidthVar(1);
+
+          } 
+          else if (window.innerWidth <= 1920) {
+            setWidthVar(0.8);
+
+          } 
+          else {
+            setWidthVar(0.7);
+          }
+        };
+    
+        updateWidthVar();
+    
+        window.addEventListener('resize', updateWidthVar);
+    
+        return () => {
+          window.removeEventListener('resize', updateWidthVar);
+        };
+      }, []);
     const screenCategory = getScreenCategory();
-    console.log(scaleVar, 1/scaleVar)
+    console.log(window.innerHeight)
     const handleClick = () => {
         setClicked(true);
         gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 1.5 });
@@ -262,7 +314,7 @@ const MainSetup = () => {
                     ref={iframeRef}
                     transform
                     occlude
-                    scale={1/scaleVar}
+                    scale={widthVar/scaleVar}
                     rotation={[1.95, 4.75, 1.95]}
                     position={[0.331, 1.367, -0.018]}
                     style={{ width: window.innerWidth, height: window.innerHeight, border: 'none', overflow: 'hidden' }}
@@ -295,7 +347,7 @@ const MainSetup = () => {
                         </button>
                     </div>
                 </Html>
-                <Html position={[-2, -3, 8]} className='h-screen w-screen' zIndexRange={[0, 10]}>
+                <Html position={[-2, -3, 6]} className='h-screen w-screen' zIndexRange={[0, 10]}>
                     <div className="flex flex-col items-center justify-center h-[15vh] w-[20vw] bg-drbgclr fixed bottom-0 rounded-xl  mx-auto hover:scale-110 ">
                         <p className='text-white text-xl font-semibold'>Skip Everything and </p>
                         <button onClick={handleButton1}
@@ -346,7 +398,7 @@ const MainSetup = () => {
                 occlude
                 rotation={[0, -0.36, 0]}
                 scale={0.15}
-                position={[0.1*aspectRatio, 1.34, -0.17]} >
+                position={[0.1*aspectRatio, 1.3, -0.17]} >
 
                 <button
                     className=" text-white rounded-full  w-[2px] h-[2px]"
