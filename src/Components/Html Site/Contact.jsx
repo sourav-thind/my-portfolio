@@ -54,7 +54,7 @@ const Contact = () => {
       <div className="  right-4 z-50 text-drbgclr px-4 py-2 rounded">
         {showToast && <Toast />}
       </div>
-      <div className="bg-drbgclr flex mx-auto justify-center  h-screen  ">
+      <div className="bg-drbgclr flex mx-auto justify-center  h-[90vh]  ">
         <div className="flex flex-col items-center space-y-2">
           <h1 className="tracking-[20px] text-2xl md:text-3xl lg:text-3xl text-drwht uppercase font-semibold ">Contact</h1>
           <h2 className="text-drfgclr md:flex justify-center lg:flex-row items-center flex flex-col font-semibold text-lg md:font-semibold mt-0 uppercase gap-2">

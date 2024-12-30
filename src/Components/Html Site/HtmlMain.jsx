@@ -13,7 +13,7 @@ const HtmlMain = () => {
       <title>{" Sourav's Portfolio "}</title>
 
 
-    <div className="h-screen overflow-x-hidden scrollbar-none">
+    <div className="h-screen overflow-x-hidden scrollbar-hide">
 
       {/* <div className="overflow-x-hidden">
         <section className="h-screen w-screen   bg-slate-600  ">
@@ -43,7 +43,7 @@ const HtmlMain = () => {
            <section className="" id='contact'>
           <Contact /> 
          </section> 
-          <footer className='sticky bottom-5 w-full cursor-pointer z-50 flex flex-row justify-evenly '>
+          <footer className='sticky bottom-5 md:bottom-0 w-full cursor-pointer z-50 flex flex-row justify-evenly space-x-[30vw]  '>
         <a href='#hero'>
             <div className='flex items-center justify-center'>
               <img

@@ -20,19 +20,19 @@ const MainSetup = () => {
 
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
-    const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
-        rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
-        rotationY: { value: 1.37, min: -4, max: 4, step: 0.01 },
-        rotationZ: { value: -0.05, min: -4, max: 4, step: 0.01 },
-        positionX: { value: -8, min: -10, max: 10, step: 0.1 },
-        positionY: { value: 3.2, min: -10, max: 10, step: 0.1 },
-        positionZ: { value: -2, min: -10, max: 10, step: 0.1 },
-        distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
-        distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
-        color1: { value: '#ff0000' },
-        color2: { value: '#00FFA3' }
+    // const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
+    //     rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
+    //     rotationY: { value: 1.37, min: -4, max: 4, step: 0.01 },
+    //     rotationZ: { value: -0.05, min: -4, max: 4, step: 0.01 },
+    //     positionX: { value: -8, min: -10, max: 10, step: 0.1 },
+    //     positionY: { value: 3.2, min: -10, max: 10, step: 0.1 },
+    //     positionZ: { value: -2, min: -10, max: 10, step: 0.1 },
+    //     distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
+    //     distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
+    //     color1: { value: '#ff0000' },
+    //     color2: { value: '#00FFA3' }
 
-    });
+    // });
     const { camera } = useThree();
     const [clicked, setClicked] = useState(true);
     const [showButtons, setShowButtons] = useState(false);
@@ -47,7 +47,7 @@ const MainSetup = () => {
     const initialCameraRotation = [0, -1.85, 0];
     const animatedCameraRotation = [0, -1.46, 0];
     const initialModelRotation = [0, 0, 0];
-    const animatedModelRotation = [0, 1.28  , 0];
+    const animatedModelRotation = [0, 1.28, 0];
 
     const newCameraPosition = [0, 1, 4];
     const newModelRotation = [0, 1, 0];
@@ -56,7 +56,21 @@ const MainSetup = () => {
     const cameraRef = useRef(initialCameraPosition);
     const modelRef = useRef(initialModelRotation);
 
+    const aspectRatio = window.innerWidth / window.innerHeight;
+    
 
+    const getScreenCategory = () => {
+        const width = window.innerWidth;
+
+        if (width < 640) return 'phone';
+        if (width >= 640 && width < 1024) return 'tablet';
+        if (width >= 1024 && width <= 1280) return 'laptop';
+        if (width > 1280 && width < 1560) return 'desktop';
+        if (width >= 1560) return 'xl';
+    
+    };
+    const screenCategory = getScreenCategory();
+    console.log(window.innerHeight, window.innerWidth)
     const handleClick = () => {
         setClicked(true);
         gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 1.5 });
@@ -82,8 +96,36 @@ const MainSetup = () => {
     };
     const handleButton1 = () => {
         setShowButtons(false);
-        gsap.to(camera.position, { x: 0, y: 1.36, z: -0.067, duration: 1.5 });
-        gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
+        switch (screenCategory) {
+            case 'phone':
+                gsap.to(camera.position, { x: 0, y: 1, z: 1, duration: 1.5 });
+                gsap.to(camera.rotation, { x: 0.1, y: -0.2, z: 0, duration: 1.5 });
+                break;
+
+            case 'tablet':
+                gsap.to(camera.position, { x: 0, y: 1.2, z: 0.5, duration: 1.5 });
+                gsap.to(camera.rotation, { x: 0.05, y: -0.25, z: 0, duration: 1.5 });
+                break;
+
+            case 'laptop':
+                gsap.to(camera.position, { x: 0, y: 1.36, z: -0.067, duration: 1.5 });
+                gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
+                break;
+
+            case 'desktop':
+                gsap.to(camera.position, { x: 0, y: 1.36, z: -0.067, duration: 1.5 });
+                gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
+                break;
+
+            case 'xl':
+                gsap.to(camera.position, { x: 0, y: 1.36, z: -0.067, duration: 1.5 });
+                gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
+                break;
+
+            default:
+                console.log('Unrecognized screen size');
+        }
+
         setMenuMessage(false);
         setTimeout(() => {
             setShowMenu1(true);
@@ -118,48 +160,41 @@ const MainSetup = () => {
 
 
 
-
-    // useEffect(() => {
-
-    //     camera.position.set([rotationX, rotationY,rotationZ]);
-    //     camera.rotation.set([0,-0.31,0]);
-      
-      
-    
-    // }, [camera]);
-
     useEffect(() => {
 
         camera.position.set(...initialCameraPosition);
         camera.rotation.set(...initialCameraRotation);
         scene.traverse((child) => {
             if (child.isMesh) {
-              child.castShadow = true;
-              child.receiveShadow = true;
+                child.castShadow = true;
+                child.receiveShadow = true;
             }
-          });
-          setTimeout(() => {
+        });
+        setTimeout(() => {
             setClicked(false);
             gsap.to(camera.position, {
-                x: animatedCameraPosition[0], 
-                y: animatedCameraPosition[1], 
+                x: animatedCameraPosition[0],
+                y: animatedCameraPosition[1],
                 z: animatedCameraPosition[2],
                 duration: 1.5
             });
             gsap.to(camera.rotation, {
-                x: animatedCameraRotation[0], 
-                y: animatedCameraRotation[1], 
+                x: animatedCameraRotation[0],
+                y: animatedCameraRotation[1],
                 z: animatedCameraRotation[2],
                 duration: 1.5
             });
             gsap.to(modelRef.current.rotation, {
-                x: animatedModelRotation[0], 
-                y: animatedModelRotation[1], 
+                x: animatedModelRotation[0],
+                y: animatedModelRotation[1],
                 z: animatedModelRotation[2],
-                duration: 1.5   
-          })}, 50);
-    
+                duration: 1.5
+            })
+        }, 50);
+
     }, [camera]);
+
+
 
 
 
@@ -181,14 +216,14 @@ const MainSetup = () => {
                 rotation={[-1.5, -0.02, -0.29]}
                
             /> */}
-          
-          <directionalLight
+
+            <directionalLight
                 color="white"
                 intensity={3}
-                position={[-2.6,2.7,-0.8]}
-                
+                position={[-2.6, 2.7, -0.8]}
+
                 castShadow
-                shadow-mapSize={[1024, 1024]} 
+                shadow-mapSize={[1024, 1024]}
                 shadow-camera-near={1}
                 shadow-camera-far={10}
                 shadow-camera-left={-5}
@@ -207,7 +242,7 @@ const MainSetup = () => {
             /> */}
             <color args={['#475569']} attach="background" />
 
-            <primitive ref={modelRef} object={scene} castShadow  rotation={[0, 1.28, 0]} onClick={(event) => {
+            <primitive ref={modelRef} object={scene} castShadow rotation={[0, 1.28, 0]} onClick={(event) => {
                 const validNames = [
                     "Material1-material",
                     "Material2-material",
@@ -227,14 +262,13 @@ const MainSetup = () => {
                     ref={iframeRef}
                     transform
                     occlude
+                    scale={1/1.465}
                     rotation={[1.95, 4.75, 1.95]}
-                    position={[0.331, 1.367, -0.018  ]}
-                    style={{ width: '1048PX', height: '500px', border: 'none', overflow: 'hidden' }}
-                    distanceFactor={0.33}
+                    position={[0.331, 1.367, -0.018]}
+                    style={{ width: window.innerWidth, height: window.innerHeight, border: 'none', overflow: 'hidden' }}
+                    distanceFactor={0.33}  
                 >
-                    {/* <iframe src="https://protfolio-html.vercel.app/" title='screen'
-                        style={{ width: '1048px', height: '5px', border: 'none', overflow: 'hidden' }} /> */}
-                    <HtmlMain/>
+                    <HtmlMain />
 
 
                 </Html>
@@ -262,20 +296,20 @@ const MainSetup = () => {
                     </div>
                 </Html>
                 <Html position={[-2, -3, 8]} className='h-screen w-screen' zIndexRange={[0, 10]}>
-                <div className="flex flex-col items-center justify-center h-[15vh] w-[20vw] bg-drbgclr fixed bottom-0 rounded-xl  mx-auto hover:scale-110 ">
-                    <p className='text-white text-xl font-semibold'>Skip Everything and </p>
-                <button onClick={handleButton1}
+                    <div className="flex flex-col items-center justify-center h-[15vh] w-[20vw] bg-drbgclr fixed bottom-0 rounded-xl  mx-auto hover:scale-110 ">
+                        <p className='text-white text-xl font-semibold'>Skip Everything and </p>
+                        <button onClick={handleButton1}
                             className="px-3 py-1 bg-drfgclr text-drbgclr text-xl font-semibold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600">
                             Visit Portfolio
                         </button>
-                </div>
+                    </div>
                 </Html>
-                </>
+            </>
             )}
-            {menuMessage && (<Html position={[-1.2,3.4,2.8]} className="bg-gray-900  flex flex-row text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60">
-                 <img src="/nava.png" alt="nava the assistat" className='h-14 w-14'/>
-                 <Typewriter  words={["I am Naeva, his virtual assistant. You can have a tour. I won't tell him.     You are not here to steal something right??                    Let me know if you find his car keys!!!!!!"]} typeSpeed={30}/>
-                 </Html>)}
+            {menuMessage && (<Html position={[-1.2, 3.4, 2.8]} className="bg-gray-900  flex flex-row text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60">
+                <img src="/nava.png" alt="nava the assistat" className='h-14 w-14' />
+                <Typewriter words={["I am Naeva, his virtual assistant. You can have a tour. I won't tell him.     You are not here to steal something right??                    Let me know if you find his car keys!!!!!!"]} typeSpeed={30} />
+            </Html>)}
             {/* //This will show three buttons  */}
             {showButtons && (
                 <>
@@ -343,12 +377,12 @@ const MainSetup = () => {
             </Html>
             )}
             {/* //Use --Infron of every sentence as there is an iteration error  */}
-            {ShowMenu2 && guitarMessage && ( 
-                <Html position={[-8,4.7,2.10]} rotation={[0,1.25,0]}     className=" flex flex-row bg-gray-900  text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60">
-                    <img src="/nava.png" alt="nava the assistat" className='h-14 w-14'/>
-                    <Typewriter words={["He likes music, He plays guitar sometimes. He is not very good though!                     Imagine I have to tell him everytime he should be a full time guitarist."]} typeSpeed={40}/>
-                    </Html>)}
-  
+            {ShowMenu2 && guitarMessage && (
+                <Html position={[-8, 4.7, 2.10]} rotation={[0, 1.25, 0]} className=" flex flex-row bg-gray-900  text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60">
+                    <img src="/nava.png" alt="nava the assistat" className='h-14 w-14' />
+                    <Typewriter words={["He likes music, He plays guitar sometimes. He is not very good though!                     Imagine I have to tell him everytime he should be a full time guitarist."]} typeSpeed={40} />
+                </Html>)}
+
 
         </>
     )
