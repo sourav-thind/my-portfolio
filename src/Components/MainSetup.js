@@ -57,7 +57,7 @@ const MainSetup = () => {
     const modelRef = useRef(initialModelRotation);
 
     const aspectRatio = window.innerWidth / window.innerHeight;
-    
+    var scaleVar = 3.1/aspectRatio;
 
     const getScreenCategory = () => {
         const width = window.innerWidth;
@@ -70,7 +70,7 @@ const MainSetup = () => {
     
     };
     const screenCategory = getScreenCategory();
-    console.log(window.innerHeight, window.innerWidth)
+    console.log(scaleVar, 1/scaleVar)
     const handleClick = () => {
         setClicked(true);
         gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 1.5 });
@@ -190,7 +190,7 @@ const MainSetup = () => {
                 z: animatedModelRotation[2],
                 duration: 1.5
             })
-        }, 50);
+        }, 500);
 
     }, [camera]);
 
@@ -262,7 +262,7 @@ const MainSetup = () => {
                     ref={iframeRef}
                     transform
                     occlude
-                    scale={1/1.465}
+                    scale={1/scaleVar}
                     rotation={[1.95, 4.75, 1.95]}
                     position={[0.331, 1.367, -0.018]}
                     style={{ width: window.innerWidth, height: window.innerHeight, border: 'none', overflow: 'hidden' }}
@@ -346,7 +346,7 @@ const MainSetup = () => {
                 occlude
                 rotation={[0, -0.36, 0]}
                 scale={0.15}
-                position={[0.23, 1.32, -0.17]} >
+                position={[0.1*aspectRatio, 1.34, -0.17]} >
 
                 <button
                     className=" text-white rounded-full  w-[2px] h-[2px]"
