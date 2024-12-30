@@ -20,27 +20,30 @@ const ProjectCards = ({
   live_app_link
 }) => {
   return (
-    <div className='bg-gradient-to-br from-drgry to-black rounded-lg border-4 w-[330px] md:w-[560px] mx-auto py-2 border-drfgclr'>
-      <div className="relative w-[300px] md:w-[520px] h-full flex flex-col justify-center items-center mx-auto sm:gap-y-2 gap-y-0">
-        <img src={image} alt={name} className='md:h-[220px] h-[160px] Img' />
-        <div className='text-drwht flex flex-col items-center justify-center md:gap-y-1 md:space-y-1'>
-          <h1 className='text-3xl mx-auto underline mt-6 md:mt-1 font-semibold decoration-drfgclr uppercase'>{name}</h1>
-          <h3 className='text-md text-justify mt-4 md:mt-1'>{description}</h3>
-          <div className={`flex flex-row gap-8 mt-4 justify-evenly md:mt-1`}>
+    <div className='bg-gradient-to-br from-drgry to-black rounded-lg border-4 lg:w-[500px] w-[300px] md:w-[560px] mx-auto py-2 border-drfgclr'>
+      <div className="relative w-[300px] lg:w-[480px] md:w-[520px] h-full flex flex-col  mx-auto sm:gap-y-2 gap-y-0">
+        <div className='flex flex-row space-x-3'>
+        <img src={image} alt={name} className='md:h-[220px] lg:h-[180px] h-[160px] ' />
+        <div className={`flex flex-col gap-4 mt-4 p-4 rounded-md justify-evenly md:mt-1 lg:h-[180px] bg-gradient-to-br from-drgy to-black overflow-scroll`}>
             {tags.map((tag) => (
               <div key={tag.name}>
                 <img src={tag.image} alt={tag.name} className='h-10 w-10' />
               </div>
             ))}
           </div>
+        </div>
+        <div className='text-drwht flex flex-col items-center justify-center md:gap-y-1 md:space-y-1'>
+          <h1 className='text-3xl mx-auto  mt-6 md:mt-1 font-semibold uppercase'>{name}</h1>
+          <h3 className='text-md text-justify mt-4 md:mt-1'>{description}</h3>
+          
           <div className='justify-evenly flex gap-x-12 mt-2 md:mt-1'>
             <a href={source_code_link} target='_blank' rel="noopener noreferrer">
-              <button className='w-[100px] hover:scale-110 border-drwht border-4 font-bold text-drbgclr bg-drfgclr rounded-md mt-2'>
+              <button className='w-[100px] hover:scale-110 border-drwht border-1 font-bold text-drbgclr bg-drfgclr rounded-md mt-2'>
                 Github
               </button>
             </a>
             <a href={live_app_link} target='_blank' rel="noopener noreferrer">
-              <button className='w-[100px] hover:scale-110 border-drwht border-4 font-bold text-drbgclr bg-drfgclr rounded-md mt-2'>
+              <button className='w-[100px] hover:scale-110 border-drwht border-1 font-bold text-drbgclr bg-drfgclr rounded-md mt-2'>
                 Live Demo
               </button>
             </a>
