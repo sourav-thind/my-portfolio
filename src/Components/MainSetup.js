@@ -11,6 +11,8 @@ import HoverEffect from './HoverEffect';
 import TypedMessage from './TypedMessage';
 import { Typewriter } from 'react-simple-typewriter'
 
+import HtmlMain from './Html Site/HtmlMain';
+
 
 
 
@@ -230,9 +232,9 @@ const MainSetup = () => {
                     style={{ width: '1048PX', height: '500px', border: 'none', overflow: 'hidden' }}
                     distanceFactor={0.33}
                 >
-                    <iframe src="https://protfolio-html.vercel.app/" title='screen'
-                        style={{ width: '1048px', height: '500px', border: 'none', overflow: 'hidden' }} />
-                    {/* <HtmlMain /> */}
+                    {/* <iframe src="https://protfolio-html.vercel.app/" title='screen'
+                        style={{ width: '1048px', height: '5px', border: 'none', overflow: 'hidden' }} /> */}
+                    <HtmlMain/>
 
 
                 </Html>
