@@ -18,19 +18,19 @@ const MainSetup = () => {
 
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
-    const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
-        rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
-        rotationY: { value: 1.37, min: -4, max: 4, step: 0.01 },
-        rotationZ: { value: -0.05, min: -4, max: 4, step: 0.01 },
-        positionX: { value: 0, min: -10, max: 10, step: 0.1 },
-        positionY: { value: 1.37, min: -10, max: 10, step: 0.1 },
-        positionZ: { value: -0.05, min: -10, max: 10, step: 0.1 },
-        distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
-        distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
-        color1: { value: '#ff0000' },
-        color2: { value: '#00FFA3' }
+    // const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
+    //     rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
+    //     rotationY: { value: 1.37, min: -4, max: 4, step: 0.01 },
+    //     rotationZ: { value: -0.05, min: -4, max: 4, step: 0.01 },
+    //     positionX: { value: 0, min: -10, max: 10, step: 0.1 },
+    //     positionY: { value: 1.37, min: -10, max: 10, step: 0.1 },
+    //     positionZ: { value: -0.05, min: -10, max: 10, step: 0.1 },
+    //     distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
+    //     distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
+    //     color1: { value: '#ff0000' },
+    //     color2: { value: '#00FFA3' }
 
-    });
+    // });
     const { camera } = useThree();
     const [clicked, setClicked] = useState(true);
     const [showButtons, setShowButtons] = useState(false);
@@ -57,53 +57,53 @@ const MainSetup = () => {
 
     const handleClick = () => {
         setClicked(true);
-        gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 2 });
-        gsap.to(camera.rotation, { x: 0, y: 0, z: 0, duration: 2 });
-        gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 2 });
+        gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 1.5 });
+        gsap.to(camera.rotation, { x: 0, y: 0, z: 0, duration: 1.5 });
+        gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 1.5 });
         setTimeout(() => {
             setMenuMessage(true);
             setShowButtons(true);
-        }, 2000);
+        }, 1500);
     };
     const handleBackClick = () => {
         setClicked(true);
-        gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 3 });
-        gsap.to(camera.rotation, { x: 0, y: 0, z: 0, duration: 3 });
-        gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 3 });
+        gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 1.5 });
+        gsap.to(camera.rotation, { x: 0, y: 0, z: 0, duration: 1.5 });
+        gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 1.5 });
         setShowMenu1(false)
         setShowMenu2(false)
         setGuitarMessage(false)
         setMenuMessage(false)
         setTimeout(() => {
             setShowButtons(true);
-        }, 2000);
+        }, 1500);
     };
     const handleButton1 = () => {
         setShowButtons(false);
-        gsap.to(camera.position, { x: 0, y: 1.36, z: -0.067, duration: 2 });
-        gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 2 });
+        gsap.to(camera.position, { x: 0, y: 1.36, z: -0.067, duration: 1.5 });
+        gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
         setMenuMessage(false);
         setTimeout(() => {
             setShowMenu1(true);
-        }, 2000);
+        }, 1500);
     };
 
     const handleButton2 = () => {
         setShowButtons(false);
-        gsap.to(camera.position, { x: -2.2, y: 2.3, z: 1.6, duration: 2 });
-        gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 2 });
+        gsap.to(camera.position, { x: -2.2, y: 2.3, z: 1.6, duration: 1.5 });
+        gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
         setMenuMessage(false);
         setTimeout(() => {
             setShowMenu2(true);
-        }, 2000);
+        }, 1500);
     };
 
     const handleButton3 = () => {
         setShowButtons(false);
 
-        gsap.to(camera.position, { x: -11.23, y: 2, z: 2.13, duration: 2 });
-        gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 2 });
-        gsap.to(camera.rotation, { x: 0, y: -1.46, z: 0, duration: 2 });
+        gsap.to(camera.position, { x: -11.23, y: 2, z: 2.13, duration: 1.5 });
+        gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 1.5 });
+        gsap.to(camera.rotation, { x: 0, y: -1.46, z: 0, duration: 1.5 });
         setMenuMessage(false);
         setTimeout(() => {
             setClicked(false);
@@ -142,20 +142,20 @@ const MainSetup = () => {
                 x: animatedCameraPosition[0], 
                 y: animatedCameraPosition[1], 
                 z: animatedCameraPosition[2],
-                duration: 3
+                duration: 1.5
             });
             gsap.to(camera.rotation, {
                 x: animatedCameraRotation[0], 
                 y: animatedCameraRotation[1], 
                 z: animatedCameraRotation[2],
-                duration: 3
+                duration: 1.5
             });
             gsap.to(modelRef.current.rotation, {
                 x: animatedModelRotation[0], 
                 y: animatedModelRotation[1], 
                 z: animatedModelRotation[2],
-                duration: 3
-          })}, 50);
+                duration: 1.5   
+          })}, 5000);
     
     }, [camera]);
 
@@ -240,16 +240,16 @@ const MainSetup = () => {
             {!clicked && (<>
                 <Html occlude position={[-7.3, 3, -0.35]} scale={0.3} rotation={[0, -1.86, 0]} transform className="h-screen w-screen  " zIndexRange={[0, 10]}>
                     <div
-                        className="flex flex-col items-center justify-center h-[30vh] w-[45vw] bg-drbgclr fixed bottom-0 rounded-xl 
+                        className="flex flex-col items-center justify-center h-[30vh] w-[45vw] fixed bottom-0 rounded-xl 
     transform transition-all duration-500 ease-in-out scale-90 hover:scale-95 mx-auto 
     left-1/2  -translate-x-1/2"
                     >
-                        <div className='flex flex-row'>
+                        {/* <div className='flex flex-row'>
                             <img src="/nava.png" alt="nava the assistat" className='h-14 w-14 pr-0 pb-0'/>
                         <div className="text-white text-2xl font- opacity-100 animate-fade-in text-center p-4">
                         <Typewriter  words={["Thats What he told me to tell everyone,             You can skip everthing and visit porfolio with that corner button,            or you can go with the flow with this button below. I DON'T CARE EITHER WAY."]} typeSpeed={30}/>
                         </div>
-                        </div>
+                        </div> */}
                         <button
                             onClick={handleClick}
                             className="px-6 py-2 bg-drfgclr text-drbgclr text-2xl font-bold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600"
