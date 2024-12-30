@@ -51,17 +51,17 @@ const Contact = () => {
 
   return (
     <div>
-      <div className="fixed top-[6rem] right-4 z-50 text-drbgclr px-4 py-2 rounded">
+      <div className="  right-4 z-50 text-drbgclr px-4 py-2 rounded">
         {showToast && <Toast />}
       </div>
-      <div className="bg-drbgclr flex mx-auto justify-center mt-[10vh] h-[80vh]">
-        <div className="flex flex-col items-center space-y-8">
-          <h1 className="tracking-[20px] text-2xl md:text-3xl text-drwht uppercase font-semibold mt-6">Contact</h1>
-          <h2 className="text-drfgclr md:flex justify-center items-center flex flex-col font-semibold text-xl md:font-bold uppercase">
+      <div className="bg-drbgclr flex mx-auto justify-center  h-screen  ">
+        <div className="flex flex-col items-center space-y-2">
+          <h1 className="tracking-[20px] text-2xl md:text-3xl lg:text-3xl text-drwht uppercase font-semibold ">Contact</h1>
+          <h2 className="text-drfgclr md:flex justify-center lg:flex-row items-center flex flex-col font-semibold text-lg md:font-semibold mt-0 uppercase gap-2">
             <span>Looking for the perfect solution?</span>
             <span className="decoration-drfgclr underline underline-offset-4 text-drwht"> I&apos;ve got you covered.</span>
           </h2>
-          <div className="space-y-1 mb-4">
+          <div className="space-y-0 mb-0">
             <div className="flex text-drwht text-lg space-x-5 items-center justify-center">
               <PhoneIcon className="h-6 w-6 text-drfgclr" />
               <p>+1 647-866-3474</p>
@@ -71,10 +71,10 @@ const Contact = () => {
               <p>souravthind07it@gmail.com</p>
             </div>
           </div>
-          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-4 lg:space-y-3 w-[360px]" action="">
-            <div className="space-x-2 flex">
+          <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col space-y-4 lg:space-y-2 w-[360px]" action="">
+            <div className="space-x-1 flex">
               <input
-                className="inputbox w-[175px]"
+                className="inputbox w-[177px]"
                 type="text"
                 required
                 placeholder="First Name"
@@ -84,7 +84,7 @@ const Contact = () => {
               />
               <input
                 placeholder="Last Name"
-                className="inputbox w-[175px]"
+                className="inputbox w-[177px]"
                 type="text"
                 {...register("lastName")}
                 value={formData.lastName}
@@ -111,7 +111,7 @@ const Contact = () => {
             <textarea
               required
               placeholder="Message"
-              className="inputbox"
+              className="inputbox h-12"
               {...register("message")}
               value={formData.message}
               onChange={(e) => setFormData({ ...formData, message: e.target.value })}
