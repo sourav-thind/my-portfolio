@@ -155,7 +155,7 @@ const MainSetup = () => {
                 y: animatedModelRotation[1], 
                 z: animatedModelRotation[2],
                 duration: 1.5   
-          })}, 5000);
+          })}, 50);
     
     }, [camera]);
 
@@ -227,7 +227,7 @@ const MainSetup = () => {
                     rotation={[1.95, 4.75, 1.95]}
                     position={[0.34, 1.367, -0.018  ]}
                     style={{ width: '1048PX', height: '522px', border: 'none', overflow: 'hidden' }}
-                    distanceFactor={0.342}
+                    distanceFactor={0.33}
                 >
                     <iframe src="https://protfolio-html.vercel.app/" title='screen'
                         style={{ width: '1048px', height: '522px', border: 'none', overflow: 'hidden' }} />
@@ -271,7 +271,7 @@ const MainSetup = () => {
             )}
             {menuMessage && (<Html position={[-1.2,3.4,2.8]} className="bg-gray-900  flex flex-row text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60">
                  <img src="/nava.png" alt="nava the assistat" className='h-14 w-14'/>
-                 <Typewriter  words={["I am Naeva, his virtual assistant. You can have a tour. I won't tell him.     You are not here to steal something right??                        You can watch is portfolio, or look around. Let me know if you find his car keys!!!!!!"]} typeSpeed={30}/>
+                 <Typewriter  words={["I am Naeva, his virtual assistant. You can have a tour. I won't tell him.     You are not here to steal something right??                    Let me know if you find his car keys!!!!!!"]} typeSpeed={30}/>
                  </Html>)}
             {/* //This will show three buttons  */}
             {showButtons && (
