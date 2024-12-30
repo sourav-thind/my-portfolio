@@ -18,19 +18,19 @@ const MainSetup = () => {
 
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
-    // const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
-    //     rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
-    //     rotationY: { value: 1.37, min: -4, max: 4, step: 0.01 },
-    //     rotationZ: { value: -0.05, min: -4, max: 4, step: 0.01 },
-    //     positionX: { value: 0, min: -10, max: 10, step: 0.1 },
-    //     positionY: { value: 1.37, min: -10, max: 10, step: 0.1 },
-    //     positionZ: { value: -0.05, min: -10, max: 10, step: 0.1 },
-    //     distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
-    //     distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
-    //     color1: { value: '#ff0000' },
-    //     color2: { value: '#00FFA3' }
+    const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
+        rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
+        rotationY: { value: 1.37, min: -4, max: 4, step: 0.01 },
+        rotationZ: { value: -0.05, min: -4, max: 4, step: 0.01 },
+        positionX: { value: -8, min: -10, max: 10, step: 0.1 },
+        positionY: { value: 3.2, min: -10, max: 10, step: 0.1 },
+        positionZ: { value: -2, min: -10, max: 10, step: 0.1 },
+        distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
+        distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
+        color1: { value: '#ff0000' },
+        color2: { value: '#00FFA3' }
 
-    // });
+    });
     const { camera } = useThree();
     const [clicked, setClicked] = useState(true);
     const [showButtons, setShowButtons] = useState(false);
@@ -164,7 +164,7 @@ const MainSetup = () => {
 
     return (
         <>
-            {/* <ambientLight intensity={10} /> */}
+            {/* <ambientLight intensity={1} /> */}
 
             {/* <directionalLight color="white" intensity={1.5}
                 position={[-2.2, 0.39, 4.10]}
@@ -180,10 +180,11 @@ const MainSetup = () => {
                
             /> */}
           
-            <directionalLight
+          <directionalLight
                 color="white"
                 intensity={3}
-                position={[-2,3.2,0.5]}
+                position={[-2.6,2.7,-0.8]}
+                
                 castShadow
                 shadow-mapSize={[1024, 1024]} 
                 shadow-camera-near={1}
@@ -192,7 +193,7 @@ const MainSetup = () => {
                 shadow-camera-right={5}
                 shadow-camera-top={5}
                 shadow-camera-bottom={-5}
-            />
+            /> *
             {/* <rectAreaLight
                 width={0.6}
                 height={6.1}
@@ -225,12 +226,12 @@ const MainSetup = () => {
                     transform
                     occlude
                     rotation={[1.95, 4.75, 1.95]}
-                    position={[0.34, 1.367, -0.018  ]}
-                    style={{ width: '1048PX', height: '522px', border: 'none', overflow: 'hidden' }}
+                    position={[0.331, 1.367, -0.018  ]}
+                    style={{ width: '1048PX', height: '500px', border: 'none', overflow: 'hidden' }}
                     distanceFactor={0.33}
                 >
                     <iframe src="https://protfolio-html.vercel.app/" title='screen'
-                        style={{ width: '1048px', height: '522px', border: 'none', overflow: 'hidden' }} />
+                        style={{ width: '1048px', height: '500px', border: 'none', overflow: 'hidden' }} />
                     {/* <HtmlMain /> */}
 
 
