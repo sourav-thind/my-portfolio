@@ -10,13 +10,13 @@ const About = () => {
             <div className='flex flex-col items-center space-y-4 lg:space-y-10 mt-6'>
                 <h1 className='tracking-[20px] text-2xl md:text-3xl text-drwht uppercase font-semibold'>About</h1>
 
-                <div className='flex flex-row md:gap-x-8 lg:gap-x-20'>
+                <div className='flex flex-row md:gap-x-8 lg:gap-x-6'>
                     <Element name='aboutPic'>
                         <motion.div
                             initial={{ x: -100, y: 0 }}
                             whileInView={{ x: 0, y: 0 }}
                             transition={{ duration: 0.6 }}
-                            className='hidden md:block border-drfgclr border-4 rounded-md p-3 lg:p-6 w-[16rem] lg:w-[18rem] md:max-h-[28rem]'
+                            className='hidden md:block border-drfgclr border-4 rounded-md lg:p-2 w-[16rem] lg:w-[15rem] md:max-h-[28rem]'
                         >
                             <img className='rounded-md max-h-[26rem] md:max-h-[24rem]' src="/aboutImg.jpg" alt='mainImage' />
                         </motion.div>
@@ -27,12 +27,12 @@ const About = () => {
                             initial={{ x: 80, y: 0 }}
                             whileInView={{ x: 0, y: 0 }}
                             transition={{ duration: 0.6 }}
-                            className='border-drfgclr border-4 rounded-md px-2 lg:p-6 md:p-2 lg:w-[50rem] w-[21rem] md:w-[25rem] max-h-[30rem] md:max-h-[28rem]'
+                            className='border-drfgclr border-4 rounded-md px-2 lg:p-5 md:p-2 lg:w-[40rem] w-[21rem] md:w-[25rem] max-h-[30rem] md:max-h-[28rem]'
                         >
                             <h1 className='text-drwht lg:text-4xl text-lg font-semibold md:mx-auto md:justify-center lg:font-bold pb-2 lg:pb-6 uppercase'>
                                 Here are some Me things
                             </h1>
-                            <p className='text-drwht text-justify text-sm md:text-md lg:text-lg'>
+                            <p className='text-drwht text-justify sm:text-sm md:text-md lg:font-semibold lg:text-md xl:text-lg'>
                                 Heyy, this is Souravpreet Singh, the guy who thinks in binary. Well, I was 14 when I got to know
                                 there is something else than Games in Computers, was called Coding. Made my debut in the field,
                                 won&apos;t lie I wasn&apos;t the debut prodigy but was sure an emerging player. Continued programming with
