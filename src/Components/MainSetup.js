@@ -120,12 +120,12 @@ const MainSetup = () => {
         const updateWidthVar = () => {
             if (window.innerWidth <= 550) {
                 setWidthVar(2.3);
-                setscale([0.6, 1, 0.8]);
-                sethtmlDiv1P([[-6, 3, -1], 0.25, [0, -1.86, 0]]);
+                setscale([0.6, 0.9, 0.8]);
+                sethtmlDiv1P([[-6, 5, 2], 0.5, [0, -1.4, 0]]);
                 setinitialCameraPosition([-10, 2, -2]);
-                setanimatedCameraPosition([-2, 2, -1]);
-                setanimatedModelRotation([0, 1, 0]);
-                setClicked(false);
+                setanimatedCameraPosition([-6, 2, -6]);
+                setanimatedModelRotation([0, 4, 0]);
+              
             }
             else if (window.innerWidth <= 768) {
                 setWidthVar(2);
