@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { SpotLightHelper, DirectionalLightHelper } from "three";
-import { OrbitControls, useGLTF, Html, Environment } from "@react-three/drei";
+import { OrbitControls, useGLTF, Html, Environment, PerspectiveCamera } from "@react-three/drei";
 import { Leva, useControls } from 'leva';
 import * as THREE from 'three';
 import { useLoader, useThree } from '@react-three/fiber';
@@ -41,87 +41,21 @@ const MainSetup = () => {
     const [guitarMessage, setGuitarMessage] = useState(false);
     const [menuMessage, setMenuMessage] = useState(false);
     const [widthVar, setWidthVar] = useState(1);
+    const [initialCameraPosition, setinitialCameraPosition] = useState([-8.9, 3.2, -1]);
+    const [initialCameraRotation, setinitialCameraRotation] = useState([0, -1.85, 0]);
+    const [animatedCameraPosition, setanimatedCameraPosition] = useState([-10.50, 2.2, 2.13]);
+    const [animatedCameraRotation, setanimatedCameraRotation] = useState([0, -1.46, 0]);
+    const [initialModelRotation, setinitialModelRotation] = useState([0, 0, 0]);
+    const [animatedModelRotation, setanimatedModelRotation] = useState([0, 1.28, 0]);
+    const [scale, setscale] = useState([1, 1, 1]);
+    const [htmlDiv1P, sethtmlDiv1P] = useState([[-7.3, 3, -0.35], 0.3, [0, -1.86, 0]]);
 
-    const initialCameraPosition = [-8.9, 3.2, -1];
-    const animatedCameraPosition = [-10.50, 2.2, 2.13];
-    const initialCameraRotation = [0, -1.85, 0];
-    const animatedCameraRotation = [0, -1.46, 0];
-    const initialModelRotation = [0, 0, 0];
-    const animatedModelRotation = [0, 1.28, 0];
-
-    const newCameraPosition = [0, 1, 4];
-    const newModelRotation = [0, 1, 0];
-    const rectLightRef = useRef(null);
-    const helperRef = useRef(null);
-    const cameraRef = useRef(initialCameraPosition);
     const modelRef = useRef(initialModelRotation);
-
     const aspectRatio = window.innerWidth / window.innerHeight;
-    var scaleVar = 3.1/aspectRatio;
-    var WidthVar =1;
-    const getScreenCategory = () => {
-        const width = window.innerWidth;
+    var scaleVar = 3.1 / aspectRatio;
 
-        if (width < 640) return 'phone';
-        if (width >= 640 && width < 1024) return 'tablet';
-        if (width >= 1024 && width <= 1280) return 'laptop';
-        if (width > 1280 && width < 1560) return 'desktop';
-        if (width >= 1560) return 'xl';
-    
-    };
 
-    useEffect(() => {
-        const updateWidthVar = () => {
-          if (window.innerWidth <= 500) {
-            setWidthVar(3.4);
 
-          } 
-          else if (window.innerWidth <= 768) {
-            setWidthVar(2);
-
-          } 
-          else if (window.innerWidth <= 900) {
-            setWidthVar(1.61);
-
-          } 
-          else if (window.innerWidth <= 1024) {
-            setWidthVar(1.465);
-
-          } 
-          else if (window.innerWidth <= 1200) {
-            setWidthVar(1.35);
-            
-          } 
-          else if (window.innerWidth <= 1320) {
-            setWidthVar(1.24);
-
-          } 
-          else if (window.innerWidth <= 1440) {
-            setWidthVar(1.07);
-
-          } 
-          else if (window.innerWidth <= 1600) {
-            setWidthVar(1);
-
-          } 
-          else if (window.innerWidth <= 1920) {
-            setWidthVar(0.8);
-
-          } 
-          else {
-            setWidthVar(0.7);
-          }
-        };
-    
-        updateWidthVar();
-    
-        window.addEventListener('resize', updateWidthVar);
-    
-        return () => {
-          window.removeEventListener('resize', updateWidthVar);
-        };
-      }, []);
-    const screenCategory = getScreenCategory();
     console.log(window.innerHeight)
     const handleClick = () => {
         setClicked(true);
@@ -148,35 +82,10 @@ const MainSetup = () => {
     };
     const handleButton1 = () => {
         setShowButtons(false);
-        switch (screenCategory) {
-            case 'phone':
-                gsap.to(camera.position, { x: 0, y: 1, z: 1, duration: 1.5 });
-                gsap.to(camera.rotation, { x: 0.1, y: -0.2, z: 0, duration: 1.5 });
-                break;
 
-            case 'tablet':
-                gsap.to(camera.position, { x: 0, y: 1.2, z: 0.5, duration: 1.5 });
-                gsap.to(camera.rotation, { x: 0.05, y: -0.25, z: 0, duration: 1.5 });
-                break;
+        gsap.to(camera.position, { x: 0, y: 1.36, z: -0.067, duration: 1.5 });
+        gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
 
-            case 'laptop':
-                gsap.to(camera.position, { x: 0, y: 1.36, z: -0.067, duration: 1.5 });
-                gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
-                break;
-
-            case 'desktop':
-                gsap.to(camera.position, { x: 0, y: 1.36, z: -0.067, duration: 1.5 });
-                gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
-                break;
-
-            case 'xl':
-                gsap.to(camera.position, { x: 0, y: 1.36, z: -0.067, duration: 1.5 });
-                gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
-                break;
-
-            default:
-                console.log('Unrecognized screen size');
-        }
 
         setMenuMessage(false);
         setTimeout(() => {
@@ -214,15 +123,70 @@ const MainSetup = () => {
 
     useEffect(() => {
 
-        camera.position.set(...initialCameraPosition);
-        camera.rotation.set(...initialCameraRotation);
+
+        const updateWidthVar = () => {
+            if (window.innerWidth <= 550) {
+                setWidthVar(2.3);
+                setscale([0.6, 1, 0.8]);
+                sethtmlDiv1P([[-6, 3, -1], 0.25, [0, -1.86, 0]]);
+                setinitialCameraPosition([-10, 2, -2]);
+                setanimatedCameraPosition([-2, 2, -1]);
+                setanimatedModelRotation([0, 1, 0]);
+                setClicked(false);
+            }
+            else if (window.innerWidth <= 768) {
+                setWidthVar(2);
+
+            }
+            else if (window.innerWidth <= 900) {
+                setWidthVar(1.61);
+
+            }
+            else if (window.innerWidth <= 1024) {
+                setWidthVar(1.465);
+
+            }
+            else if (window.innerWidth <= 1200) {
+                setWidthVar(1.35);
+
+            }
+            else if (window.innerWidth <= 1320) {
+                setWidthVar(1.24);
+
+            }
+            else if (window.innerWidth <= 1440) {
+                setWidthVar(1.07);
+
+            }
+            else if (window.innerWidth <= 1600) {
+                setWidthVar(1);
+
+            }
+            else if (window.innerWidth <= 1920) {
+                setWidthVar(0.8);
+
+            }
+            else {
+                setWidthVar(0.7);
+            }
+        };
+
+        updateWidthVar();
+
+        window.addEventListener('resize', updateWidthVar);
+
+
+
+        // camera.position.set(...initialCameraPosition);
+        // camera.rotation.set(...initialCameraRotation);
         scene.traverse((child) => {
             if (child.isMesh) {
                 child.castShadow = true;
                 child.receiveShadow = true;
             }
         });
-        setTimeout(() => {
+        const handleScreenClick=()=>{
+            
             setClicked(false);
             gsap.to(camera.position, {
                 x: animatedCameraPosition[0],
@@ -242,8 +206,10 @@ const MainSetup = () => {
                 z: animatedModelRotation[2],
                 duration: 1.5
             })
-        }, 500);
-
+        }
+        
+        
+        document.addEventListener('mousedown', handleScreenClick);
     }, [camera]);
 
 
@@ -253,21 +219,12 @@ const MainSetup = () => {
 
     return (
         <>
-            {/* <ambientLight intensity={1} /> */}
-
-            {/* <directionalLight color="white" intensity={1.5}
-                position={[-2.2, 0.39, 4.10]}
+            <PerspectiveCamera
+                makeDefault
+                fov={75}
+                position={initialCameraPosition}
+                rotation={initialCameraRotation}
             />
-
-            <rectAreaLight
-                width={11}
-                height={0.6}
-                color="#00ffA3"
-                intensity={50}
-                position={[-0.7, 4.38, -1.2]}
-                rotation={[-1.5, -0.02, -0.29]}
-               
-            /> */}
 
             <directionalLight
                 color="white"
@@ -283,18 +240,9 @@ const MainSetup = () => {
                 shadow-camera-top={5}
                 shadow-camera-bottom={-5}
             /> *
-            {/* <rectAreaLight
-                width={0.6}
-                height={6.1}
-                color="#00ffA3"
-                intensity={100}
-                position={[-6.7, 4.53, -0.03]}
-                rotation={[-1.58, -0.05, -0.3]}
-               
-            /> */}
-            <color args={['#475569']} attach="background" />
 
-            <primitive ref={modelRef} object={scene} castShadow rotation={[0, 1.28, 0]} onClick={(event) => {
+
+            <primitive ref={modelRef} object={scene} scale={scale} castShadow rotation={[0, 1.28, 0]} onClick={(event) => {
                 const validNames = [
                     "Material1-material",
                     "Material2-material",
@@ -314,11 +262,11 @@ const MainSetup = () => {
                     ref={iframeRef}
                     transform
                     occlude
-                    scale={widthVar/scaleVar}
+                    scale={widthVar / scaleVar}
                     rotation={[1.95, 4.75, 1.95]}
                     position={[0.331, 1.367, -0.018]}
                     style={{ width: window.innerWidth, height: window.innerHeight, border: 'none', overflow: 'hidden' }}
-                    distanceFactor={0.33}  
+                    distanceFactor={0.33}
                 >
                     <HtmlMain />
 
@@ -327,18 +275,12 @@ const MainSetup = () => {
                 {/* <OrbitControls /> */}
             </primitive>
             {!clicked && (<>
-                <Html occlude position={[-7.3, 3, -0.35]} scale={0.3} rotation={[0, -1.86, 0]} transform className="h-screen w-screen  " zIndexRange={[0, 10]}>
+                <Html occlude position={htmlDiv1P[0]} scale={htmlDiv1P[1]} rotation={htmlDiv1P[2]} transform className="h-screen w-screen  " zIndexRange={[0, 10]}>
                     <div
                         className="flex flex-col items-center justify-center h-[30vh] w-[45vw] fixed bottom-0 rounded-xl 
     transform transition-all duration-500 ease-in-out scale-90 hover:scale-95 mx-auto 
     left-1/2  -translate-x-1/2"
                     >
-                        {/* <div className='flex flex-row'>
-                            <img src="/nava.png" alt="nava the assistat" className='h-14 w-14 pr-0 pb-0'/>
-                        <div className="text-white text-2xl font- opacity-100 animate-fade-in text-center p-4">
-                        <Typewriter  words={["Thats What he told me to tell everyone,             You can skip everthing and visit porfolio with that corner button,            or you can go with the flow with this button below. I DON'T CARE EITHER WAY."]} typeSpeed={30}/>
-                        </div>
-                        </div> */}
                         <button
                             onClick={handleClick}
                             className="px-6 py-2 bg-drfgclr text-drbgclr text-2xl font-bold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600"
@@ -398,7 +340,7 @@ const MainSetup = () => {
                 occlude
                 rotation={[0, -0.36, 0]}
                 scale={0.15}
-                position={[0.1*aspectRatio, 1.3, -0.17]} >
+                position={[0.1 * aspectRatio, 1.3, -0.17]} >
 
                 <button
                     className=" text-white rounded-full  w-[2px] h-[2px]"
