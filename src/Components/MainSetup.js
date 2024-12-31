@@ -54,9 +54,6 @@ const MainSetup = () => {
     const aspectRatio = window.innerWidth / window.innerHeight;
     var scaleVar = 3.1 / aspectRatio;
 
-
-
-    console.log(window.innerHeight)
     const handleClick = () => {
         setClicked(true);
         gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 1.5 });
@@ -68,7 +65,6 @@ const MainSetup = () => {
         }, 1500);
     };
     const handleBackClick = () => {
-        setClicked(true);
         gsap.to(camera.position, { x: 0, y: 2, z: 6, duration: 1.5 });
         gsap.to(camera.rotation, { x: 0, y: 0, z: 0, duration: 1.5 });
         gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 1.5 });
@@ -82,11 +78,8 @@ const MainSetup = () => {
     };
     const handleButton1 = () => {
         setShowButtons(false);
-
         gsap.to(camera.position, { x: 0, y: 1.36, z: -0.067, duration: 1.5 });
         gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
-
-
         setMenuMessage(false);
         setTimeout(() => {
             setShowMenu1(true);
@@ -169,6 +162,7 @@ const MainSetup = () => {
             else {
                 setWidthVar(0.7);
             }
+          
         };
 
         updateWidthVar();
@@ -206,10 +200,12 @@ const MainSetup = () => {
                 z: animatedModelRotation[2],
                 duration: 1.5
             })
+            document.removeEventListener('mousedown', handleScreenClick);
         }
         
         
         document.addEventListener('mousedown', handleScreenClick);
+       
     }, [camera]);
 
 
