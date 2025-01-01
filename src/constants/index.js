@@ -17,7 +17,7 @@
   import inotebook from  "../ImageData/Project/inotebook.png";
   import newsmonkey from  "../ImageData/Project/newsMonkey.png";
   import textutils from  "../ImageData/Project/textutils.png";
-
+  import bravo from  "../ImageData/Project/Bravo.png";
    
  
   
@@ -66,6 +66,25 @@
 
 
     const projects = [
+      {
+        name: "Bravo Pizza",
+        description:
+          "A local Businees, sekking online presense contacted me about a website, I was able to fulfil their satisfaction by creating a site according to their customer base.",
+          tags: [
+            
+            {
+              name: "Tailwind",
+              image: tailwind,
+            },
+            {
+              name: "ReactJS",
+              image: reactjs,
+            },
+        ],
+        image: bravo,
+        source_code_link: "https://github.com/sourav-thind/bravo-pizza",
+        live_app_link:"https://www.bravopizzanb.com/"
+      },
       {
         name: "ChatGpt",
         description:
