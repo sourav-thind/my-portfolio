@@ -2,6 +2,7 @@ import React from "react";
 import { Canvas } from "@react-three/fiber";
 import { Environment } from "@react-three/drei";
 import MainSetup from "../MainSetup";
+import CubeEnvironment from "./CuberTexture";
 
 
 
@@ -9,8 +10,8 @@ function MainCanvas() {
   return (
  
     <Canvas shadows style={{ height: '100vh' }} color="#475569">
-      <Environment files="/env.hdr" background />
       <MainSetup/>
+      <CubeEnvironment/>
     </Canvas>
    
   );
