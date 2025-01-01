@@ -22,19 +22,19 @@ const MainSetup = () => {
 
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
-    // const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
-    //     rotationX: { value: 0, min: -4, max: 4, step: 0.01 },
-    //     rotationY: { value: 1.37, min: -4, max: 4, step: 0.01 },
-    //     rotationZ: { value: -0.05, min: -4, max: 4, step: 0.01 },
-    //     positionX: { value: -8, min: -10, max: 10, step: 0.1 },
-    //     positionY: { value: 3.2, min: -10, max: 10, step: 0.1 },
-    //     positionZ: { value: -2, min: -10, max: 10, step: 0.1 },
-    //     distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
-    //     distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
-    //     color1: { value: '#ff0000' },
-    //     color2: { value: '#00FFA3' }
+    const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
+        rotationX: { value: -2.6, min: -20, max: 20, step: 0.01 },
+        rotationY: { value: -3.3, min: -20, max: 20, step: 0.01 },
+        rotationZ: { value: -0.8, min: -20, max: 20, step: 0.01 },
+        positionX: { value: -8, min: -10, max: 10, step: 0.1 },
+        positionY: { value: 3.2, min: -10, max: 10, step: 0.1 },
+        positionZ: { value: -2, min: -10, max: 10, step: 0.1 },
+        distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
+        distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
+        color1: { value: '#ff0000' },
+        color2: { value: '#00FFA3' }
 
-    // });
+    });
     const { camera } = useThree();
     const [clicked, setClicked] = useState(true);
     const [showButtons, setShowButtons] = useState(false);
@@ -287,11 +287,12 @@ const MainSetup = () => {
                 position={initialCameraPosition}
                 rotation={initialCameraRotation}
             />
+            {/* <ambientLight intensity={1}/> */}
 
             <directionalLight
                 color="white"
                 intensity={2}
-                position={[-2.6, 2.7, -0.8]}
+                position={[rotationX,rotationY,rotationZ]}
 
                 castShadow
                 shadow-mapSize={[1024, 1024]}
