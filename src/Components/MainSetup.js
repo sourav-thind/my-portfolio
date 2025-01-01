@@ -46,7 +46,7 @@ const MainSetup = () => {
     const [widthVar, setWidthVar] = useState(1);
     const [initialCameraPosition, setinitialCameraPosition] = useState([-8.9, -2.8, -1]);
     const [initialCameraRotation, setinitialCameraRotation] = useState([0, -1.85, 0]);
-    const [animatedCameraPosition, setanimatedCameraPosition] = useState([-12.50, 0, 3]);
+    const [animatedCameraPosition, setanimatedCameraPosition] = useState([-10.50, -1, 3]);
     const [animatedCameraRotation, setanimatedCameraRotation] = useState([0, -1.46, 0]);
     const [modelRotation, setmodelRotation] = useState([0, 1.28, 0]);
     const [modelPosition, setmodelPosition] = useState([0, -6, 0]);
@@ -252,9 +252,9 @@ const MainSetup = () => {
               }
         });
         const handleScreenClick = () => {
+            setClicked(false);
             setTimeout(() => {
                 
-            setClicked(false);
             }, 1500);
             gsap.to(camera.position, {
                 x: animatedCameraPosition[0],
