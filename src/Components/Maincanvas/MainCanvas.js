@@ -9,7 +9,7 @@ import CubeEnvironment from "./CuberTexture";
 function MainCanvas() {
   return (
  
-    <Canvas shadows style={{ height: '100vh' }} color="#475569">
+    <Canvas dpr={[1, window.devicePixelRatio]} shadows style={{ height: '100vh' }} color="#475569">
       <MainSetup/>
       <CubeEnvironment/>
     </Canvas>

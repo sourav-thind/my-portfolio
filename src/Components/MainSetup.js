@@ -14,6 +14,7 @@ import { Typewriter } from 'react-simple-typewriter'
 import { CubeTextureLoader } from 'three';
 
 import HtmlMain from './Html Site/HtmlMain';
+import Landing from './Landing/Landing';
 
 
 
@@ -23,19 +24,19 @@ const MainSetup = () => {
     const texture = useLoader(THREE.TextureLoader, "/textures/Shadow.png");
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
-    const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
-        rotationX: { value: -6, min: -20, max: 20, step: 0.01 },
-        rotationY: { value: 6.43, min: -20, max: 20, step: 0.01 },
-        rotationZ: { value: 11.6, min: -20, max: 20, step: 0.01 },
-        positionX: { value: -8, min: -10, max: 10, step: 0.1 },
-        positionY: { value: 3.2, min: -10, max: 10, step: 0.1 },
-        positionZ: { value: -2, min: -10, max: 10, step: 0.1 },
-        distanceFactor: { value: 5, min: 0, max: 10000, step: 1 },
-        distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
-        color1: { value: '#ff0000' },
-        color2: { value: '#00FFA3' }
+    // const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
+    //     rotationX: { value: 0, min: -20, max: 20, step: 0.01 },
+    //     rotationY: { value: Math.PI, min: -20, max: 20, step: 0.01 },
+    //     rotationZ: { value: 0, min: -20, max: 20, step: 0.01 },
+    //     positionX: { value: -1.5, min: -10, max: 20, step: 0.1 },
+    //     positionY: { value: 2.25 , min: -10, max: 10, step: 0.1 },
+    //     positionZ: { value: -7, min: -10, max: 10, step: 0.1 },
+    //     distanceFactor: { value: 3.08, min: 0, max: 6, step: 0.01 },
+    //     distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
+    //     color1: { value: '#ff0000' },
+    //     color2: { value: '#00FFA3' }
 
-    });
+    // });
     const { camera } = useThree();
     const [clicked, setClicked] = useState(true);
     const [showButtons, setShowButtons] = useState(false);
@@ -55,7 +56,7 @@ const MainSetup = () => {
     const [htmlDiv1P, sethtmlDiv1P] = useState([[-7.3, 3, -0.35], 0.3, [0, -1.86, 0]]);
     const [menu1Btn, setMenu1Btn] = useState([[0, -4, 0], 1]);
     const [prtfBtn, setprtfBtn] = useState();
-    const [clickedDiv, setclickedDiv] = useState([[-2, -3, -3]])
+    const [clickedDiv, setclickedDiv] = useState([[-2, -2, 0]])
 
     const modelRef = useRef(modelRotation);
     const aspectRatio = window.innerWidth / window.innerHeight;
@@ -83,6 +84,7 @@ const MainSetup = () => {
             setShowButtons(true);
         }, 1500);
     };
+
     const handleButton1 = () => {
         setShowButtons(false);
         setMenuMessage(false);
@@ -90,9 +92,10 @@ const MainSetup = () => {
         setTimeout(() => {
             setShowMenu1(true);
         }, 1500);
+
         if (window.innerWidth <= 550) {
 
-        gsap.to(camera.position, { x: 0, y: -4.64, z: -0.067, duration: 1.5 });
+        gsap.to(camera.position, { x: 0, y: -4.77, z: -0.058, duration: 1.5 });
         gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
 
         }
@@ -133,11 +136,11 @@ const MainSetup = () => {
 
         }
         else {
+            
+                    gsap.to(camera.position, { x: 0, y: -4.64, z: -0.067, duration: 1.5 });
+                    gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
         }
 
-
-        gsap.to(camera.position, { x: 0, y: -4.64, z: -0.067, duration: 1.5 });
-        gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
 
     };
 
@@ -182,7 +185,7 @@ const MainSetup = () => {
 
                 sethtmlDiv1P([[-6, 4.5, 1.5], 0.4, [0, -1.4, 0]]);
 
-                setinitialCameraPosition([-10, -4, -2]);
+                setinitialCameraPosition([-8, -4, -2.3]);
 
                 setanimatedCameraPosition([-6, -4, -6]);
 
@@ -299,8 +302,8 @@ const MainSetup = () => {
 
             <directionalLight
                 color="white"
-                intensity={2}
-                position={[rotationX,rotationY,rotationZ]}
+                intensity={1}
+                position={[-20,24.2,-7.2]}
 
                 castShadow
                 shadow-mapSize={[1024, 1024]}
@@ -328,7 +331,19 @@ const MainSetup = () => {
                 }
 
             }} >
-                {/* <axesHelper args={[5]}/> */}
+                <Html
+                transform
+                occlude
+                position={[-1.5,2.25,-7]}
+                rotation={[0,3.14,0]}
+                scale={1}
+                
+                distanceFactor={1}
+                
+                // style={{ width: window.innerWidth, height: window.innerHeight, border: 'none', overflow: 'hidden' }}
+                >
+                    <Landing/>
+                </Html>
                 <Html
                     ref={iframeRef}
                     transform
@@ -343,7 +358,6 @@ const MainSetup = () => {
 
 
                 </Html>
-                {/* <OrbitControls /> */}
             </primitive>
             {!clicked && (<>
               
@@ -353,7 +367,7 @@ const MainSetup = () => {
                             onClick={handleClick}
                             className="sm:px-2 sm:py-1 sm:text-md sm:w-[10rem] xl:px-4 xl:py-2 xl:text-2xl bg-drfgclr text-drbgclr  font-semibold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600"
                         >
-                            Go with the flow
+                            Explore
                         </button>
                         <div className='sm:text-md lg:text-xl'>
                         <p className='text-white  font-semibold'>Skip Everything and </p>
