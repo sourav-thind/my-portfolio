@@ -20,12 +20,13 @@ import HtmlMain from './Html Site/HtmlMain';
 
 const MainSetup = () => {
 
+    const texture = useLoader(THREE.TextureLoader, "/textures/Shadow.png");
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
     const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
-        rotationX: { value: -2.6, min: -20, max: 20, step: 0.01 },
-        rotationY: { value: -3.3, min: -20, max: 20, step: 0.01 },
-        rotationZ: { value: -0.8, min: -20, max: 20, step: 0.01 },
+        rotationX: { value: -6, min: -20, max: 20, step: 0.01 },
+        rotationY: { value: 6.43, min: -20, max: 20, step: 0.01 },
+        rotationZ: { value: 11.6, min: -20, max: 20, step: 0.01 },
         positionX: { value: -8, min: -10, max: 10, step: 0.1 },
         positionY: { value: 3.2, min: -10, max: 10, step: 0.1 },
         positionZ: { value: -2, min: -10, max: 10, step: 0.1 },
@@ -170,7 +171,8 @@ const MainSetup = () => {
 
     useEffect(() => {
        
-
+      
+        
 
         const updateWidthVar = () => {
             if (window.innerWidth <= 550) {
@@ -242,6 +244,12 @@ const MainSetup = () => {
                 child.castShadow = true;
                 child.receiveShadow = true;
             }
+            if (child.isMesh && child.name === "Plane") {
+                // Apply the texture to the material
+                child.material.map = texture;
+                child.material.needsUpdate = true;
+                child.rotation.set(Math.PI,0,0);
+              }
         });
         const handleScreenClick = () => {
             setTimeout(() => {
@@ -287,7 +295,7 @@ const MainSetup = () => {
                 position={initialCameraPosition}
                 rotation={initialCameraRotation}
             />
-            {/* <ambientLight intensity={1}/> */}
+            <ambientLight intensity={1}/>
 
             <directionalLight
                 color="white"

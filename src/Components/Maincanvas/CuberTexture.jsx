@@ -21,6 +21,8 @@ const CubeEnvironment = () => {
         // Set it as the scene background and environment
         scene.background = cubeTexture;
         scene.environment = cubeTexture;
+        scene.environment = cubeTexture;
+        
         
       
 
