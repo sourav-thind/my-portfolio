@@ -56,11 +56,13 @@ const MainSetup = () => {
     const [htmlDiv1P, sethtmlDiv1P] = useState([[-7.3, 3, -0.35], 0.3, [0, -1.86, 0]]);
     const [menu1Btn, setMenu1Btn] = useState([[0, -4, 0], 1]);
     const [prtfBtn, setprtfBtn] = useState();
-    const [clickedDiv, setclickedDiv] = useState([[-2, -2, 0]])
+    const [clickedDiv, setclickedDiv] = useState([[-2, -2, 0]]);
 
     const modelRef = useRef(modelRotation);
     const aspectRatio = window.innerWidth / window.innerHeight;
     var scaleVar = 3.1 / aspectRatio;
+    const [back1Btn, setback1Btn] = useState([[0.1 * aspectRatio, -4.7, -0.17], 0.15, [0, -0.36, 0]])
+    const [back2Btn, setback2Btn] = useState([[-5.5, -5.1, -1.1], 0.35, [0, -0.36, 0]])
 
     const handleClick = () => {
         setClicked(true);
@@ -95,8 +97,8 @@ const MainSetup = () => {
 
         if (window.innerWidth <= 550) {
 
-        gsap.to(camera.position, { x: 0, y: -4.77, z: -0.058, duration: 1.5 });
-        gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
+            gsap.to(camera.position, { x: 0, y: -4.77, z: -0.058, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
 
         }
         else if (window.innerWidth <= 768) {
@@ -136,9 +138,9 @@ const MainSetup = () => {
 
         }
         else {
-            
-                    gsap.to(camera.position, { x: 0, y: -4.64, z: -0.067, duration: 1.5 });
-                    gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
+
+            gsap.to(camera.position, { x: 0, y: -4.64, z: -0.067, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
         }
 
 
@@ -146,8 +148,61 @@ const MainSetup = () => {
 
     const handleButton2 = () => {
         setShowButtons(false);
-        gsap.to(camera.position, { x: -2.2, y: -3.7, z: 1.6, duration: 1.5 });
-        gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
+        // gsap.to(camera.position, { x: -2.2, y: -3.7, z: 1.6, duration: 1.5 });
+        // gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
+
+
+        if (window.innerWidth <= 550) {
+
+            gsap.to(camera.position, { x: -1, y: -3.7, z: 1, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
+
+        }
+        else if (window.innerWidth <= 768) {
+
+            gsap.to(camera.position, { x: -2.2, y: -3.7, z: 1.6, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
+        }
+        else if (window.innerWidth <= 900) {
+
+            gsap.to(camera.position, { x: -2.2, y: -3.7, z: 1.6, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
+        }
+        else if (window.innerWidth <= 1024) {
+
+            gsap.to(camera.position, { x: -2.2, y: -3.7, z: 1.6, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
+        }
+        else if (window.innerWidth <= 1200) {
+
+            gsap.to(camera.position, { x: -2.2, y: -3.7, z: 1.6, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
+        }
+        else if (window.innerWidth <= 1320) {
+            gsap.to(camera.position, { x: -2.2, y: -3.7, z: 1.6, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
+        }
+        else if (window.innerWidth <= 1440) {
+
+            gsap.to(camera.position, { x: -2.2, y: -3.7, z: 1.6, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
+        }
+        else if (window.innerWidth <= 1600) {
+
+            gsap.to(camera.position, { x: -2.2, y: -3.7, z: 1.6, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
+        }
+        else if (window.innerWidth <= 1920) {
+            gsap.to(camera.position, { x: -2.2, y: -3.7, z: 1.6, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
+        }
+        else {
+
+            gsap.to(camera.position, { x: -2.2, y: -3.7, z: 1.6, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
+        }
+
+
         setMenuMessage(false);
         setTimeout(() => {
             setShowMenu2(true);
@@ -173,9 +228,9 @@ const MainSetup = () => {
 
 
     useEffect(() => {
-       
-      
-        
+
+
+
 
         const updateWidthVar = () => {
             if (window.innerWidth <= 550) {
@@ -193,7 +248,11 @@ const MainSetup = () => {
 
                 setMenu1Btn([[0, -2, 0], 0.75]);
 
-                setclickedDiv([[-2,-3,1]]); 
+                setclickedDiv([[-2, -3, 1]]);
+
+                setback1Btn([[0.05, -4.815, -0.17], 0.05, [0, -0.36, 0]]);
+
+                setback2Btn([[-5.5, -4.8, -1.1], 0.35, [0, -0.36, 0]]);
 
             }
             else if (window.innerWidth <= 768) {
@@ -251,13 +310,13 @@ const MainSetup = () => {
                 // Apply the texture to the material
                 child.material.map = texture;
                 child.material.needsUpdate = true;
-                child.rotation.set(Math.PI,0,0);
-              }
+                child.rotation.set(Math.PI, 0, 0);
+            }
         });
         const handleScreenClick = () => {
             setClicked(false);
             setTimeout(() => {
-                
+
             }, 1500);
             gsap.to(camera.position, {
                 x: animatedCameraPosition[0],
@@ -298,12 +357,12 @@ const MainSetup = () => {
                 position={initialCameraPosition}
                 rotation={initialCameraRotation}
             />
-            <ambientLight intensity={1}/>
+            <ambientLight intensity={1} />
 
             <directionalLight
                 color="white"
                 intensity={1}
-                position={[-20,24.2,-7.2]}
+                position={[-20, 24.2, -7.2]}
 
                 castShadow
                 shadow-mapSize={[1024, 1024]}
@@ -313,7 +372,7 @@ const MainSetup = () => {
                 shadow-camera-right={5}
                 shadow-camera-top={5}
                 shadow-camera-bottom={-5}
-            /> 
+            />
 
 
             <primitive ref={modelRef} object={scene} scale={scale} castShadow position={modelPosition} rotation={modelRotation} onClick={(event) => {
@@ -332,17 +391,17 @@ const MainSetup = () => {
 
             }} >
                 <Html
-                transform
-                occlude
-                position={[-1.5,2.25,-7]}
-                rotation={[0,3.14,0]}
-                scale={1}
-                
-                distanceFactor={1}
-                
+                    transform
+                    occlude
+                    position={[-1.5, 2.25, -7]}
+                    rotation={[0, 3.14, 0]}
+                    scale={1}
+
+                    distanceFactor={1}
+
                 // style={{ width: window.innerWidth, height: window.innerHeight, border: 'none', overflow: 'hidden' }}
                 >
-                    <Landing/>
+                    <Landing />
                 </Html>
                 <Html
                     ref={iframeRef}
@@ -360,21 +419,21 @@ const MainSetup = () => {
                 </Html>
             </primitive>
             {!clicked && (<>
-              
-                <Html position={clickedDiv[0]} className='sm:w-[screen]'  zIndexRange={[0, 10]}>
+
+                <Html position={clickedDiv[0]} className='sm:w-[screen]' zIndexRange={[0, 10]}>
                     <div className="sm:w-[90vw]  xl:h-[30vh] xl:w-[40vw] xl:space-y-6 flex flex-col items-center justify-center  bg-drbgclr fixed bottom-0 rounded-xl  mx-auto hover:scale-110   ">
-                    <button
+                        <button
                             onClick={handleClick}
                             className="sm:px-2 sm:py-1 sm:text-md sm:w-[10rem] xl:px-4 xl:py-2 xl:text-2xl bg-drfgclr text-drbgclr  font-semibold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600"
                         >
                             Explore
                         </button>
                         <div className='sm:text-md lg:text-xl'>
-                        <p className='text-white  font-semibold'>Skip Everything and </p>
-                        <button onClick={handleButton1}
-                            className="px-3 py-1 bg-drfgclr mt-2 text-drbgclr l font-semibold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600">
-                            Visit Portfolio
-                        </button>
+                            <p className='text-white  font-semibold'>Skip Everything and </p>
+                            <button onClick={handleButton1}
+                                className="px-3 py-1 bg-drfgclr mt-2 text-drbgclr l font-semibold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600">
+                                Visit Portfolio
+                            </button>
                         </div>
                     </div>
                 </Html>
@@ -418,9 +477,9 @@ const MainSetup = () => {
             {ShowMenu1 && (< Html
                 transform
                 occlude
-                rotation={[0, -0.36, 0]}
-                scale={0.15}
-                position={[0.1 * aspectRatio, -4.7, -0.17]} >
+                rotation={back1Btn[2]}
+                scale={back1Btn[1]}
+                position={back1Btn[0]} >
 
                 <button
                     className=" text-white rounded-full  w-[2px] h-[2px]"
@@ -435,9 +494,9 @@ const MainSetup = () => {
             {ShowMenu2 && (< Html
                 transform
                 occlude
-                scale={0.35}
-                position={[-5.5, -5.1, -1.1]}
-                rotation={[0, 1.25, 0]}
+                scale={back2Btn[1]}
+                position={back2Btn[0]}
+                rotation={back2Btn[2]}
             >
 
                 <button
