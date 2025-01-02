@@ -24,24 +24,24 @@ const MainSetup = () => {
     const texture = useLoader(THREE.TextureLoader, "/textures/Shadow.png");
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
-    const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
-        rotationX: { value: 0, min: -20, max: 20, step: 0.01 },
-        rotationY: { value: Math.PI, min: -20, max: 20, step: 0.01 },
-        rotationZ: { value: 0, min: -20, max: 20, step: 0.01 },
-        positionX: { value: -4.3, min: -10, max: 20, step: 0.1 },
-        positionY: { value: -4.8 , min: -10, max: 10, step: 0.1 },
-        positionZ: { value: -0.7, min: -10, max: 10, step: 0.1 },
-        distanceFactor: { value: 3.08, min: 0, max: 6, step: 0.01 },
-        distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
-        color1: { value: '#ff0000' },
-        color2: { value: '#00FFA3' }
+    // const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
+    //     rotationX: { value: 0, min: -20, max: 20, step: 0.01 },
+    //     rotationY: { value: Math.PI, min: -20, max: 20, step: 0.01 },
+    //     rotationZ: { value: 0, min: -20, max: 20, step: 0.01 },
+    //     positionX: { value: -4.3, min: -10, max: 20, step: 0.1 },
+    //     positionY: { value: -4.8 , min: -10, max: 10, step: 0.1 },
+    //     positionZ: { value: -0.7, min: -10, max: 10, step: 0.1 },
+    //     distanceFactor: { value: 3.08, min: 0, max: 6, step: 0.01 },
+    //     distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
+    //     color1: { value: '#ff0000' },
+    //     color2: { value: '#00FFA3' }
 
-    });
+    // });
     const { camera } = useThree();
     const [clicked, setClicked] = useState(true);
     const [showButtons, setShowButtons] = useState(false);
     const [ShowMenu1, setShowMenu1] = useState(false);
-    const [ShowMenu2, setShowMenu2] = useState(true);
+    const [ShowMenu2, setShowMenu2] = useState(false);
     const [guitarMessage, setGuitarMessage] = useState(false);
     const [menuMessage, setMenuMessage] = useState(false);
     const [widthVar, setWidthVar] = useState(1);
@@ -103,7 +103,7 @@ const MainSetup = () => {
         }
         else if (window.innerWidth <= 768) {
 
-            gsap.to(camera.position, { x: 0, y: -4.64, z: -0.067, duration: 1.5 });
+            gsap.to(camera.position, { x: -0.018, y: -4.775, z: 0, duration: 1.5 });
             gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
         }
         else if (window.innerWidth <= 900) {
@@ -160,7 +160,7 @@ const MainSetup = () => {
         }
         else if (window.innerWidth <= 768) {
 
-            gsap.to(camera.position, { x: -2.2, y: -3.7, z: 1.6, duration: 1.5 });
+            gsap.to(camera.position, { x: -0.8, y: -3.7, z: 1, duration: 1.5 });
             gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
         }
         else if (window.innerWidth <= 900) {
@@ -257,6 +257,21 @@ const MainSetup = () => {
             }
             else if (window.innerWidth <= 768) {
                 setWidthVar(2);
+                setscale([0.6, 0.9, 0.8]);
+                sethtmlDiv1P([[-6, 4.5, 1.5], 0.4, [0, -1.4, 0]]);
+
+                setinitialCameraPosition([-8, -4, -2]);
+
+                setanimatedCameraPosition([-6, -4, -6]);
+
+                setMenu1Btn([[0, -4, 0], 0.75]);
+
+                setclickedDiv([[-2, -3, 1]]);
+
+                setback1Btn([[0.09, -4.84, -0.15], 0.05, [0, -0.36, 0]]);
+
+                setback2Btn([[-4.3, -5, -0.7], 0.25, [0, 1.25, 0]]);
+
 
             }
             else if (window.innerWidth <= 900) {
@@ -265,7 +280,12 @@ const MainSetup = () => {
             }
             else if (window.innerWidth <= 1024) {
                 setWidthVar(1.465);
+                setscale([0.6, 0.9, 0.8]);
+                sethtmlDiv1P([[-6, 4.5, 1.5], 0.4, [0, -1.4, 0]]);
 
+                setinitialCameraPosition([-8, -4, -1.9]);
+
+                setanimatedCameraPosition([-6, -4, -6]);
             }
             else if (window.innerWidth <= 1200) {
                 setWidthVar(1.35);
@@ -421,15 +441,15 @@ const MainSetup = () => {
             {!clicked && (<>
 
                 <Html position={clickedDiv[0]} className='sm:w-[screen]' zIndexRange={[0, 10]}>
-                    <div className="sm:w-[90vw]  xl:h-[30vh] xl:w-[40vw] xl:space-y-6 flex flex-col items-center justify-center  bg-drbgclr fixed bottom-0 rounded-xl  mx-auto hover:scale-110   ">
+                    <div className="w-[60vw] h-[50vw]  xl:h-[30vh] xl:w-[40vw] xl:space-y-6 flex flex-col items-center justify-center  bg-drbgclr fixed bottom-0 rounded-xl  mx-auto hover:scale-110   ">
                         <button
                             onClick={handleClick}
-                            className="sm:px-2 sm:py-1 sm:text-md sm:w-[10rem] xl:px-4 xl:py-2 xl:text-2xl bg-drfgclr text-drbgclr  font-semibold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600"
+                            className="px-2 py-1 sm:text-md sm:w-[10rem] xl:px-4 xl:py-2 xl:text-2xl bg-drfgclr text-drbgclr  font-semibold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600"
                         >
                             Explore
                         </button>
-                        <div className='sm:text-md lg:text-xl'>
-                            <p className='text-white  font-semibold'>Skip Everything and </p>
+                        <div className='text-md lg:text-xl'>
+                            <p className='text-white mt-4 md:font-semibold'>Skip Everything and </p>
                             <button onClick={handleButton1}
                                 className="px-3 py-1 bg-drfgclr mt-2 text-drbgclr l font-semibold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600">
                                 Visit Portfolio
@@ -511,7 +531,7 @@ const MainSetup = () => {
             )}
             {/* //Use --Infron of every sentence as there is an iteration error  */}
             {ShowMenu2 && guitarMessage && (
-                <Html position={[-8, -1.3, 2.10]} rotation={[0, 1.25, 0]} className=" flex flex-row bg-gray-900  text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60">
+                <Html position={[-8, -1.3, 2.10]} rotation={[0, 1.25, 0]} className=" flex flex-row bg-gray-900  text-white p-3 rounded-md text-lg w-[24rem] h-[8rem] md:w-[32rem] overflow-hidden bg-opacity-60 ml-[2rem]">
                     <img src="/nava.png" alt="nava the assistat" className='h-14 w-14' />
                     <Typewriter words={["He likes music, He plays guitar sometimes. He is not very good though!                     Imagine I have to tell him everytime he should be a full time guitarist."]} typeSpeed={40} />
                 </Html>)}
