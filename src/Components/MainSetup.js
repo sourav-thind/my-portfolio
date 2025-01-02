@@ -24,24 +24,24 @@ const MainSetup = () => {
     const texture = useLoader(THREE.TextureLoader, "/textures/Shadow.png");
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
-    // const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
-    //     rotationX: { value: 0, min: -20, max: 20, step: 0.01 },
-    //     rotationY: { value: Math.PI, min: -20, max: 20, step: 0.01 },
-    //     rotationZ: { value: 0, min: -20, max: 20, step: 0.01 },
-    //     positionX: { value: -1.5, min: -10, max: 20, step: 0.1 },
-    //     positionY: { value: 2.25 , min: -10, max: 10, step: 0.1 },
-    //     positionZ: { value: -7, min: -10, max: 10, step: 0.1 },
-    //     distanceFactor: { value: 3.08, min: 0, max: 6, step: 0.01 },
-    //     distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
-    //     color1: { value: '#ff0000' },
-    //     color2: { value: '#00FFA3' }
+    const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
+        rotationX: { value: 0, min: -20, max: 20, step: 0.01 },
+        rotationY: { value: Math.PI, min: -20, max: 20, step: 0.01 },
+        rotationZ: { value: 0, min: -20, max: 20, step: 0.01 },
+        positionX: { value: -4.3, min: -10, max: 20, step: 0.1 },
+        positionY: { value: -4.8 , min: -10, max: 10, step: 0.1 },
+        positionZ: { value: -0.7, min: -10, max: 10, step: 0.1 },
+        distanceFactor: { value: 3.08, min: 0, max: 6, step: 0.01 },
+        distanceFactor2: { value: 200, min: 0, max: 300, step: 1 },
+        color1: { value: '#ff0000' },
+        color2: { value: '#00FFA3' }
 
-    // });
+    });
     const { camera } = useThree();
     const [clicked, setClicked] = useState(true);
     const [showButtons, setShowButtons] = useState(false);
     const [ShowMenu1, setShowMenu1] = useState(false);
-    const [ShowMenu2, setShowMenu2] = useState(false);
+    const [ShowMenu2, setShowMenu2] = useState(true);
     const [guitarMessage, setGuitarMessage] = useState(false);
     const [menuMessage, setMenuMessage] = useState(false);
     const [widthVar, setWidthVar] = useState(1);
@@ -62,7 +62,7 @@ const MainSetup = () => {
     const aspectRatio = window.innerWidth / window.innerHeight;
     var scaleVar = 3.1 / aspectRatio;
     const [back1Btn, setback1Btn] = useState([[0.1 * aspectRatio, -4.7, -0.17], 0.15, [0, -0.36, 0]])
-    const [back2Btn, setback2Btn] = useState([[-5.5, -5.1, -1.1], 0.35, [0, -0.36, 0]])
+    const [back2Btn, setback2Btn] = useState([[-5.8, -5.1, -1.1], 0.35, [0, 1.25, 0]])
 
     const handleClick = () => {
         setClicked(true);
@@ -154,7 +154,7 @@ const MainSetup = () => {
 
         if (window.innerWidth <= 550) {
 
-            gsap.to(camera.position, { x: -1, y: -3.7, z: 1, duration: 1.5 });
+            gsap.to(camera.position, { x: 0, y: -3.7, z: 1, duration: 1.5 });
             gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
 
         }
@@ -246,13 +246,13 @@ const MainSetup = () => {
 
                 setanimatedModelRotation([0, 4, 0]);
 
-                setMenu1Btn([[0, -2, 0], 0.75]);
+                setMenu1Btn([[0, -4, 0], 0.75]);
 
                 setclickedDiv([[-2, -3, 1]]);
 
                 setback1Btn([[0.05, -4.815, -0.17], 0.05, [0, -0.36, 0]]);
 
-                setback2Btn([[-5.5, -4.8, -1.1], 0.35, [0, -0.36, 0]]);
+                setback2Btn([[-4.3, -4.8, -0.7], 0.35, [0, 1.25, 0]]);
 
             }
             else if (window.innerWidth <= 768) {
