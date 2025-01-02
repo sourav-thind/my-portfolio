@@ -108,7 +108,7 @@ const MainSetup = () => {
         }
         else if (window.innerWidth <= 900) {
 
-            gsap.to(camera.position, { x: 0, y: -4.64, z: -0.067, duration: 1.5 });
+            gsap.to(camera.position, { x:-0.02, y: -4.775, z: 0, duration: 1.5 });
             gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
         }
         else if (window.innerWidth <= 1024) {
@@ -154,19 +154,19 @@ const MainSetup = () => {
 
         if (window.innerWidth <= 550) {
 
-            gsap.to(camera.position, { x: 0, y: -3.7, z: 1, duration: 1.5 });
-            gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
+            gsap.to(camera.position, { x: 0, y: -3.7, z: 0.5, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0.02, y: 1.35, z: -0.03, duration: 1.5 });
 
         }
         else if (window.innerWidth <= 768) {
 
-            gsap.to(camera.position, { x: -0.8, y: -3.7, z: 1, duration: 1.5 });
-            gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
+            gsap.to(camera.position, { x: -1.6, y: -3.7, z: 0.8, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0.02, y: 1.35, z: -0.03, duration: 1.5 });
         }
         else if (window.innerWidth <= 900) {
 
-            gsap.to(camera.position, { x: -2.2, y: -3.7, z: 1.6, duration: 1.5 });
-            gsap.to(camera.rotation, { x: 0, y: 1.35, z: -0.03, duration: 1.5 });
+            gsap.to(camera.position, { x: -1.6, y: -3.7, z: 0, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0.02, y: 1.35, z: -0.03, duration: 1.5 });
         }
         else if (window.innerWidth <= 1024) {
 
@@ -211,10 +211,9 @@ const MainSetup = () => {
 
     const handleButton3 = () => {
         setShowButtons(false);
-
+        gsap.to(modelRef.current.rotation, { x: animatedModelRotation[0], y: animatedModelRotation[1], z: animatedModelRotation[2], duration: 1.5 });
+        gsap.to(camera.rotation, { x: animatedCameraRotation[0], y: animatedCameraRotation[1], z: animatedCameraRotation[2], duration: 1.5 });
         gsap.to(camera.position, { x: animatedCameraPosition[0], y: animatedCameraPosition[1], z: animatedCameraPosition[2], duration: 1.5 });
-        gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 1.5 });
-        gsap.to(camera.rotation, { x: 0, y: -1.46, z: 0, duration: 1.5 });
         setMenuMessage(false);
         setTimeout(() => {
             setClicked(false);
@@ -276,6 +275,20 @@ const MainSetup = () => {
             }
             else if (window.innerWidth <= 900) {
                 setWidthVar(1.61);
+                setscale([0.6, 0.9, 0.8]);
+                sethtmlDiv1P([[-6, 4.5, 1.5], 0.4, [0, -1.4, 0]]);
+
+                setinitialCameraPosition([-8, -4, -2]);
+
+                setanimatedCameraPosition([-6, -4, -6]);
+
+                setMenu1Btn([[0, -4.5, 0], 0.75]);
+
+                setclickedDiv([[-2, -3, 1]]);
+
+                setback1Btn([[0.1, -4.8, -0.12], 0.1, [0, -0.36, 0]]);
+
+                setback2Btn([[-4.3, -5, -0.7], 0.25, [0, 1.25, 0]]);
 
             }
             else if (window.innerWidth <= 1024) {
@@ -419,7 +432,6 @@ const MainSetup = () => {
 
                     distanceFactor={1}
 
-                // style={{ width: window.innerWidth, height: window.innerHeight, border: 'none', overflow: 'hidden' }}
                 >
                     <Landing />
                 </Html>
