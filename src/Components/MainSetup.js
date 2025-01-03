@@ -380,7 +380,7 @@ const MainSetup = () => {
                 position={initialCameraPosition}
                 rotation={initialCameraRotation}
             />
-            <ambientLight intensity={4} />
+            <ambientLight intensity={1} />
 
             <directionalLight
                 color="white"
@@ -440,7 +440,7 @@ const MainSetup = () => {
             {!clicked && (<>
 
                 <Html position={clickedDiv[0]} className='sm:w-[screen]' zIndexRange={[0, 10]}>
-                    <div className="w-[60vw] h-[50vw]  xl:h-[30vh] xl:w-[40vw] xl:space-y-6 flex flex-col items-center justify-center  bg-drbgclr fixed bottom-0 rounded-xl  mx-auto hover:scale-110   ">
+                    <div className="w-[60vw] h-[50vw]  xl:h-[30vh] xl:w-[40vw] xl:space-y-6 flex flex-col items-center justify-center   fixed bottom-0 rounded-xl  mx-auto hover:scale-110   ">
                         <button
                             onClick={handleClick}
                             className="px-2 py-1 sm:text-md sm:w-[10rem] xl:px-4 xl:py-2 xl:text-2xl bg-drfgclr text-drbgclr  font-semibold rounded-lg shadow-lg transition-all duration-500 transform hover:scale-105 hover:bg-blue-600"
