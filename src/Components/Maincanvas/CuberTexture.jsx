@@ -7,33 +7,26 @@ const CubeEnvironment = () => {
     const { scene } = useThree();
 
     useEffect(() => {
-        // Load the cube texture
         const loader = new CubeTextureLoader();
         const cubeTexture = loader.load([
-            '/textures/cubemap/px.jpg', // Positive X
-            '/textures/cubemap/nx.jpg', // Negative X
-            '/textures/cubemap/py.jpg', // Positive Y
-            '/textures/cubemap/ny.jpg', // Negative Y
-            '/textures/cubemap/pz.jpg', // Positive Z
-            '/textures/cubemap/nz.jpg', // Negative Z
+            '/textures/cubemap/px.jpg',
+            '/textures/cubemap/nx.jpg',
+            '/textures/cubemap/py.jpg', 
+            '/textures/cubemap/ny.jpg', 
+            '/textures/cubemap/pz.jpg', 
+            '/textures/cubemap/nz.jpg',
         ]);
 
-        // Set it as the scene background and environment
         scene.background = cubeTexture;
         scene.environment = cubeTexture;
-        scene.environment = cubeTexture;
         
-        
-      
-
-        // Cleanup on unmount (optional)
         return () => {
             scene.background = null;
             scene.environment = null;
         };
     }, [scene]);
 
-    return null; // No need to render anything
+    return null; 
 };
 
 export default CubeEnvironment;

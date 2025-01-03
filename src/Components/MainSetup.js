@@ -1,18 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { SpotLightHelper, DirectionalLightHelper } from "three";
-import { OrbitControls, useGLTF, Html, Environment, PerspectiveCamera } from "@react-three/drei";
+import { useGLTF, Html, PerspectiveCamera } from "@react-three/drei";
 import { Leva, useControls } from 'leva';
 import * as THREE from 'three';
 import { useLoader, useThree } from '@react-three/fiber';
 import gsap from "gsap";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
-import { RectAreaLightHelper } from "three/examples/jsm/helpers/RectAreaLightHelper";
-import HoverEffect from './HoverEffect';
-import TypedMessage from './TypedMessage';
 import { Typewriter } from 'react-simple-typewriter'
-
-import { CubeTextureLoader } from 'three';
-
 import HtmlMain from './Html Site/HtmlMain';
 import Landing from './Landing/Landing';
 
@@ -332,15 +325,12 @@ const MainSetup = () => {
 
 
 
-        // camera.position.set(...initialCameraPosition);
-        // camera.rotation.set(...initialCameraRotation);
         scene.traverse((child) => {
             if (child.isMesh) {
                 child.castShadow = true;
                 child.receiveShadow = true;
             }
             if (child.isMesh && child.name === "Plane") {
-                // Apply the texture to the material
                 child.material.map = texture;
                 child.material.needsUpdate = true;
                 child.rotation.set(Math.PI, 0, 0);
@@ -390,12 +380,12 @@ const MainSetup = () => {
                 position={initialCameraPosition}
                 rotation={initialCameraRotation}
             />
-            <ambientLight intensity={1} />
+            <ambientLight intensity={4} />
 
             <directionalLight
                 color="white"
                 intensity={1}
-                position={[-20, 24.2, -7.2]}
+                position={[0, 24.2, -7.2]}
 
                 castShadow
                 shadow-mapSize={[1024, 1024]}
@@ -410,10 +400,7 @@ const MainSetup = () => {
 
             <primitive ref={modelRef} object={scene} scale={scale} castShadow position={modelPosition} rotation={modelRotation} onClick={(event) => {
                 const validNames = [
-                    "Material1-material",
                     "Material2-material",
-                    "Material3-material",
-                    "Material4-material",
                     "Material5-material",
                 ];
 
