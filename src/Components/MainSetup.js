@@ -8,6 +8,7 @@ import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { Typewriter } from 'react-simple-typewriter'
 import HtmlMain from './Html Site/HtmlMain';
 import Landing from './Landing/Landing';
+import { MeshBasicMaterial } from "three"
 
 
 
@@ -38,7 +39,7 @@ const MainSetup = () => {
     const [guitarMessage, setGuitarMessage] = useState(false);
     const [menuMessage, setMenuMessage] = useState(false);
     const [widthVar, setWidthVar] = useState(1);
-    const [initialCameraPosition, setinitialCameraPosition] = useState([-8.9, -2.8, -1]);
+    const [initialCameraPosition, setinitialCameraPosition] = useState([-8.8, -2.8, -1.1]);
     const [initialCameraRotation, setinitialCameraRotation] = useState([0, -1.85, 0]);
     const [animatedCameraPosition, setanimatedCameraPosition] = useState([-10.50, -1, 3]);
     const [animatedCameraRotation, setanimatedCameraRotation] = useState([0, -1.46, 0]);
@@ -54,7 +55,7 @@ const MainSetup = () => {
     const modelRef = useRef(modelRotation);
     const aspectRatio = window.innerWidth / window.innerHeight;
     var scaleVar = 3.1 / aspectRatio;
-    const [back1Btn, setback1Btn] = useState([[0.1 * aspectRatio, -4.7, -0.17], 0.15, [0, -0.36, 0]])
+    const [back1Btn, setback1Btn] = useState([[0.1 * aspectRatio, -4.66, -0.17], 0.15, [0, -0.36, 0]])
     const [back2Btn, setback2Btn] = useState([[-5.8, -5.1, -1.1], 0.35, [0, 1.25, 0]])
 
     const handleClick = () => {
@@ -222,8 +223,6 @@ const MainSetup = () => {
     useEffect(() => {
 
 
-
-
         const updateWidthVar = () => {
             if (window.innerWidth <= 550) {
                 setWidthVar(2.3);
@@ -337,8 +336,8 @@ const MainSetup = () => {
             }
         });
         const handleScreenClick = () => {
-            setClicked(false);
             setTimeout(() => {
+                setClicked(false);
 
             }, 1500);
             gsap.to(camera.position, {
@@ -410,18 +409,7 @@ const MainSetup = () => {
                 }
 
             }} >
-                <Html
-                    transform
-                    occlude
-                    position={[-1.5, 2.25, -7]}
-                    rotation={[0, 3.14, 0]}
-                    scale={1}
-
-                    distanceFactor={1}
-
-                >
-                    <Landing />
-                </Html>
+              
                 <Html
                     ref={iframeRef}
                     transform

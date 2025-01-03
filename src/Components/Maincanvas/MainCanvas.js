@@ -11,9 +11,9 @@ function MainCanvas() {
   return (
  
     <Canvas dpr={[1, window.devicePixelRatio]} color="#475569" style={{ height: '100vh',  background: "#262a33" }}  >
-      <fog attach="fog" color="#262a33" near={0} far={15} />  
+      <fogExp2 attach="fog" color="#262a33" near={1} far={8} density={0.1}/>  
       <MainSetup/>
-      {/* <PreloadScene/> */}
+      <PreloadScene/>
     </Canvas>
    
   );
