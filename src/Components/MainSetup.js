@@ -376,7 +376,7 @@ const MainSetup = () => {
     return (
         <>
 
-            <Html><StatsComponent /></Html>
+            
             <PerspectiveCamera
                 makeDefault
                 fov={75}
