@@ -104,7 +104,7 @@ const MainSetup = () => {
         }
         else if (window.innerWidth <= 900) {
 
-            gsap.to(camera.position, { x:-0.02, y: -4.775, z: 0, duration: 1.5 });
+            gsap.to(camera.position, { x: -0.02, y: -4.775, z: 0, duration: 1.5 });
             gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
         }
         else if (window.innerWidth <= 1024) {
@@ -233,11 +233,13 @@ const MainSetup = () => {
 
                 sethtmlDiv1P([[-6, 4.5, 1.5], 0.4, [0, -1.4, 0]]);
 
-                setinitialCameraPosition([-8, -4, -2.3]);
+                setinitialCameraPosition([-9, -4, -3.2]);
 
                 setanimatedCameraPosition([-6, -4, -6]);
 
-                setanimatedModelRotation([0, 4, 0]);
+                setmodelRotation([0, 1, 0]);
+
+                setanimatedModelRotation([0, 1.28, 0]);
 
                 setMenu1Btn([[0, -4, 0], 0.75]);
 
@@ -256,6 +258,7 @@ const MainSetup = () => {
                 setinitialCameraPosition([-8, -4, -2]);
 
                 setanimatedCameraPosition([-6, -4, -6]);
+
 
                 setMenu1Btn([[0, -4, 0], 0.75]);
 
@@ -376,7 +379,7 @@ const MainSetup = () => {
     return (
         <>
 
-            
+
             <PerspectiveCamera
                 makeDefault
                 fov={75}
@@ -413,7 +416,7 @@ const MainSetup = () => {
                 }
 
             }} >
-              
+
                 <Html
                     ref={iframeRef}
                     transform
