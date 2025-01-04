@@ -19,7 +19,7 @@ const PreloadScene = () => {
             >
                 <meshStandardMaterial
         map={mainTexture} // Main texture
-        // bumpMap={specTexture} // Specular or bump texture
+        normalmap={specTexture} // Specular or bump texture
         // bumpScale={0.2} // Adjust the strength of the bump effect
       />
             </Plane>

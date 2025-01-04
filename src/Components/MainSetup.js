@@ -9,6 +9,8 @@ import { Typewriter } from 'react-simple-typewriter'
 import HtmlMain from './Html Site/HtmlMain';
 import Landing from './Landing/Landing';
 import { MeshBasicMaterial } from "three"
+import Stats from 'stats.js'
+import StatsComponent from './Stats';
 
 
 
@@ -373,6 +375,8 @@ const MainSetup = () => {
 
     return (
         <>
+
+            <Html><StatsComponent /></Html>
             <PerspectiveCamera
                 makeDefault
                 fov={75}
