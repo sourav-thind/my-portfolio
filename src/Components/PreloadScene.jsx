@@ -13,7 +13,7 @@ const PreloadScene = () => {
         <>
             {/* <fog attach="fog" args={["#475569", 10, 50]} /> */}
             <Plane
-                args={[50, 50, 1, 1]} 
+                args={[100, 100, 1, 1]} 
                 rotation={[-Math.PI / 2, 0, 0]} 
                 position={[0, -6.5, 0]} 
             >
