@@ -22,7 +22,7 @@ const Hero = () => {
               initial={{ y: 60 }}
               whileInView={{ y: 0 }}
               transition={{ duration: 1 }}
-              className="flex flex-row items-center mt-6 md:mt-2 text-drgry text-2xl justify-center"
+              className="flex flex-col md:flex-row items-center mt-6 md:mt-2 text-drgry text-2xl justify-center"
             >
               <div>I am not just a developer,&nbsp;</div>
               <div className="text-drwht text-3xl">
