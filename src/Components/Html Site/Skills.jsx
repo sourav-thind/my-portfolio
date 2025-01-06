@@ -24,7 +24,7 @@ const Skills = () => {
             className="group flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105"
           >
             {/* Skill Icon */}
-            <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center bg-gray-800 rounded-full shadow-lg">
+            <div className="w-20 h-20 md:w-32 md:h-32 flex items-center justify-center bg-drbgclr shadow-sm shadow-drgry border-black border rounded-lg">
               <img
                 src={technology.icon}
                 alt={technology.name}

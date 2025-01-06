@@ -75,10 +75,11 @@ const MainSetup = () => {
         gsap.to(camera.position, { x: 0, y: -4, z: 6, duration: 1.5 });
         gsap.to(camera.rotation, { x: 0, y: 0, z: 0, duration: 1.5 });
         gsap.to(modelRef.current.rotation, { x: 0, y: 1.28, z: 0, duration: 1.5 });
-        setShowMenu1(false)
-        setShowMenu2(false)
-        setGuitarMessage(false)
-        setMenuMessage(false)
+        setShowMenu1(false);
+        setShowMenu2(false);
+        setGuitarMessage(false);
+        setMenuMessage(false);
+        setComputerMessage(false);
         setTimeout(() => {
             setShowButtons(true);
         }, 1500);
@@ -420,11 +421,13 @@ const MainSetup = () => {
 
                 if (validNames.includes(event.object.name) && ShowMenu2) {
                     setGuitarMessage(true);
+                    setComputerMessage(false);
                     event.stopPropagation();
                     
                 }
                 else if (computerNames.includes(event.object.name) && ShowMenu2){
                     setComputerMessage(true);
+                    setGuitarMessage(false);
                     event.stopPropagation();
                 }
 
