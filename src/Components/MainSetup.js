@@ -39,6 +39,7 @@ const MainSetup = () => {
     const [ShowMenu1, setShowMenu1] = useState(false);
     const [ShowMenu2, setShowMenu2] = useState(false);
     const [guitarMessage, setGuitarMessage] = useState(false);
+    const [computerMessage, setComputerMessage] = useState(false);
     const [menuMessage, setMenuMessage] = useState(false);
     const [widthVar, setWidthVar] = useState(1);
     const [initialCameraPosition, setinitialCameraPosition] = useState([-8.8, -2.8, -1.1]);
@@ -405,13 +406,25 @@ const MainSetup = () => {
 
 
             <primitive ref={modelRef} object={scene} scale={scale} castShadow position={modelPosition} rotation={modelRotation} onClick={(event) => {
+                
                 const validNames = [
                     "Material2-material",
                     "Material5-material",
                 ];
+                const computerNames = [
+                    "Screen.004", 
+                    "Sketchfab_model003",
+                    "Computer.004",
+                    'Computer1_Computer001_0'
+                ]
 
                 if (validNames.includes(event.object.name) && ShowMenu2) {
                     setGuitarMessage(true);
+                    event.stopPropagation();
+                    
+                }
+                else if (computerNames.includes(event.object.name) && ShowMenu2){
+                    setComputerMessage(true);
                     event.stopPropagation();
                 }
 
@@ -457,7 +470,9 @@ const MainSetup = () => {
                 <img src="/nava.png" alt="nava the assistat" className='h-14 w-14' />
                 <Typewriter words={["I am Naeva, his virtual assistant. You can have a tour. I won't tell him.     You are not here to steal something right??                    Let me know if you find his car keys!!!!!!"]} typeSpeed={30} />
             </Html>)}
+
             {/* //This will show three buttons  */}
+
             {showButtons && (
                 <>
                     <Html position={menu1Btn[0]} scale={menu1Btn[1]} transform>
@@ -523,11 +538,16 @@ const MainSetup = () => {
 
             </Html>
             )}
-            {/* //Use --Infron of every sentence as there is an iteration error  */}
+
             {ShowMenu2 && guitarMessage && (
                 <Html position={[-8, -1.3, 2.10]} rotation={[0, 1.25, 0]} className=" flex flex-row bg-gray-900  text-white p-3 rounded-md text-lg w-[24rem] h-[8rem] md:w-[32rem] overflow-hidden bg-opacity-60 ml-[2rem]">
                     <img src="/nava.png" alt="nava the assistat" className='h-14 w-14' />
                     <Typewriter words={["He likes music, He plays guitar sometimes. He is not very good though!                     Imagine I have to tell him everytime he should be a full time guitarist."]} typeSpeed={40} />
+                </Html>)}
+            {ShowMenu2 && computerMessage && (
+                <Html position={[-8, -1.3, 2.10]} rotation={[0, 1.25, 0]} className=" flex flex-row bg-gray-900  text-white p-3 rounded-md text-lg w-[24rem] h-[8rem] md:w-[32rem] overflow-hidden bg-opacity-60 ml-[2rem]">
+                    <img src="/nava.png" alt="nava the assistat" className='h-14 w-14' />
+                    <Typewriter words={["No No Please no, don't touch that, Sourav's alter ego is creating something there, he is cruel, I mean his alter ego. I hear he is creating my evil version there too. Its not ready yet"]} typeSpeed={25} />
                 </Html>)}
 
 

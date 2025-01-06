@@ -1,47 +1,45 @@
-import React, { useRef } from 'react';
-import { technologies } from '../../constants';
-import BallCanvas from './BallCanvas';
-import { useScroll, useTransform, motion } from 'framer-motion';
-
+import React from "react";
+import { technologies } from "../../constants"; 
+const LazyIcon = React.lazy(({ src }) => (
+  <img src={src} alt="Skill Icon" className="w-12 h-12 md:w-16 md:h-16 object-contain" />
+));
 const Skills = () => {
-  const refDiv = useRef(null);
-
-  const { scrollYProgress } = useScroll({
-    target: refDiv,
-    offset: ['start end', 'end start'],
-  });
-
-  const y = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [300, 0, 0, -250]);
-
   return (
-    <motion.div
-      ref={refDiv}
-      initial={{ y: 200 }}
-      style={{ y }}
-      transition={{ duration: 1 }}
-      className="h-screen bg-drbgclr mx-auto"
-    >
-      <div className="flex flex-col items-center justify-center gap-y-8 lg:gap-y-0 z-30">
-        {/* Skills Header */}
-        <div>
-          <h1 className="text-3xl tracking-[20px] uppercase text-drwht font-semibold mt-0 lg:mt-[4rem]">
-            Skills
-          </h1>
-        </div>
-
-        {/* Skills Display */}
-        <div className="flex flex-row flex-wrap justify-center p-8 gap-8 md:gap-16 mx-0 md:mx-12 lg:mx-32 md:gap-x-16 lg:gap-x-20 floating mt-8 lg:mt-4">
-          {technologies.map((technology) => (
-            <div
-              className="w-20 h-20 md:w-24 md:h-24 lg:h-28 lg:w-28 hover:scale-110"
-              key={technology.name}
-            >
-              <BallCanvas icon={technology.icon} />
-            </div>
-          ))}
-        </div>
+    <div className="bg-drbgclr text-white py-16 px-4 sm:px-8 lg:px-16 h-screen">
+      {/* Header */}
+      <div className="text-center mb-12">
+        <h2 className="text-3xl md:text-4xl font-bold tracking-wider uppercase">
+          Skills
+        </h2>
+        <p className="mt-4 text-gray-400 text-sm sm:text-base">
+          A showcase of tools and technologies I use to build impactful solutions.
+        </p>
       </div>
-    </motion.div>
+
+      {/* Skills Grid */}
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+        {technologies.map((technology) => (
+          <div
+            key={technology.name}
+            className="group flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105"
+          >
+            {/* Skill Icon */}
+            <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center bg-gray-800 rounded-full shadow-lg">
+              <img
+                src={technology.icon}
+                alt={technology.name}
+                className="w-12 h-12 md:w-16 md:h-16 object-contain"
+              />
+            </div>
+
+            {/* Skill Name */}
+            <p className="mt-4 text-sm md:text-base font-medium group-hover:text-teal-400">
+              {technology.name}
+            </p>
+          </div>
+        ))}
+      </div>
+    </div>
   );
 };
 

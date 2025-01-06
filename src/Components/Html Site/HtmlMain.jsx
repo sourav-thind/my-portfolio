@@ -14,12 +14,6 @@ const HtmlMain = () => {
 
 
     <div className="h-screen overflow-x-hidden scrollbar-hide">
-
-      {/* <div className="overflow-x-hidden">
-        <section className="h-screen w-screen   bg-slate-600  ">
-          <CanvasLoader />
-        </section>
-      </div> */}
       <section className=' bg-drbgclr'>
 
         <Header />
@@ -33,9 +27,9 @@ const HtmlMain = () => {
             <About />
           </section>
 
-          {/* <section className="h-screen " id='skills'>
+          <section className="h-screen " id='skills'>
             <Skills />
-          </section> */}
+          </section>
       <section className='h-screen bg-drbgclr ' id='projects'>
           <Projects />
 
