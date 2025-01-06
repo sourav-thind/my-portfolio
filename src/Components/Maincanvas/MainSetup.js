@@ -6,11 +6,11 @@ import { useLoader, useThree } from '@react-three/fiber';
 import gsap from "gsap";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { Typewriter } from 'react-simple-typewriter'
-import HtmlMain from './Html Site/HtmlMain';
-import Landing from './Landing/Landing';
+import HtmlMain from '../Html Site/HtmlMain';
+import Landing from '../Landing/Landing';
 import { MeshBasicMaterial } from "three"
 import Stats from 'stats.js'
-import StatsComponent from './Stats';
+import StatsComponent from '../Stats';
 
 
 

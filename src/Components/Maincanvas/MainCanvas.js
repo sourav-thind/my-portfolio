@@ -1,9 +1,7 @@
 import React from "react";
 import { Canvas } from "@react-three/fiber";
-import MainSetup from "../MainSetup";
-import CubeEnvironment from "./CuberTexture";
-import { Preload } from "@react-three/drei";
-import PreloadScene from "../PreloadScene";
+import MainSetup from "./MainSetup";
+import PreloadScene from "./PreloadScene";
 
 
 

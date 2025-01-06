@@ -21,10 +21,10 @@ const ProjectCards = ({
 }) => {
   return (
     <div className='bg-gradient-to-br from-drgry to-black rounded-lg border-4 lg:w-[500px] w-[300px] md:w-[560px] mx-auto py-2 border-drfgclr'>
-      <div className="relative w-[300px] lg:w-[480px] md:w-[520px] h-full flex flex-col  mx-auto sm:gap-y-2 gap-y-0">
-        <div className='flex flex-col md:flex-row lg:flex-col space-x-3 w-[290px] md:w-[560px] lg:w-[500px]'>
-        <img src={image} alt={name} className='md:h-[220px] lg:h-[180px] h-[150px] mx-auto justify-center self-center' />
-        <div className={`flex flex-row md:flex-col  lg:flex-row lg:ml-0 gap-4 mt-4 p-1 lg:p-2 rounded-md justify-evenly md:mt-1  bg-gradient-to-br from-drgy to-black sm:overflow-scroll lg:overflow-hidden`}>
+      <div className="relative w-[300px] lg:w-[480px] md:w-[500px] h-full flex flex-col  mx-auto sm:gap-y-2 gap-y-0">
+        <div className='flex flex-col md:flex-row lg:flex-col space-x-3 w-[280px] md:w-[500px] lg:w-[480px]'>
+        <img src={image} alt={name} className='md:h-[220px] lg:h-[180px] h-[150px]' />
+        <div className={`flex flex-row md:flex-col  lg:flex-row lg:ml-0 gap-4 mt-4 p-1 lg:p-2 rounded-md mx-auto justify-evenly md:mt-1  bg-gradient-to-br from-drgy to-black sm:overflow-scroll lg:overflow-hidden`}>
             {tags.map((tag) => (
               <div key={tag.name}>
                 <img src={tag.image} alt={tag.name} className='h-8 w-8 md:h-10 md:w-10' />
