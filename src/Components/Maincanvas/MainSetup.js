@@ -20,6 +20,8 @@ const MainSetup = () => {
     const texture = useLoader(THREE.TextureLoader, "/textures/Shadow.png");
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
+
+  const lightRef = useRef();
     // const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
     //     rotationX: { value: 0, min: -20, max: 20, step: 0.01 },
     //     rotationY: { value: Math.PI, min: -20, max: 20, step: 0.01 },
@@ -295,9 +297,18 @@ const MainSetup = () => {
                 setscale([0.6, 0.9, 0.8]);
                 sethtmlDiv1P([[-6, 4.5, 1.5], 0.4, [0, -1.4, 0]]);
 
-                setinitialCameraPosition([-8, -4, -1.9]);
+                setinitialCameraPosition([-7.4, -2.8, -1.25]);
 
                 setanimatedCameraPosition([-6, -4, -6]);
+
+                setMenu1Btn([[0, -4.5, 0], 0.75]);
+
+                setclickedDiv([[-9, -2, 2]]);
+
+                setback1Btn([[0.1, -4.8, -0.12], 0.1, [0, -0.36, 0]]);
+
+                setback2Btn([[-4.3, -5, -0.7], 0.25, [0, 1.25, 0]]);
+
             }
             else if (window.innerWidth <= 1200) {
                 setWidthVar(1.35);
@@ -328,7 +339,9 @@ const MainSetup = () => {
         updateWidthVar();
 
         window.addEventListener('resize', updateWidthVar);
-
+        if (lightRef.current) {
+            lightRef.current.shadow.needsUpdate = false; // Disable further shadow updates
+          }
 
 
         scene.traverse((child) => {
@@ -391,12 +404,12 @@ const MainSetup = () => {
             <ambientLight intensity={1} />
 
             <directionalLight
+            ref={lightRef}
                 color="white"
                 intensity={1}
                 position={[0, 24.2, -7.2]}
-
                 castShadow
-                shadow-mapSize={[1024, 1024]}
+                shadow-mapSize={[128, 128]}
                 shadow-camera-near={1}
                 shadow-camera-far={10}
                 shadow-camera-left={-5}
@@ -406,7 +419,7 @@ const MainSetup = () => {
             />
 
 
-            <primitive ref={modelRef} object={scene} scale={scale} castShadow position={modelPosition} rotation={modelRotation} onClick={(event) => {
+            <primitive ref={modelRef} object={scene} scale={scale}  position={modelPosition} rotation={modelRotation} onClick={(event) => {
                 
                 const validNames = [
                     "Material2-material",
