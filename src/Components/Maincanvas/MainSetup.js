@@ -21,7 +21,7 @@ const MainSetup = () => {
     const { scene } = useGLTF("/MainSetup.glb");
     const iframeRef = useRef();
 
-  const lightRef = useRef();
+    const lightRef = useRef();
     // const { rotationX, rotationY, rotationZ, positionX, positionY, positionZ, distanceFactor, distanceFactor2, color1, color2 } = useControls({
     //     rotationX: { value: 0, min: -20, max: 20, step: 0.01 },
     //     rotationY: { value: Math.PI, min: -20, max: 20, step: 0.01 },
@@ -341,7 +341,7 @@ const MainSetup = () => {
         window.addEventListener('resize', updateWidthVar);
         if (lightRef.current) {
             lightRef.current.shadow.needsUpdate = false; // Disable further shadow updates
-          }
+        }
 
 
         scene.traverse((child) => {
@@ -380,6 +380,10 @@ const MainSetup = () => {
             })
             document.removeEventListener('mousedown', handleScreenClick);
         }
+        const renderer = document.querySelector('canvas').__webgl;
+        if (renderer) {
+            renderer.shadowMap.autoUpdate = false;
+        }
 
 
         document.addEventListener('mousedown', handleScreenClick);
@@ -404,7 +408,7 @@ const MainSetup = () => {
             <ambientLight intensity={1} />
 
             <directionalLight
-            ref={lightRef}
+                ref={lightRef}
                 color="white"
                 intensity={1}
                 position={[0, 24.2, -7.2]}
@@ -419,14 +423,14 @@ const MainSetup = () => {
             />
 
 
-            <primitive ref={modelRef} object={scene} scale={scale}  position={modelPosition} rotation={modelRotation} onClick={(event) => {
-                
+            <primitive ref={modelRef} object={scene} scale={scale} position={modelPosition} rotation={modelRotation} onClick={(event) => {
+
                 const validNames = [
                     "Material2-material",
                     "Material5-material",
                 ];
                 const computerNames = [
-                    "Screen.004", 
+                    "Screen.004",
                     "Sketchfab_model003",
                     "Computer.004",
                     'Computer1_Computer001_0'
@@ -436,9 +440,9 @@ const MainSetup = () => {
                     setGuitarMessage(true);
                     setComputerMessage(false);
                     event.stopPropagation();
-                    
+
                 }
-                else if (computerNames.includes(event.object.name) && ShowMenu2){
+                else if (computerNames.includes(event.object.name) && ShowMenu2) {
                     setComputerMessage(true);
                     setGuitarMessage(false);
                     event.stopPropagation();
