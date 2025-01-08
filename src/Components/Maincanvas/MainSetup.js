@@ -122,7 +122,8 @@ const MainSetup = () => {
             gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
         }
         else if (window.innerWidth <= 1320) {
-
+            gsap.to(camera.position, { x: -0.02, y: -4.67, z: -0.02, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
         }
         else if (window.innerWidth <= 1440) {
 
@@ -131,11 +132,12 @@ const MainSetup = () => {
         }
         else if (window.innerWidth <= 1600) {
 
-            gsap.to(camera.position, { x: 0, y: -4.64, z: -0.067, duration: 1.5 });
+            gsap.to(camera.position, { x: 0, y: -4.67, z: -0.061, duration: 1.5 });
             gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
         }
         else if (window.innerWidth <= 1920) {
-
+            gsap.to(camera.position, { x: 0, y: -4.67, z: -0.061, duration: 1.5 });
+            gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
         }
         else {
 
@@ -325,6 +327,19 @@ const MainSetup = () => {
             }
             else if (window.innerWidth <= 1320) {
                 setWidthVar(1.24);
+                sethtmlDiv1P([[-6, 4.5, 1.5], 0.4, [0, -1.4, 0]]);
+
+                setinitialCameraPosition([-8.8, -2.8, -1.25]);
+
+                setMenu1Btn([[0, -4.5, 0], 0.75]);
+
+                setclickedDiv([[-9, -2, 2]]);
+
+                setback1Btn([[0.1, -4.66, -0.17], 0.1, [0, -0.36, 0]]);
+
+                setback2Btn([[-4.3, -4.6, -0.1], 0.25, [0, 1.25, 0]]);
+
+
 
             }
             else if (window.innerWidth <= 1440) {
@@ -463,9 +478,9 @@ const MainSetup = () => {
                     ref={iframeRef}
                     transform
                     occlude
-                    scale={widthVar / scaleVar}
+                    scale={0.7}
                     rotation={[1.95, 4.75, 1.95]}
-                    position={[0.331, 1.367, -0.018]}
+                    position={[0.331, 1.34, -0.018]}
                     style={{ width: window.innerWidth, height: window.innerHeight, border: 'none', overflow: 'hidden' }}
                     distanceFactor={0.33}
                 >
@@ -495,7 +510,7 @@ const MainSetup = () => {
                 </Html>
             </>
             )}
-            {menuMessage && (<Html position={[-1.2, -2.6, 2.8]} className="bg-gray-900  flex flex-row text-white p-3 rounded-md text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60">
+            {menuMessage && (<Html position={[-1.2, -2.6, 2.8]} className="bg-gray-900  flex flex-row text-white p-3 rounded-md text-sm md:text-lg w-[32rem] h-[8rem] overflow-hidden bg-opacity-60">
                 <img src="/nava.png" alt="nava the assistat" className='h-14 w-14' />
                 <Typewriter words={["I am Naeva, his virtual assistant. You can have a tour. I won't tell him.     You are not here to steal something right??                    Let me know if you find his car keys!!!!!!"]} typeSpeed={30} />
             </Html>)}
@@ -569,12 +584,12 @@ const MainSetup = () => {
             )}
 
             {ShowMenu2 && guitarMessage && (
-                <Html position={[-8, -1.3, 2.10]} rotation={[0, 1.25, 0]} className=" flex flex-row bg-gray-900  text-white p-3 rounded-md text-lg w-[24rem] h-[8rem] md:w-[32rem] overflow-hidden bg-opacity-60 ml-[2rem]">
+                <Html position={[-8, -1.3, 2.10]} rotation={[0, 1.25, 0]} className=" flex flex-row bg-gray-900  text-white p-3 rounded-md text-sm md:text-lg w-[24rem] h-[8rem] md:w-[32rem] overflow-hidden bg-opacity-60 ml-[2rem]">
                     <img src="/nava.png" alt="nava the assistat" className='h-14 w-14' />
                     <Typewriter words={["He likes music, He plays guitar sometimes. He is not very good though!                     Imagine I have to tell him everytime he should be a full time guitarist."]} typeSpeed={40} />
                 </Html>)}
             {ShowMenu2 && computerMessage && (
-                <Html position={[-8, -1.3, 2.10]} rotation={[0, 1.25, 0]} className=" flex flex-row bg-gray-900  text-white p-3 rounded-md text-lg w-[24rem] h-[8rem] md:w-[32rem] overflow-hidden bg-opacity-60 ml-[2rem]">
+                <Html position={[-8, -1.3, 2.10]} rotation={[0, 1.25, 0]} className=" flex flex-row bg-gray-900  text-white p-3 rounded-md text-sm md:text-lg w-[24rem] h-[8rem] md:w-[32rem] overflow-hidden bg-opacity-60 ml-[2rem]">
                     <img src="/nava.png" alt="nava the assistat" className='h-14 w-14' />
                     <Typewriter words={["No No Please no, don't touch that, Sourav's alter ego is creating something there, he is cruel, I mean his alter ego. I hear he is creating my evil version there too. Its not ready yet"]} typeSpeed={25} />
                 </Html>)}
