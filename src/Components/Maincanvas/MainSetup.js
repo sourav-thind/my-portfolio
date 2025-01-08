@@ -211,9 +211,13 @@ const MainSetup = () => {
 
     const handleButton3 = () => {
         setShowButtons(false);
+   
         gsap.to(modelRef.current.rotation, { x: animatedModelRotation[0], y: animatedModelRotation[1], z: animatedModelRotation[2], duration: 1.5 });
         gsap.to(camera.rotation, { x: animatedCameraRotation[0], y: animatedCameraRotation[1], z: animatedCameraRotation[2], duration: 1.5 });
         gsap.to(camera.position, { x: animatedCameraPosition[0], y: animatedCameraPosition[1], z: animatedCameraPosition[2], duration: 1.5 });
+
+       
+
         setMenuMessage(false);
         setTimeout(() => {
             setClicked(false);
@@ -239,8 +243,6 @@ const MainSetup = () => {
 
                 setinitialCameraPosition([-9, -4, -3.2]);
 
-                setanimatedCameraPosition([-6, -4, -6]);
-
                 setmodelRotation([0, 1, 0]);
 
                 setanimatedModelRotation([0, 1.28, 0]);
@@ -261,9 +263,6 @@ const MainSetup = () => {
 
                 setinitialCameraPosition([-8, -4, -2]);
 
-                setanimatedCameraPosition([-6, -4, -6]);
-
-
                 setMenu1Btn([[0, -4, 0], 0.75]);
 
                 setclickedDiv([[-2, -3, 1]]);
@@ -281,7 +280,6 @@ const MainSetup = () => {
 
                 setinitialCameraPosition([-8, -4, -2]);
 
-                setanimatedCameraPosition([-6, -4, -6]);
 
                 setMenu1Btn([[0, -4.5, 0], 0.75]);
 
@@ -299,8 +297,6 @@ const MainSetup = () => {
 
                 setinitialCameraPosition([-7.4, -2.8, -1.25]);
 
-                setanimatedCameraPosition([-6, -4, -6]);
-
                 setMenu1Btn([[0, -4.5, 0], 0.75]);
 
                 setclickedDiv([[-9, -2, 2]]);
@@ -311,7 +307,20 @@ const MainSetup = () => {
 
             }
             else if (window.innerWidth <= 1200) {
-                setWidthVar(1.35);
+                setWidthVar(1.45);
+
+                sethtmlDiv1P([[-6, 4.5, 1.5], 0.4, [0, -1.4, 0]]);
+
+                setinitialCameraPosition([-9.2, -3, -1.25]);
+
+                setMenu1Btn([[0, -4.5, 0], 0.75]);
+
+                setclickedDiv([[-9, -2, 2]]);
+
+                setback1Btn([[0.1, -4.66, -0.17], 0.1, [0, -0.36, 0]]);
+
+                setback2Btn([[-4.3, -4.6, -0.1], 0.25, [0, 1.25, 0]]);
+
 
             }
             else if (window.innerWidth <= 1320) {
@@ -340,7 +349,7 @@ const MainSetup = () => {
 
         window.addEventListener('resize', updateWidthVar);
         if (lightRef.current) {
-            lightRef.current.shadow.needsUpdate = false; // Disable further shadow updates
+            lightRef.current.shadow.needsUpdate = false; 
         }
 
 
@@ -351,7 +360,7 @@ const MainSetup = () => {
             }
             if (child.isMesh && child.name === "Plane") {
                 child.material.map = texture;
-                child.material.needsUpdate = true;
+                child.material.needsUpdate = false;
                 child.rotation.set(Math.PI, 0, 0);
             }
         });
