@@ -16,23 +16,21 @@ const Skills = () => {
         </p>
       </div>
 
-      {/* Skills Grid */}
+      
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
         {technologies.map((technology) => (
           <div
             key={technology.name}
             className="group flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105"
           >
-            {/* Skill Icon */}
-            <div className="w-20 h-20 md:w-32 md:h-32 flex items-center justify-center bg-drbgclr shadow-sm shadow-drgry border-black border rounded-lg">
-              <img
+            <div className="w-20 h-20 md:w-32 md:h-32 flex items-center justify-center bg-drbgclr shadow-sm shadow-drgry border-black border rounded-lg ">
+              <img 
                 src={technology.icon}
                 alt={technology.name}
                 className="w-12 h-12 md:w-16 md:h-16 object-contain"
               />
             </div>
 
-            {/* Skill Name */}
             <p className="mt-4 text-sm md:text-base font-medium group-hover:text-teal-400">
               {technology.name}
             </p>

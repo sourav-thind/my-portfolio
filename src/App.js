@@ -10,7 +10,6 @@ function App() {
       <HtmlMain/>
      {/* <MainCanvas/>
      <div className='top-0'>
-
      <StatsComponent/>
      </div> */} 
     </div>
