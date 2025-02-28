@@ -7,11 +7,11 @@ import StatsComponent from './Components/Stats';
 function App() {
   return (
     <div className="App">
-      <HtmlMain/>
-     {/* <MainCanvas/>
+
+      <MainCanvas/>
      <div className='top-0'>
      <StatsComponent/>
-     </div> */} 
+     </div>
     </div>
   );
 }
