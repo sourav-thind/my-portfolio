@@ -127,7 +127,7 @@ const MainSetup = () => {
         }
         else if (window.innerWidth <= 1440) {
 
-            gsap.to(camera.position, { x: 0, y: -4.64, z: -0.067, duration: 1.5 });
+            gsap.to(camera.position, { x: 0, y: -4.67, z: -0.081, duration: 1.5 });
             gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
         }
         else if (window.innerWidth <= 1600) {
@@ -136,12 +136,12 @@ const MainSetup = () => {
             gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
         }
         else if (window.innerWidth <= 1920) {
-            gsap.to(camera.position, { x: 0, y: -4.67, z: -0.061, duration: 1.5 });
+            gsap.to(camera.position, { x: 0, y: -4.67, z: -0.088, duration: 1.5 });
             gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
         }
         else {
 
-            gsap.to(camera.position, { x: 0, y: -4.64, z: -0.067, duration: 1.5 });
+            gsap.to(camera.position, { x: 0, y: -4.67, z: -0.088, duration: 1.5 });
             gsap.to(camera.rotation, { x: 0.03, y: -0.304, z: 0.008, duration: 1.5 });
         }
 
