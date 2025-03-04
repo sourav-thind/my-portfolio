@@ -17,11 +17,11 @@ const Skills = () => {
       </div>
 
       
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 space-y-6 space-x-0 ">
         {technologies.map((technology) => (
           <div
             key={technology.name}
-            className="group flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105"
+            className="group flex flex-col items-center text-center transform transition-transform duration-300 hover:scale-105 space-x-0 mx-0 px-0"
           >
             <div className="w-20 h-20 md:w-32 md:h-32 flex items-center justify-center bg-drbgclr shadow-sm shadow-drgry border-black border rounded-lg ">
               <img 
