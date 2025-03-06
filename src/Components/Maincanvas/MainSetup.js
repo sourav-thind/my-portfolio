@@ -234,7 +234,7 @@ const MainSetup = () => {
 
     useEffect(() => {
 
-
+            console.log(window.innerWidth)
         const updateWidthVar = () => {
             if (window.innerWidth <= 550) {
                 setWidthVar(2.3);
@@ -344,7 +344,7 @@ const MainSetup = () => {
             }
             else if (window.innerWidth <= 1440) {
                 setWidthVar(1.07);
-
+                setback1Btn([[0.2, -4.7, -0.17], 0.1, [0, -0.36, 0]]);
             }
             else if (window.innerWidth <= 1600) {
                 setWidthVar(1);
