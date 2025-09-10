@@ -6,11 +6,7 @@ import { useLoader, useThree } from '@react-three/fiber';
 import gsap from "gsap";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { Typewriter } from 'react-simple-typewriter'
-import HtmlMain from '../Html Site/HtmlMain';
-import Landing from '../Landing/Landing';
-import { MeshBasicMaterial } from "three"
-import Stats from 'stats.js'
-import StatsComponent from '../Stats';
+import Skills from '../Html Site/Skills';
 
 
 
@@ -484,7 +480,7 @@ const MainSetup = () => {
                     style={{ width: window.innerWidth, height: window.innerHeight, border: 'none', overflow: 'hidden' }}
                     distanceFactor={0.33}
                 >
-                    <HtmlMain />
+                   <Skills/>
 
 
                 </Html>

@@ -8,10 +8,8 @@ function App() {
   return (
     <div className="App">
 
-      <MainCanvas/>
-     <div className='top-0'>
-     <StatsComponent/>
-     </div>
+  <HtmlMain/>
+  <MainCanvas/>
     </div>
   );
 }
