@@ -27,7 +27,9 @@ const HtmlMain = () => {
             <About />
           </section>
 
-          
+          <section className="h-screen " id='skills'>
+            <Skills />
+          </section>
       <section className='h-screen bg-drbgclr ' id='projects'>
           <Projects />
 

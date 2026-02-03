@@ -6,7 +6,11 @@ import { useLoader, useThree } from '@react-three/fiber';
 import gsap from "gsap";
 import { IoArrowBackCircleSharp } from "react-icons/io5";
 import { Typewriter } from 'react-simple-typewriter'
-import Skills from '../Html Site/Skills';
+import HtmlMain from '../Html Site/HtmlMain';
+import Landing from '../Landing/Landing';
+import { MeshBasicMaterial } from "three"
+import Stats from 'stats.js'
+import StatsComponent from '../Stats';
 
 
 
@@ -209,12 +213,12 @@ const MainSetup = () => {
 
     const handleButton3 = () => {
         setShowButtons(false);
-
+   
         gsap.to(modelRef.current.rotation, { x: animatedModelRotation[0], y: animatedModelRotation[1], z: animatedModelRotation[2], duration: 1.5 });
         gsap.to(camera.rotation, { x: animatedCameraRotation[0], y: animatedCameraRotation[1], z: animatedCameraRotation[2], duration: 1.5 });
         gsap.to(camera.position, { x: animatedCameraPosition[0], y: animatedCameraPosition[1], z: animatedCameraPosition[2], duration: 1.5 });
 
-
+       
 
         setMenuMessage(false);
         setTimeout(() => {
@@ -230,7 +234,7 @@ const MainSetup = () => {
 
     useEffect(() => {
 
-        console.log(window.innerWidth)
+            console.log(window.innerWidth)
         const updateWidthVar = () => {
             if (window.innerWidth <= 550) {
                 setWidthVar(2.3);
@@ -277,6 +281,7 @@ const MainSetup = () => {
                 sethtmlDiv1P([[-6, 4.5, 1.5], 0.4, [0, -1.4, 0]]);
 
                 setinitialCameraPosition([-8, -4, -2]);
+
 
                 setMenu1Btn([[0, -4.5, 0], 0.75]);
 
@@ -339,7 +344,6 @@ const MainSetup = () => {
             }
             else if (window.innerWidth <= 1440) {
                 setWidthVar(1.07);
-                
                 setback1Btn([[0.2, -4.7, -0.17], 0.1, [0, -0.36, 0]]);
             }
             else if (window.innerWidth <= 1600) {
@@ -360,7 +364,7 @@ const MainSetup = () => {
 
         window.addEventListener('resize', updateWidthVar);
         if (lightRef.current) {
-            lightRef.current.shadow.needsUpdate = false;
+            lightRef.current.shadow.needsUpdate = false; 
         }
 
 
@@ -480,7 +484,7 @@ const MainSetup = () => {
                     style={{ width: window.innerWidth, height: window.innerHeight, border: 'none', overflow: 'hidden' }}
                     distanceFactor={0.33}
                 >
-                   <Skills/>
+                    <HtmlMain />
 
 
                 </Html>
