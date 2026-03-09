@@ -6,7 +6,7 @@ const About = () => {
     const refText = useRef(null);
 
     return (
-        <div className='bg-drbgclr relative md:top-2 lg:top-12 flex mx-auto justify-center z-40'>
+        <div className='bg-drbgclr  relative md:top-2 lg:top-12 flex mx-auto justify-center z-40'>
             <div className='flex flex-col items-center space-y-4 lg:space-y-10 mt-6'>
                 <h1 className='tracking-[20px] text-2xl md:text-3xl text-drwht uppercase font-semibold'>About</h1>
 
