@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/solid';
-import { useForm, SubmitHandler } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 import emailjs from '@emailjs/browser';
 import Toast from './Toast';
 

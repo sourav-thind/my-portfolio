@@ -25,9 +25,12 @@ const StatsComponent = () => {
     // Start animation
     animate();
 
+    const currentRef = statsRef.current;
     // Cleanup on unmount
     return () => {
-      statsRef.current.removeChild(stats.dom);
+      if (currentRef) {
+        currentRef.removeChild(stats.dom);
+      }
     };
   }, []);
 

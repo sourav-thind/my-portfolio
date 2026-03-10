@@ -42,11 +42,11 @@ const HtmlMain = () => {
             <div className='flex items-center justify-center'>
               <img
                 className='h-14 w-14 bg-drfgclr rounded-full filter grayscale hover:grayscale-0 cursor-pointer'
-                src="/assets/HeroImg.png" alt={"image Button"} />
+                src="/assets/HeroImg.png" alt="Hero button" />
             </div>
         </a>
         <button className=" w-auto rounded-xl animate-pulse bg-drfgclr text-drbgclr ">
-            <a href="https://drive.google.com/file/d/1knQNOE9QVauFPLxZYifSS2lgtQSuNWp3/view?usp=sharing" target="_blank" className='flex flex-row'>
+            <a href="https://drive.google.com/file/d/1knQNOE9QVauFPLxZYifSS2lgtQSuNWp3/view?usp=sharing" target="_blank" rel="noreferrer" className='flex flex-row'>
               <span className='font-semibold flex flex-row text-md px-3'>
                   Resume &nbsp; <ArrowTopRightOnSquareIcon className="h-4 w-4" />
               </span>

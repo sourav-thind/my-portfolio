@@ -1,6 +1,6 @@
 
 import './App.css';
-import HtmlMain from './Components/Html Site/HtmlMain';
+
 import MainCanvas from './Components/Maincanvas/MainCanvas';
 import StatsComponent from './Components/Stats';
 

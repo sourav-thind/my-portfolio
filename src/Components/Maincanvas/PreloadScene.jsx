@@ -5,9 +5,9 @@ import { Plane } from "@react-three/drei";
 
 
 const PreloadScene = () => {
-    const  [mainTexture, specTexture] = useLoader(TextureLoader,  [
+    const [mainTexture] = useLoader(TextureLoader, [
         "/textures/grasstexture.jpg",
-      ]);
+    ]);
     return (
         <>
             {/* <fog attach="fog" args={["#475569", 10, 50]} /> */}

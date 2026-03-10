@@ -1,8 +1,6 @@
 import React from "react";
 import { technologies } from "../../constants"; 
-const LazyIcon = React.lazy(({ src }) => (
-  <img src={src} alt="Skill Icon" className="w-12 h-12 md:w-16 md:h-16 object-contain" />
-));
+
 const Skills = () => {
   return (
     <div className="bg-drbgclr text-white py-16 px-4 sm:px-8 lg:px-16 h-screen">

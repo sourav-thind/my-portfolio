@@ -11,7 +11,7 @@
    import git from  "../ImageData/tech/git.png";
    import expressjs from  "../ImageData/tech/express.png";
    import nextjs from  "../ImageData/tech/nextjs.png";
-  import threejs from  "../ImageData/tech/threejs.svg";
+  
   import chatGpt from  "../ImageData/Project/chatGpt.png";
   import netflix from  "../ImageData/Project/netflix.png";
   import inotebook from  "../ImageData/Project/inotebook.png";
