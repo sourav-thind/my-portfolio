@@ -11,6 +11,7 @@ import Landing from '../Landing/Landing';
 import { MeshBasicMaterial } from "three"
 import Stats from 'stats.js'
 import StatsComponent from '../Stats';
+import NaevaChat from '../NaevaChat/NaevaChat';
 
 
 
@@ -56,6 +57,7 @@ const MainSetup = () => {
     const [menu1Btn, setMenu1Btn] = useState([[0, -4, 0], 1]);
     const [prtfBtn, setprtfBtn] = useState();
     const [clickedDiv, setclickedDiv] = useState([[-2, -2, 0]]);
+    const [showNaevaAgent, setShowNaevaAgent] = useState(false);
 
     const modelRef = useRef(modelRotation);
     const aspectRatio = window.innerWidth / window.innerHeight;
@@ -419,6 +421,17 @@ const MainSetup = () => {
 
 
 
+    const { naevaX, naevaY, naevaZ, naevaRotX, naevaRotY, naevaRotZ, naevaScale, naevaDistance } = useControls('Naeva Chat Adjuster', {
+        naevaX: { value: -2.0, min: -5, max: 5, step: 0.001 },
+        naevaY: { value: 2.28, min: -5, max: 5, step: 0.001 },
+        naevaZ: { value: -6.5, min: -10, max: 5, step: 0.001 },
+        naevaRotX: { value: 0.0, min: -Math.PI * 2, max: Math.PI * 2, step: 0.01 },
+        naevaRotY: { value: 0.0, min: -Math.PI * 2, max: Math.PI * 2, step: 0.01 },
+        naevaRotZ: { value: 0.02, min: -Math.PI * 2, max: Math.PI * 2, step: 0.01 },
+        naevaScale: { value: 0.7, min: 0.1, max: 2, step: 0.01 },
+        naevaDistance: { value: 1.33, min: 0.1, max: 2, step: 0.01 },
+    });
+
     return (
         <>
 
@@ -485,9 +498,9 @@ const MainSetup = () => {
                     distanceFactor={0.33}
                 >
                     <HtmlMain />
-
-
                 </Html>
+
+                
             </primitive>
             {!clicked && (<>
 
@@ -589,10 +602,25 @@ const MainSetup = () => {
                     <Typewriter words={["He likes music, He plays guitar sometimes. He is not very good though!                     Imagine I have to tell him everytime he should be a full time guitarist."]} typeSpeed={40} />
                 </Html>)}
             {ShowMenu2 && computerMessage && (
-                <Html position={[-8, -1.3, 2.10]} rotation={[0, 1.25, 0]} className=" flex flex-row bg-gray-900  text-white p-3 rounded-md text-sm md:text-lg w-[24rem] h-[8rem] md:w-[32rem] overflow-hidden bg-opacity-60 ml-[2rem]">
-                    <img src="/nava.png" alt="nava the assistat" className='h-14 w-14' />
-                    <Typewriter words={["No No Please no, don't touch that, Sourav's alter ego is creating something there, he is cruel, I mean his alter ego. I hear he is creating my evil version there too. Its not ready yet"]} typeSpeed={25} />
+                <Html position={[-8, -1.3, 2.10]} rotation={[0, 1.25, 0]} className=" flex flex-row bg-gray-900 justify-between items-center text-white p-3 rounded-md text-sm md:text-lg w-[24rem] h-[8rem] md:w-[32rem] overflow-hidden bg-opacity-60 ml-[2rem]">
+                    <div className='flex flex-row items-center gap-3 w-3/4'>
+                        <img src="/nava.png" alt="nava the assistat" className='h-14 w-14' />
+                        <Typewriter words={["That's his ongoing project. He is trying to give me a new life. I hope he doesn't mess it up."]} typeSpeed={25} />
+                    </div>
+                    
+                    <button 
+                        onClick={() => setShowNaevaAgent(true)}
+                        className="px-3 py-2 bg-drfgclr text-drbgclr font-bold rounded-lg hover:scale-105 transition-transform text-sm"
+                    >
+                        Talk to Me
+                    </button>
                 </Html>)}
+
+            {showNaevaAgent && (
+                <Html fullscreen zIndexRange={[100, 1000]}>
+                    <NaevaChat onClose={() => setShowNaevaAgent(false)} />
+                </Html>
+            )}
 
 
         </>

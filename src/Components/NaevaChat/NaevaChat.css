@@ -1,0 +1,244 @@
+.naeva-floating-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(8px);
+    z-index: 9999;
+    padding: 20px;
+}
+
+.naeva-chatbox-floating {
+    width: 100%;
+    max-width: 500px;
+    height: 80vh;
+    max-height: 700px;
+    background: linear-gradient(135deg, #1a1f29 0%, #11141a 100%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+.naeva-header {
+    background: rgba(45, 52, 64, 0.95);
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.naeva-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.naeva-avatar-group {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.naeva-avatar {
+    position: relative;
+    width: 45px;
+    height: 45px;
+}
+
+.naeva-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #00ffa3;
+}
+
+.naeva-status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 12px;
+    height: 12px;
+    background: #00ffa3;
+    border-radius: 50%;
+    border: 2px solid #2d3440;
+    box-shadow: 0 0 8px #00ffa3;
+}
+
+.naeva-header-info h3 {
+    margin: 0;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.naeva-header-info p {
+    margin: 0;
+    color: #00ffa3;
+    font-size: 0.75rem;
+    opacity: 0.8;
+}
+
+.naeva-close-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.naeva-close-btn:hover {
+    background: rgba(220, 20, 60, 0.4);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.naeva-messages {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    background: rgba(0, 0, 0, 0.2);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+}
+
+.naeva-messages::-webkit-scrollbar {
+    width: 6px;
+}
+
+.naeva-messages::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+}
+
+.naeva-msg-wrapper {
+    max-width: 85%;
+    display: flex;
+}
+
+.naeva-msg-wrapper.user {
+    align-self: flex-end;
+}
+
+.naeva-msg-wrapper.model {
+    align-self: flex-start;
+}
+
+.naeva-msg {
+    padding: 0.8rem 1.1rem;
+    border-radius: 18px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    white-space: pre-wrap;
+}
+
+.user .naeva-msg {
+    background: linear-gradient(135deg, #00ffa3 0%, #00d1ff 100%);
+    color: #000;
+    border-bottom-right-radius: 4px;
+    font-weight: 500;
+}
+
+.model .naeva-msg {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    color: #f0f0f0;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom-left-radius: 4px;
+}
+
+.naeva-msg.typing {
+    display: flex;
+    gap: 5px;
+    padding: 0.7rem 1.1rem;
+}
+
+.naeva-msg.typing span {
+    width: 6px;
+    height: 6px;
+    background: #00ffa3;
+    border-radius: 50%;
+    animation: typing 1.4s infinite ease-in-out;
+}
+
+.naeva-msg.typing span:nth-child(2) { animation-delay: 0.2s; }
+.naeva-msg.typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typing {
+    0%, 60%, 100% { opacity: 0.3; transform: scale(1); }
+    30% { opacity: 1; transform: scale(1.3); }
+}
+
+.naeva-input-area {
+    padding: 1.25rem 1.5rem;
+    background: rgba(45, 52, 64, 0.5);
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.naeva-input-area input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    padding: 0.75rem 1.25rem;
+    color: white;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.naeva-input-area input:focus {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #00ffa3;
+}
+
+.naeva-input-area button {
+    background: #00ffa3;
+    color: #111;
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.naeva-input-area button:hover:not(:disabled) {
+    transform: scale(1.1);
+    background: #00ffcc;
+}
+
+.naeva-input-area button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+    .naeva-chatbox-floating {
+        height: 90vh;
+        max-height: none;
+        border-radius: 20px;
+    }
+}
